@@ -1,16 +1,23 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 
 export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 flex items-center justify-between bg-black px-6 py-4">
-      <div className="flex items-center">
-        <Link href="/" className="flex items-center">
-          <span className="text-2xl font-light font-menda text-white">Revolution</span>
-          <span className="text-2xl font-bold font-menda text-[#00E1B0]">EV</span>
-        </Link>
-      </div>
+<div className="flex items-center">
+  <Link href="/" className="flex items-center gap-2">
+    {/* Logo Image */}
+    <Image
+      src="/image/Group 26087311.jpg" // Replace with your logo path
+      alt="Revolution EV Logo"
+      width={100}
+      height={100}
+      className="object-contain"
+    />
+  </Link>
+</div>
 
       <div className="hidden space-x-8 md:flex font-menda">
         <Link href="/" className="text-[#00E1B0] hover:text-gray-300 transition">
