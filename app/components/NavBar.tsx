@@ -10,10 +10,10 @@ export default function Navbar() {
   <Link href="/" className="flex items-center gap-2">
     {/* Logo Image */}
     <Image
-      src="/image/Group 26087311.jpg" // Replace with your logo path
+      src="/image/logo2.png" // Replace with your logo path
       alt="Revolution EV Logo"
-      width={100}
-      height={100}
+      width={200}
+      height={200}
       className="object-contain"
     />
   </Link>

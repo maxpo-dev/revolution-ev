@@ -8,7 +8,7 @@ export default function Hero() {
     <section className="relative flex h-screen min-h-[600px] items-center justify-center overflow-hidden bg-black">
       {/* 🔧 Fullscreen Background Image */}
       <Image
-        src="/image/what-is-an-ev-scaled.jpg" // ✅ Path must be correct (in /public/image/)
+        src="/image/home.jpg" // ✅ Path must be correct (in /public/image/)
         alt="Background EV"
         fill
         priority
@@ -50,11 +50,11 @@ export default function Hero() {
         <div className="mx-auto flex max-w-max flex-wrap justify-center gap-16 text-lg font-menda">
           <div className="flex items-center gap-2">
             <p className="font-semibold text-[#00E1B0]">When:</p>
-            <p>September 3-4, 2025</p>
+            <p>October 23-24, 2025</p>
           </div>
           <div className="flex items-center gap-2">
             <p className="font-semibold text-[#00E1B0]">Where:</p>
-            <p>Kuala Lumpur, Malaysia</p>
+            <p>WTC , KL , Malaysia</p>
           </div>
         </div>
       </div>

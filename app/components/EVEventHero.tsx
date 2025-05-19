@@ -11,9 +11,9 @@ export default function EVEventHero() {
             Welcome to <span className="text-cyan-400">Malaysia’s</span> Flagship EV Event Revolution <span className="text-sky-400">EV 2025</span>
           </h1>
           <p className="text-gray-700 mb-6">
-          Revolution EV Malaysia 2025 is Malaysia's flagship EV event dedicated to advancing electric mobility, featuring unrivaled electric vehicles and next-generation zero-emission vehicle innovations. #rev25 , is designed to bring people together, encourage new ideas, growth, and further cooperation within Malaysia's emerging e-mobility industry. The event will bring together policymakers, investors, innovators, industry pioneers, and government leaders to propel the advancements of electric mobility across Malaysia and beyond. <br /><br />
+          Revolution EV Malaysia 2025 is Malaysia's flagship EV event dedicated to advancing electric mobility, featuring unrivaled electric vehicles and next-generation zero-emission vehicle innovations. #REV25 , is designed to bring people together, encourage new ideas, growth, and further cooperation within Malaysia's emerging e-mobility industry. The event will bring together policymakers, investors, innovators, industry pioneers, and government leaders to propel the advancements of electric mobility across Malaysia and beyond. <br /><br />
  
-         <b>Join us from 3rd to 4th of September 2025 in Kuala Lumpur for two power-packed days of thought leadership, innovation showcases, and strategic networking as we drive Malaysia toward its EV future.</b> 
+         <b>Join us from 23rd to 24th of October 2025 in Kuala Lumpur for two power-packed days of thought leadership, innovation showcases, and strategic networking as we drive Malaysia toward its EV future.</b> 
 
           </p>
           <div className="flex gap-4">
@@ -27,7 +27,7 @@ export default function EVEventHero() {
         </div>
 
         {/* Video Section */}
-        <div className="w-full h-auto rounded-lg overflow-hidden shadow-lg">
+        {/* <div className="w-full h-auto rounded-lg overflow-hidden shadow-lg">
           <video
             className="w-full h-full object-contain"
             autoPlay
@@ -38,7 +38,14 @@ export default function EVEventHero() {
             <source src="/videos/ev-car.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-        </div>
+        </div> */}
+
+
+
+                  {/* Image Section */}
+          <div className="w-full h-auto rounded-lg overflow-hidden shadow-lg">
+            <img src="\image\welcome1.jpg" alt="Electric Vehicle" className="w-full h-full object-cover" />
+          </div>
       </div>
 
       {/* Stats Section */}

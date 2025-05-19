@@ -1,5 +1,3 @@
-import React from "react";
-
 const reasons = [
   {
     number: "01",
@@ -19,37 +17,37 @@ const reasons = [
   },
   {
     number: "05",
-    text: "Analyse Business Opportunities in Malaysia’s Growing EV Market",
+    text: "Analyse Business Opportunities in Malaysia's Growing EV Market",
   },
   {
     number: "06",
-    text: "Enhancing Your Brand’s Visibility In The Evolving E-Mobility Space",
+    text: "Enhancing Your Brand's Visibility In The Evolving E-Mobility Space",
   },
-];
+]
 
 export default function WhyAttend() {
   return (
-    <div className="w-full bg-white py-16 px-8 md:px-20">
-      <div className="flex flex-col md:flex-row items-start gap-12">
-        <div className="md:w-1/3">
-          <h2 className="text-4xl font-light leading-snug">Why</h2>
-          <h2 className="text-5xl font-bold mt-2">Attend?</h2>
+    <div className="w-full bg-white py-24 px-8 md:px-20">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-16">
+        {/* Left side - Title */}
+        <div className="md:w-1/4 self-center">
+          <h2 className="text-5xl font-light leading-tight">Why</h2>
+          <h2 className="text-6xl font-bold mt-2">Attend?</h2>
         </div>
 
-        <div className="md:w-2/3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Right side - Cards */}
+        <div className="md:w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {reasons.map((item, index) => (
             <div
               key={index}
-              className="border border-gray-300 p-6 h-48 flex flex-col justify-between hover:border-sky-400 transition-all"
+              className="border border-gray-200 p-8 h-64 flex flex-col justify-between hover:border-sky-400 transition-all"
             >
-              <span className="text-xl font-semibold">{item.number}</span>
-              <p className="text-sm font-medium text-gray-800">
-                {item.text}
-              </p>
+              <span className="text-4xl font-bold">{item.number}</span>
+              <p className="text-sm font-medium text-gray-800 mt-auto">{item.text}</p>
             </div>
           ))}
         </div>
       </div>
     </div>
-  );
+  )
 }

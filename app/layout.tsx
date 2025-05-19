@@ -2,6 +2,8 @@ import type React from "react"
 import "./globals.css"
 import { DM_Sans } from "next/font/google"
 import localFont from "next/font/local"
+import Navbar from "./components/NavBar"
+import Footer from "./components/footer"
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -38,7 +40,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${dmSans.variable} ${mendaFont.variable}`}>
-      <body>{children}</body>
+      <body><Navbar/>{children}<Footer/></body>
     </html>
   )
 }
