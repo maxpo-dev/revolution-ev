@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/app/components/ui/checkbox"
@@ -22,7 +21,9 @@ export default function EnquiryForm() {
     consent2: true,
   })
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
@@ -43,52 +44,77 @@ export default function EnquiryForm() {
       <div className="p-6 bg-white">
         <h2 className="text-xl font-medium mb-4">Fill the details below to enquire about the event</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
+          {/* Name */}
           <div>
+            <Label htmlFor="name" className="text-sm font-medium">
+              Name <span className="text-red-500">*</span>
+            </Label>
             <Input
               name="name"
               placeholder="Name"
               value={formData.name}
               onChange={handleChange}
-              className="border-gray-300"
+              className="border-gray-300 mt-1"
               required
             />
           </div>
+
+          {/* Email */}
           <div>
+            <Label htmlFor="email" className="text-sm font-medium">
+              Email <span className="text-red-500">*</span>
+            </Label>
             <Input
               name="email"
               placeholder="Email"
               type="email"
               value={formData.email}
               onChange={handleChange}
-              className="border-gray-300"
+              className="border-gray-300 mt-1"
               required
             />
           </div>
+
+          {/* Company Name */}
           <div>
+            <Label htmlFor="companyName" className="text-sm font-medium">
+              Company Name <span className="text-red-500">*</span>
+            </Label>
             <Input
               name="companyName"
               placeholder="Company Name"
               value={formData.companyName}
               onChange={handleChange}
-              className="border-gray-300"
+              className="border-gray-300 mt-1"
               required
             />
           </div>
+
+          {/* Phone Number */}
           <div>
+            <Label htmlFor="phoneNumber" className="text-sm font-medium">
+              Phone Number <span className="text-red-500">*</span>
+            </Label>
             <Input
               name="phoneNumber"
               placeholder="Phone Number"
               value={formData.phoneNumber}
               onChange={handleChange}
-              className="border-gray-300"
+              className="border-gray-300 mt-1"
+              required
             />
           </div>
+
+          {/* Industry */}
           <div>
+            <Label htmlFor="industry" className="text-sm font-medium">
+              Industry <span className="text-red-500">*</span>
+            </Label>
             <select
               name="industry"
               value={formData.industry}
               onChange={handleChange}
-              className="w-full border border-gray-300 rounded-md p-2 text-sm"
+              className="w-full border border-gray-300 rounded-md p-2 text-sm mt-1"
               required
             >
               <option value="" disabled>
@@ -107,15 +133,22 @@ export default function EnquiryForm() {
               <option value="other">Other</option>
             </select>
           </div>
+
+          {/* Message */}
           <div>
+            <Label htmlFor="message" className="text-sm font-medium">
+              Message
+            </Label>
             <Textarea
               name="message"
               placeholder="Message (if any)"
               value={formData.message}
               onChange={handleChange}
-              className="min-h-[100px] border-gray-300"
+              className="min-h-[100px] border-gray-300 mt-1"
             />
           </div>
+
+          {/* Consents */}
           <div className="space-y-2">
             <div className="flex items-start space-x-2">
               <Checkbox
@@ -124,7 +157,7 @@ export default function EnquiryForm() {
                 onCheckedChange={(checked: boolean) => handleCheckboxChange("consent1", checked)}
               />
               <Label htmlFor="consent1" className="text-xs leading-tight">
-                I confirm that I have read, understood and accept the{" "}
+              I confirm that I have read, understand and accept the event’s{" "}
                 <a href="#" className="text-blue-600 underline">
                   Terms and Conditions
                 </a>
@@ -138,16 +171,16 @@ export default function EnquiryForm() {
                 onCheckedChange={(checked: boolean) => handleCheckboxChange("consent2", checked)}
               />
               <Label htmlFor="consent2" className="text-xs leading-tight">
-                Please indicate your consent for us to use your data to contact you from time to time with updates and
-                information about our events, products and services. You can unsubscribe at any time by clicking the
-                link in our emails. Please read our{" "}
+              Our company may contact you from time to time with updates and information about our events, products and services that may be of interest. We may also pass your details to carefully selected third parties and to sponsors and exhibitors at this event. Please see our{" "}
                 <a href="#" className="text-blue-600 underline">
                   Privacy Policy
                 </a>{" "}
-                for details.
+                for full details.
               </Label>
             </div>
           </div>
+
+          {/* Submit Button */}
           <div className="flex justify-center mt-6">
             <Button type="submit" className="bg-[#30A685] text-white hover:bg-[#268a6f] px-8">
               Submit

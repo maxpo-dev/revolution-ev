@@ -45,6 +45,7 @@ export default function Navbar() {
         </Link>
       </div>
 
+<Link href="/register">
 <button
   className="
     relative z-10 bg-[#333333] text-white px-6 py-2 font-menda rounded 
@@ -56,6 +57,7 @@ export default function Navbar() {
 >
   GET DELEGATE PASS
 </button>
+</Link>
 
 
 

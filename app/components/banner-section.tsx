@@ -7,9 +7,9 @@ export default function BannerSection() {
       </div>
       <div className="absolute inset-0 z-0">
         <img
-          src="/image/evreg.jpg"
+          src="/image/revreg.jpg"
           alt="Malaysia Mobility Ecosystem"
-          className="w-full h-full object-contain"
+          className="w-full h-full object-cover object-top"
         />
       </div>
     </div>
