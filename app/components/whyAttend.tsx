@@ -1,32 +1,32 @@
 const reasons = [
   {
     number: "01",
-    text: "Be Part Of The Conversations That Fuel The Future Of EVs",
+    text: "Be part of the conversations that fuel the future of EVs",
     image: "image/Attend/1.png"
   },
   {
     number: "02",
-    text: "Gain Insights Into The Potential Benefits Of Using EVs",
+    text: "Gain insights into the potential benefits of using EVs",
     image: "image/Attend/2.png"
   },
   {
     number: "03",
-    text: "Experience Live Demonstrations From OEMs",
+    text: "Experience live demonstrations from OEMs",
     image: "image/Attend/3.png"
   },
   {
     number: "04",
-    text: "Engage With Top EV Leaders, Tech Pioneers And Investors",
+    text: "Engage with top EV leaders, tech pioneers and investors",
     image: "image/Attend/4.png"
   },
   {
     number: "05",
-    text: "Analyse Business Opportunities in Malaysia's Growing EV Market",
+    text: "Analyse business opportunities in Malaysia's growing EV market",
     image: "image/Attend/5.png"
   },
   {
     number: "06",
-    text: "Enhancing Your Brand's Visibility In The Evolving E-Mobility Space",
+    text: "Enhancing your brand's visibility in the evolving e-mobility space",
     image: "image/Attend/6.png"
   },
 ]

@@ -98,7 +98,8 @@ export default function SpeakersSection() {
           >
             Speakers at{" "}
           </span>
-          <span className="font-bold text-[#00E1B0]">#REV25</span>
+          &nbsp;
+          <span className="font-bold text-[#00E1B0]">#rev25</span>
         </h2>
 
         {/* Marquee container */}
