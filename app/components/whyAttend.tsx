@@ -2,26 +2,32 @@ const reasons = [
   {
     number: "01",
     text: "Be Part Of The Conversations That Fuel The Future Of EVs",
+    image: "image/Attend/1.png"
   },
   {
     number: "02",
     text: "Gain Insights Into The Potential Benefits Of Using EVs",
+    image: "image/Attend/2.png"
   },
   {
     number: "03",
     text: "Experience Live Demonstrations From OEMs",
+    image: "image/Attend/3.png"
   },
   {
     number: "04",
     text: "Engage With Top EV Leaders, Tech Pioneers And Investors",
+    image: "image/Attend/4.png"
   },
   {
     number: "05",
     text: "Analyse Business Opportunities in Malaysia's Growing EV Market",
+    image: "image/Attend/5.png"
   },
   {
     number: "06",
     text: "Enhancing Your Brand's Visibility In The Evolving E-Mobility Space",
+    image: "image/Attend/6.png"
   },
 ]
 
@@ -37,15 +43,26 @@ export default function WhyAttend() {
 
         {/* Right side - Cards */}
         <div className="md:w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {reasons.map((item, index) => (
-            <div
-              key={index}
-              className="border border-gray-200 p-8 h-64 flex flex-col justify-between hover:border-sky-400 transition-all"
-            >
-              <span className="text-4xl font-bold">{item.number}</span>
-              <p className="text-sm font-medium text-gray-800 mt-auto">{item.text}</p>
-            </div>
-          ))}
+      {reasons.map((item, index) => (
+  <div
+    key={index}
+    className="relative h-90 rounded-md overflow-hidden bg-cover bg-center text-white flex items-end p-6 hover:scale-[1.02] transition-all duration-300"
+    style={{ backgroundImage: `url(${item.image})` }}
+  >
+    {/* Optional overlay */}
+    <div className="absolute inset-0 bg-black/40 z-0" />
+
+    {/* Text content */}
+    <div className="relative z-10">
+      {/* <span className="text-4xl font-bold block">{item.number}</span> */}
+      <p className="text-sm font-medium mt-2">{item.text}</p>
+    </div>
+  </div>
+))}
+
+
+
+
         </div>
       </div>
     </div>

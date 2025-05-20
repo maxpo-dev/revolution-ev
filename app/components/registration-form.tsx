@@ -267,7 +267,7 @@ function BannerSection() {
       </div>
       <div className="absolute bottom-0 right-0 w-full h-full z-0">
         <img
-          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-RAF06lxVASSTqqzI0V85ZfsXEO7aQ0.png"
+          src="/image/Registation.jpeg"
           alt="Malaysia Skyline"
           className="object-cover object-center w-full h-full opacity-30"
         />

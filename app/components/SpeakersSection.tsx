@@ -50,23 +50,38 @@ const speakers = [
 
 export default function SpeakersSection() {
   const [mounted, setMounted] = useState(false)
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const carouselRef = useRef<HTMLDivElement>(null)
-  const visibleSpeakers = 5 // Number of speakers visible at once
+  const [isPaused, setIsPaused] = useState(false)
+  const [scrollSpeed, setScrollSpeed] = useState(30) // Default scroll speed in seconds
+  const marqueeRef = useRef<HTMLDivElement>(null)
+
+  // Duplicate the speakers array to create a seamless loop
+  const duplicatedSpeakers = [...speakers, ...speakers]
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
-  const nextSlide = () => {
-    if (currentIndex < speakers.length - visibleSpeakers) {
-      setCurrentIndex(currentIndex + 1)
-    }
+  // Function to speed up scrolling (when clicking next)
+  const speedUpScroll = () => {
+    setScrollSpeed(5) // Temporarily increase speed
+    setTimeout(() => setScrollSpeed(30), 1000) // Reset to normal speed after 1 second
   }
 
-  const prevSlide = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1)
+  // Function to reverse scrolling direction (when clicking previous)
+  const reverseScroll = () => {
+    if (marqueeRef.current) {
+      // Get current transform value
+      const currentTransform = getComputedStyle(marqueeRef.current).getPropertyValue("transform")
+
+      // Apply a temporary class to reverse the animation
+      marqueeRef.current.classList.add("reverse-scroll")
+
+      // Reset after a short time
+      setTimeout(() => {
+        if (marqueeRef.current) {
+          marqueeRef.current.classList.remove("reverse-scroll")
+        }
+      }, 5000)
     }
   }
 
@@ -76,7 +91,7 @@ export default function SpeakersSection() {
     <section className="bg-black px-6 py-16 text-white">
       <div className="mx-auto max-w-6xl">
         {/* Title */}
-        <h2 className="mb-12 text-5xl font-light leading-tight tracking-tight">
+        <h2 className="mb-12 text-8xl font-light leading-tight tracking-tight">
           <span
             className="relative inline-block text-transparent outline-text"
             style={{ WebkitTextStroke: "1px white" }}
@@ -86,57 +101,99 @@ export default function SpeakersSection() {
           <span className="font-bold text-[#00E1B0]">#REV25</span>
         </h2>
 
-        {/* Carousel container */}
-        <div className="relative">
-          {/* Speakers carousel */}
-          <div ref={carouselRef} className="overflow-hidden">
-            <div
-              className="flex transition-transform duration-300 ease-in-out"
-              style={{ transform: `translateX(-${currentIndex * (100 / visibleSpeakers)}%)` }}
-            >
-              {speakers.map((speaker, idx) => (
-                <div key={idx} className="flex-shrink-0 w-1/5 px-2">
-                  <div className="bg-transparent">
-                    {/* Image */}
-                    <div className="overflow-hidden">
-                      <img
-                        src={speaker.image || "/placeholder.svg?height=200&width=200"}
-                        alt={speaker.name}
-                        className="h-auto w-full object-cover"
-                      />
-                    </div>
+        {/* Marquee container */}
+        <div
+          className="relative overflow-hidden"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
+          {/* Marquee content */}
+          <div
+            ref={marqueeRef}
+            className={`flex whitespace-nowrap ${isPaused ? "pause-animation" : "marquee-animation"}`}
+            style={{
+              animationDuration: `${scrollSpeed}s`,
+              animationTimingFunction: "linear",
+              animationIterationCount: "infinite",
+            }}
+          >
+            {duplicatedSpeakers.map((speaker, idx) => (
+              <div key={idx} className="flex-shrink-0 w-[250px] px-3 inline-block">
+                <div className="bg-transparent">
+                  {/* Image */}
+                  <div className="overflow-hidden">
+                    <img
+                      src={speaker.image || "/placeholder.svg?height=200&width=200"}
+                      alt={speaker.name}
+                      className="h-auto w-full object-cover"
+                    />
+                  </div>
 
-                    {/* Text content */}
-                    <div className="mt-2 text-left">
-                      <p className="text-white text-sm font-medium">{speaker.name}</p>
-                      <p className="text-[#00E1B0] text-xs">{speaker.role}</p>
-                      <p className="text-[#00E1B0] text-xs">{speaker.organization}</p>
-                    </div>
+                  {/* Text content */}
+                  <div className="mt-2 text-left">
+                    <p className="text-white text-sm font-medium">{speaker.name}</p>
+                    <p className="text-[#00E1B0] text-xs">{speaker.role}</p>
+                    <p className="text-[#00E1B0] text-xs">{speaker.organization}</p>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
 
           {/* Navigation buttons */}
           <div className="flex justify-center mt-6 space-x-2">
             <button
-              onClick={prevSlide}
-              disabled={currentIndex === 0}
-              className="bg-white text-black w-8 h-8 flex items-center justify-center rounded-sm disabled:opacity-50"
-              aria-label="Previous slide"
+              onClick={reverseScroll}
+              className="bg-white text-black w-8 h-8 flex items-center justify-center rounded-sm"
+              aria-label="Scroll backward"
             >
               <ChevronLeft size={20} />
             </button>
             <button
-              onClick={nextSlide}
-              disabled={currentIndex >= speakers.length - visibleSpeakers}
-              className="bg-white text-black w-8 h-8 flex items-center justify-center rounded-sm disabled:opacity-50"
-              aria-label="Next slide"
+              onClick={speedUpScroll}
+              className="bg-white text-black w-8 h-8 flex items-center justify-center rounded-sm"
+              aria-label="Scroll forward"
             >
               <ChevronRight size={20} />
             </button>
           </div>
+
+          {/* CSS for the marquee animation */}
+          <style jsx>{`
+            @keyframes marquee {
+              0% {
+                transform: translateX(0);
+              }
+              100% {
+                transform: translateX(-50%);
+              }
+            }
+            
+            @keyframes marquee-reverse {
+              0% {
+                transform: translateX(-50%);
+              }
+              100% {
+                transform: translateX(0);
+              }
+            }
+            
+            .marquee-animation {
+              animation-name: marquee;
+              animation-duration: ${scrollSpeed}s;
+              animation-timing-function: linear;
+              animation-iteration-count: infinite;
+            }
+            
+            .pause-animation {
+              animation-play-state: paused;
+            }
+            
+            .reverse-scroll {
+              animation-name: marquee-reverse;
+              animation-duration: 2s;
+            }
+          `}</style>
         </div>
       </div>
     </section>

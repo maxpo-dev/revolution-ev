@@ -43,7 +43,7 @@ export default function FocusSectors() {
         <div className="grid gap-6 md:grid-cols-3">
           <div className="relative cursor-pointer overflow-hidden rounded-md bg-[#001A2C] h-[180px]">
             <div className="absolute bottom-0 left-0 w-full h-1 bg-[#00E1B0]" />
-            <div className="absolute inset-0 bg-[url('/image/fc1.jpg')] bg-center bg-no-repeat bg-contain" />
+            <div className="absolute inset-0 bg-[url('/image/fc1.jpg')] bg-center bg-no-repeat bg-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#00E1B0]/30 to-transparent" />
             <div className="absolute bottom-4 left-4 z-20 text-white font-menda">
               <div className="text-lg font-medium leading-tight">Electric</div>
@@ -53,7 +53,7 @@ export default function FocusSectors() {
 
           <div className="relative cursor-pointer overflow-hidden rounded-md bg-[#001A2C] h-[180px]">
             <div className="absolute bottom-0 left-0 w-full h-1 bg-[#00E1B0]" />
-            <div className="absolute inset-0 bg-[url('/image/fc2.jpg')] bg-center bg-no-repeat bg-contain" />
+            <div className="absolute inset-0 bg-[url('/image/fc2.jpg')] bg-center bg-no-repeat bg-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#00E1B0]/30 to-transparent" />
             <div className="absolute bottom-4 left-4 z-20 text-white font-menda">
               <div className="text-lg font-medium leading-tight">Charging</div>
@@ -63,7 +63,7 @@ export default function FocusSectors() {
 
           <div className="relative cursor-pointer overflow-hidden rounded-md bg-[#001A2C] h-[180px]">
             <div className="absolute bottom-0 left-0 w-full h-1 bg-[#00E1B0]" />
-            <div className="absolute inset-0 bg-[url('/image/fc1.jpg')] bg-center bg-no-repeat bg-contain" />
+            <div className="absolute inset-0 bg-[url('/image/fc1.jpg')] bg-center bg-no-repeat bg-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#00E1B0]/30 to-transparent" />
             <div className="absolute bottom-4 left-4 z-20 text-white font-menda">
               <div className="text-lg font-medium leading-tight">Policy, Regulation</div>
@@ -73,7 +73,7 @@ export default function FocusSectors() {
 
           <div className="relative cursor-pointer overflow-hidden rounded-md bg-[#001A2C] h-[180px]">
             <div className="absolute bottom-0 left-0 w-full h-1 bg-[#00E1B0]" />
-            <div className="absolute inset-0 bg-[url('/image/fc2.jpg')] bg-center bg-no-repeat bg-contain" />
+            <div className="absolute inset-0 bg-[url('/image/fc2.jpg')] bg-center bg-no-repeat bg-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#00E1B0]/30 to-transparent" />
             <div className="absolute bottom-4 left-4 z-20 text-white font-menda">
               <div className="text-lg font-medium leading-tight">Smart</div>
@@ -83,7 +83,7 @@ export default function FocusSectors() {
 
           <div className="relative cursor-pointer overflow-hidden rounded-md bg-[#001A2C] h-[180px]">
             <div className="absolute bottom-0 left-0 w-full h-1 bg-[#00E1B0]" />
-            <div className="absolute inset-0 bg-[url('/image/fc1.jpg')] bg-center bg-no-repeat bg-contain" />
+            <div className="absolute inset-0 bg-[url('/image/fc1.jpg')] bg-center bg-no-repeat bg-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#00E1B0]/30 to-transparent" />
             <div className="absolute bottom-4 left-4 z-20 text-white font-menda">
               <div className="text-lg font-medium leading-tight">Fleet Management</div>
@@ -93,7 +93,7 @@ export default function FocusSectors() {
 
           <div className="relative cursor-pointer overflow-hidden rounded-md bg-[#001A2C] h-[180px]">
             <div className="absolute bottom-0 left-0 w-full h-1 bg-[#00E1B0]" />
-            <div className="absolute inset-0 bg-[url('/image/fc2.jpg')] bg-center bg-no-repeat bg-contain" />
+            <div className="absolute inset-0 bg-[url('/image/fc2.jpg')] bg-center bg-no-repeat bg-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#00E1B0]/30 to-transparent" />
             <div className="absolute bottom-4 left-4 z-20 text-white font-menda">
               <div className="text-lg font-medium leading-tight">Investment, Startups</div>
