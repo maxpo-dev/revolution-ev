@@ -115,7 +115,7 @@ export default function Footer() {
                     info@revolutionevmalaysia.com
                   </Link>
                 </li>
-                <li>9999664343</li>
+                <li>7780985893</li>
                 <li className="flex space-x-3 mt-4">
                   {/* Replace href="#" with actual links */}
                   <Link href="#" className="bg-gray-800 p-1.5 rounded-sm hover:bg-gray-700">{/* Twitter Icon */}</Link>

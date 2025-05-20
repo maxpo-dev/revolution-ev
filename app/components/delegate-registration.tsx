@@ -5,9 +5,9 @@ import { useSearchParams } from "next/navigation"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/app/components/ui/tabs"
 import EnquiryForm from "@/app/components/enquiry-form"
 import DelegateForm from "@/app/components/delegate-form"
-import ExhibitionForm from "@/app/components/exhibition-form"
-import SponsorshipForm from "@/app/components/sponsorship-form"
-import BrochureForm from "@/app/components/forms/brochure-form"
+// import ExhibitionForm from "@/app/components/exhibition-form"
+// import SponsorshipForm from "@/app/components/sponsorship-form"
+// import BrochureForm from "@/app/components/forms/brochure-form"
 import Footer from "@/app/components/footer"
 
 type RegistrationType = "enquiry" | "delegates" | "exhibition" | "sponsorship" | "brochure"
@@ -85,15 +85,15 @@ export default function DelegateRegistration() {
             </TabsContent>
 
             <TabsContent value="exhibition" className="mt-0">
-              <ExhibitionForm />
+              {/* <ExhibitionForm /> */}
             </TabsContent>
 
             <TabsContent value="sponsorship" className="mt-0">
-              <SponsorshipForm />
+              {/* <SponsorshipForm /> */}
             </TabsContent>
 
             <TabsContent value="brochure" className="mt-0">
-              <BrochureForm />
+              {/* <BrochureForm /> */}
             </TabsContent>
           </Tabs>
         </div>
