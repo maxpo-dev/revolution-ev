@@ -1,18 +1,24 @@
 "use client"
 
+// import { Video } from "lucide-react"
 import { useEffect, useState } from "react"
 import CountUp from "react-countup"
 
 // Define the stats data
 const statsData = [
-  { count: 80, label: "Speakers", suffix: "+", color: "bg-cyan-400" },
-  { count: 400, label: "Delegates", suffix: "", color: "bg-sky-500" },
-  { count: 20, label: "Sponsors & Exhibitors", suffix: "+", color: "bg-cyan-400" },
-  { count: 3000, label: "Attendees", suffix: "", color: "bg-sky-500" },
-  { count: 20, label: "Partners", suffix: "+", color: "bg-cyan-400" },
+  { label: "Speakers", count: 80, suffix: "+", color: "bg-cyan-400" },
+  { label: "Delegates", count: 300, suffix: "+", color: "bg-green-400" },
+  { label: "Sponsors & Exhibitors", count: 20, suffix: "+", color: "bg-cyan-400" },
+  { label: "Attendees", count: 3000, suffix: "+", color: "bg-green-400" },
+  { label: "Partners", count: 20, suffix: "+", color: "bg-cyan-400" },
 ]
-
-function StatCard({ count, label, suffix = "", color = "bg-cyan-400" }) {
+type StatCardProps = {
+  count: number
+  label: string
+  suffix?: string
+  color?: string
+}
+function StatCard({ count, label, suffix = "", color = "bg-cyan-400" } : StatCardProps) {
   return (
     <div
       className={`${color} text-black px-6 py-4 flex items-center justify-between min-w-[250px] rounded-md shadow-md`}
@@ -88,39 +94,81 @@ export default function EVEventHero() {
         </div>
 
         {/* Image Section */}
-        <div className="w-full h-auto rounded-lg overflow-hidden shadow-lg">
-          <img src="/image/welcome1.jpg" alt="Electric Vehicle" className="w-full h-full object-cover" />
-        </div>
+<div className="w-full h-auto rounded-lg overflow-hidden shadow-lg">
+  <img
+    src="/image/Video/futuristic-electric-car-charging-GIF.gif"
+    alt="Electric Vehicle"
+    className="w-full h-full object-cover"
+  />
+</div>
+
       </div>
 
       {/* Stats Section */}
       <div className="max-w-7xl mx-auto mt-20 overflow-hidden">
         {/* Full Card Slider */}
-        <div className="relative h-[100px] border border-gray-300 rounded">
-          {statsData.map((stat, index) => (
+        <div className="relative h-[180px] border border-gray-300 rounded flex">
+          {/* Left Side: Heading - Fixed */}
+  <div className="bg-white p-6 flex items-center justify-start w-1/3">
+  <h2 className="text-[70px] font-semibold leading-none">
+    Expected <span className="font-bold">Numbers</span>
+  </h2>
+</div>
+
+
+          {/* Right Side: Stat Cards - Dynamic */}
+          <div className="w-2/3 relative">
+            {statsData.map((stat, index) => (
+              <div
+                key={stat.label}
+                className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+                  index === activeIndex
+                    ? "opacity-100 translate-x-0"
+                    : index < activeIndex
+                      ? "opacity-0 -translate-x-full"
+                      : "opacity-0 translate-x-full"
+                }`}
+              >
+                <div
+                  className={`${stat.color} text-black px-6 py-4 flex items-center justify-between h-full rounded-r-md`}
+                >
+                  <div className="flex items-baseline gap-2">
+                    <h3 className="text-[100px] leading-none font-extrabold">
+                      <CountUp end={stat.count} duration={2.5} />
+                      {stat.suffix}
+                    </h3>
+                    <p className="text-[50px] font-medium">{stat.label}</p>
+                  </div>
+                  <div className="text-black">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="50"
+                      height="50"
+                      fill="currentColor"
+                      className="bi bi-chevron-right"
+                      viewBox="0 0 16 16"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M6.646 12.854a.5.5 0 0 1 0-.708L10.293 8 6.646 4.354a.5.5 0 1 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708 0z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Progress Indicators */}
+        <div className="flex justify-center mt-4 gap-2">
+          {statsData.map((_, index) => (
             <div
-              key={stat.label}
-              className={`absolute inset-0 transition-all duration-1000 ease-in-out flex w-full ${
-                index === activeIndex
-                  ? "opacity-100 translate-x-0"
-                  : index < activeIndex || (activeIndex === 0 && index === statsData.length - 1)
-                    ? "opacity-0 -translate-x-full"
-                    : "opacity-0 translate-x-full"
+              key={index}
+              className={`h-1 w-8 rounded-full transition-all duration-300 ${
+                index === activeIndex ? "bg-cyan-400" : "bg-gray-300"
               }`}
-            >
-              {/* Left Side: Heading */}
-              <div className="bg-white p-6 flex items-center justify-start flex-grow">
-                <h2 className="max-w-xl text-xl md:text-2xl font-semibold">
-                  Expected <span className="ml-2 font-bold">Numbers</span>
-                </h2>
-              </div>
-
-              {/* Right Side: Stat Card */}
-              <div className="w-[400px] flex-shrink-0 h-[200px] md:h-[240px] lg:h-[280px] mt-3">
-
-                <StatCard count={stat.count} label={stat.label} suffix={stat.suffix} color={stat.color} />
-              </div>
-            </div>
+            />
           ))}
         </div>
       </div>

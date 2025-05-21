@@ -10,6 +10,7 @@ const config: Config = {
   ],
   theme: {
     extend: {
+          
       fontFamily: {
         dm: ["var(--font-dm-sans)"],
         menda: ["var(--font-menda)"],
@@ -17,6 +18,7 @@ const config: Config = {
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        skyblue: "#02B4DE",
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",

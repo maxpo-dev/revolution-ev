@@ -8,53 +8,73 @@ export default function Hero() {
     <section className="relative flex h-screen min-h-[600px] items-center justify-center overflow-hidden bg-black">
       {/* 🔧 Fullscreen Background Image */}
       <Image
-        src="/image/home.jpg" // ✅ Path must be correct (in /public/image/)
+        src="/image/Hero.jpeg" // ✅ Path must be correct (in /public/image/)
         alt="Background EV"
         fill
         priority
-        className="object-cover opacity-70"
+        className="object-cover opacity-60" // Adjusted opacity from 50 to 60
+      />
+
+      {/* Black gradient overlay from bottom to buttons area only */}
+      <div
+        className="absolute inset-x-0 bottom-0 z-[1] h-[30%] bg-gradient-to-t from-black to-transparent"
+        style={{ backdropFilter: "blur(1px)" }}
       />
 
       {/* ✅ Content over image */}
-      <div className="relative z-10 mx-auto max-w-6xl px-6 text-center text-white">
-        <h1 className="mb-4 font-menda text-6xl font-bold tracking-wider">REVOLUTION EV</h1>
-        <h2 className="mb-8 font-menda text-6xl font-bold tracking-wider">MALAYSIA</h2>
+      <div className="relative z-10 mx-auto max-w-6xl px-6 text-center text-white mt-25">
+        <h1
+          className="font-['Menda'] text-white tracking-[0.05em] font-semibold"
+          style={{ fontSize: "85.68px", lineHeight: "1", letterSpacing: "0.03em" }}
+        >
+          REVOLUTION EV
+        </h1>
 
-        <p className="mb-12 font-menda text-2xl font-light italic leading-tight tracking-wide">
+        <h2
+          className="font-['Menda'] text-white tracking-[0.1em] font-semibold mt-2"
+          style={{ fontSize: "85.68px", lineHeight: "1", letterSpacing: "0.1em" }}
+        >
+          MALAYSIA
+        </h2>
+
+        <p
+          className="mb-12 font-menda text-2xl font-bold italic leading-tight tracking-wide"
+          style={{ letterSpacing: "0.2em" }}
+        >
           Malaysia's Sustainable Move towards an Electric,
           <br />
           Smart, and Green Future
         </p>
 
         {/* Buttons */}
-<div className="mb-16 flex flex-wrap justify-center gap-6">
- <Link
-  href="/agenda"
-  className="min-w-[220px] border border-white bg-transparent px-6 py-1 text-sm font-normal font-menda tracking-wider text-white transition-all duration-300 hover:-translate-y-1 hover:bg-white hover:text-black flex items-center justify-center"
->
-  VIEW AGENDA
-</Link>
+        <div className="mb-16 flex flex-wrap justify-center gap-6">
+          <Link
+            href="/agenda"
+            className="min-w-[200px] border border-white bg-transparent px-6 py-3 text-sm font-normal font-menda tracking-wider text-white transition-all duration-300 hover:bg-white hover:text-black flex items-center justify-center"
+          >
+            View Agenda
+          </Link>
 
-  <Link
-    href="/sponsorships"
-    className="min-w-[220px] border border-white bg-white px-6 py-1 text-sm font-normal font-menda tracking-wider text-black transition-all duration-300 hover:-translate-y-1 hover:bg-sky-200"
-  >
-    SPONSORSHIPS
-    <br />
-    OPPORTUNITIES
-  </Link>
-</div>
-
+          <Link
+            href="/sponsorships"
+            className="min-w-[200px] bg-white px-6 py-3 text-sm font-bold font-menda tracking-wider text-black transition-all duration-300 hover:bg-[#0DB6C9] hover:text-white"
+          >
+            Sponsor
+          </Link>
+        </div>
 
         {/* Event details */}
-        <div className="mx-auto flex max-w-max flex-wrap justify-center gap-16 text-lg font-menda">
+        <div
+          className="mx-auto flex items-center justify-center gap-20 font-menda text-white mt-16"
+          style={{ fontSize: "22px" }}
+        >
           <div className="flex items-center gap-2">
-            <p className="font-semibold text-[#00E1B0]">When:</p>
-            <p>October 23-24, 2025</p>
+            <p className="font-semibold text-[#4DC656]">When:</p>
+            <p>September 3–4, 2025</p>
           </div>
           <div className="flex items-center gap-2">
-            <p className="font-semibold text-[#00E1B0]">Where:</p>
-            <p>WTC , KL , Malaysia</p>
+            <p className="font-semibold text-[#4DC656]">Where:</p>
+            <p>Kuala Lumpur, Malaysia</p>
           </div>
         </div>
       </div>

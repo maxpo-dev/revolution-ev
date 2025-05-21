@@ -17,7 +17,7 @@ export default function Home() {
       <EVEventHero/>
       <FocusSectors/>
       <EvMission/>
-      <SpeakersSection/>
+      {/* <SpeakersSection/> */}
       <WhyAttend/>
       {/* <Footer/> */}
       {/* <TestimonialCarousel/> */}

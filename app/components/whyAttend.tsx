@@ -43,25 +43,21 @@ export default function WhyAttend() {
 
         {/* Right side - Cards */}
         <div className="md:w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {reasons.map((item, index) => (
+    {reasons.map((item, index) => (
   <div
     key={index}
-    className="relative h-90 rounded-md overflow-hidden bg-cover bg-center text-white flex items-end p-6 hover:scale-[1.02] transition-all duration-300"
+    className="relative h-90 overflow-hidden bg-cover bg-center text-white flex items-end p-6 hover:scale-[1.02] transition-all duration-300"
     style={{ backgroundImage: `url(${item.image})` }}
   >
-    {/* Optional overlay */}
-    <div className="absolute inset-0 bg-black/40 z-0" />
+    {/* Slightly darker overlay for text clarity */}
+    <div className="absolute inset-0 bg-black/30 z-0" />
 
-    {/* Text content */}
+    {/* Text content (kept simple and clean) */}
     <div className="relative z-10">
-      {/* <span className="text-4xl font-bold block">{item.number}</span> */}
-      <p className="text-sm font-medium mt-2">{item.text}</p>
+      <p className="text-sm font-medium leading-snug drop-shadow-md">{item.text}</p>
     </div>
   </div>
 ))}
-
-
-
 
         </div>
       </div>
