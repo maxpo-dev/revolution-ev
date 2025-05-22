@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/app/components/ui/label"
 import { Textarea } from "@/app/components/ui/textarea"
 import BannerSection from "@/app/components/banner-section"
+import SuccessMessage from "@/app/components/success-message"
 
 export default function DelegateForm() {
   const [formData, setFormData] = useState({
@@ -22,9 +23,9 @@ export default function DelegateForm() {
     consent2: true,
   })
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
+  const [success, setSuccess] = useState(false)
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
@@ -33,10 +34,46 @@ export default function DelegateForm() {
     setFormData((prev) => ({ ...prev, [name]: checked }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Delegate Form submitted:", formData)
-    // Add your form submission logic here
+
+    try {
+      const res = await fetch("/api/delegate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+
+      if (!res.ok) throw new Error("Failed to submit")
+
+      const data = await res.json()
+      console.log("Success:", data)
+      setSuccess(true)
+      setFormData({
+        name: "",
+        email: "",
+        companyName: "",
+        phoneNumber: "",
+        jobTitle: "",
+        industry: "",
+        message: "",
+        consent1: true,
+        consent2: true,
+      })
+    } catch (error) {
+      console.error("Error:", error)
+      alert("There was a problem submitting the form.")
+    }
+  }
+
+  if (success) {
+    return (
+      <SuccessMessage
+        type="delegate"
+        title="Thank You For Your Registration!"
+        subtitle="You are now registered as a delegate for the Revolution EV event"
+      />
+    )
   }
 
   const industryOptions = [
@@ -72,13 +109,13 @@ export default function DelegateForm() {
     "Government Ministries & Departments",
     "City Councils & Local Authorities",
     "Trade Associations & NGOs",
-    "Environmentalists"
+    "Environmentalists",
   ]
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
       {/* Form Section */}
-      <div className="p-6 bg-white">
+      <div className="p-6 bg-white border border-[#56c847] ">
         <h2 className="text-xl font-medium mb-4">Fill the details below to register as a delegate</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Name */}
@@ -203,7 +240,7 @@ export default function DelegateForm() {
                 onCheckedChange={(checked: boolean) => handleCheckboxChange("consent1", checked)}
               />
               <Label htmlFor="consent1" className="text-xs leading-tight">
-              I confirm that I have read, understand and accept the event’s{" "}
+                I confirm that I have read, understand and accept the event's{" "}
                 <a href="#" className="text-blue-600 underline">
                   Terms and Conditions
                 </a>
@@ -217,7 +254,9 @@ export default function DelegateForm() {
                 onCheckedChange={(checked: boolean) => handleCheckboxChange("consent2", checked)}
               />
               <Label htmlFor="consent2" className="text-xs leading-tight">
-              Our company may contact you from time to time with updates and information about our events, products and services that may be of interest. We may also pass your details to carefully selected third parties and to sponsors and exhibitors at this event. Please see our{" "}
+                Our company may contact you from time to time with updates and information about our events, products
+                and services that may be of interest. We may also pass your details to carefully selected third parties
+                and to sponsors and exhibitors at this event. Please see our{" "}
                 <a href="#" className="text-blue-600 underline">
                   Privacy Policy
                 </a>{" "}

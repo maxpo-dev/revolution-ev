@@ -26,17 +26,13 @@ export default function RegisterPage({ searchParams }: { searchParams: { t?: str
   const handleTabChange = (value: string) => {
     setActiveTab(value as TabType)
 
-    // Always update URL based on selected tab
     if (value === "enquiry") {
-      // For enquiry, always set URL to /register without query parameters
       router.replace("/register", { scroll: false })
     } else {
-      // For other tabs, add the query parameter
       router.replace(`/register?t=${value}`, { scroll: false })
     }
   }
 
-  // Update URL on initial load if needed
   useEffect(() => {
     if (initialTab === "enquiry" && window.location.search) {
       router.replace("/register", { scroll: false })
@@ -47,43 +43,45 @@ export default function RegisterPage({ searchParams }: { searchParams: { t?: str
     <div className="container mx-auto mt-6">
       {/* Navigation Tabs */}
       <div className="sticky top-[64px] bg-white z-10 border-b">
-        <Tabs value={activeTab} onValueChange={handleTabChange} className="w-full">
-          <TabsList className="w-full justify-start bg-white h-auto p-0">
-            <TabsTrigger
-              value="enquiry"
-              className="px-6 py-2 data-[state=active]:bg-black data-[state=active]:text-white rounded-none"
-            >
-              Enquiry
-            </TabsTrigger>
-            <TabsTrigger
-              value="delegate"
-              className="px-6 py-2 data-[state=active]:bg-black data-[state=active]:text-white rounded-none"
-            >
-              Delegate
-            </TabsTrigger>
-            <TabsTrigger
-              value="exhibitor"
-              className="px-6 py-2 data-[state=active]:bg-black data-[state=active]:text-white rounded-none"
-            >
-              Exhibition
-            </TabsTrigger>
-            <TabsTrigger
-              value="sponsor"
-              className="px-6 py-2 data-[state=active]:bg-black data-[state=active]:text-white rounded-none"
-            >
-              Sponsorship
-            </TabsTrigger>
-            <TabsTrigger
-              value="brochure"
-              className="px-6 py-2 data-[state=active]:bg-black data-[state=active]:text-white rounded-none"
-            >
-              Brochure
-            </TabsTrigger>
-          </TabsList>
-        </Tabs>
+        <div className="overflow-x-auto whitespace-nowrap border-b">
+          <Tabs value={activeTab} onValueChange={handleTabChange} className="min-w-max w-full">
+            <TabsList className="inline-flex bg-white h-auto p-0">
+              <TabsTrigger
+                value="enquiry"
+                className="px-6 py-2 data-[state=active]:bg-black data-[state=active]:text-white rounded-none"
+              >
+                Enquiry
+              </TabsTrigger>
+              <TabsTrigger
+                value="delegate"
+                className="px-6 py-2 data-[state=active]:bg-black data-[state=active]:text-white rounded-none"
+              >
+                Delegate
+              </TabsTrigger>
+              <TabsTrigger
+                value="exhibitor"
+                className="px-6 py-2 data-[state=active]:bg-black data-[state=active]:text-white rounded-none"
+              >
+                Exhibition
+              </TabsTrigger>
+              <TabsTrigger
+                value="sponsor"
+                className="px-6 py-2 data-[state=active]:bg-black data-[state=active]:text-white rounded-none"
+              >
+                Sponsorship
+              </TabsTrigger>
+              <TabsTrigger
+                value="brochure"
+                className="px-6 py-2 data-[state=active]:bg-black data-[state=active]:text-white rounded-none"
+              >
+                Brochure
+              </TabsTrigger>
+            </TabsList>
+          </Tabs>
+        </div>
       </div>
 
-      {/* Form Content with padding to prevent it from starting behind navbar */}
+      {/* Form Content */}
       <div className="pt-4 mb-10">
         <Suspense fallback={<div className="p-8 text-center">Loading registration form...</div>}>
           {activeTab === "enquiry" && <EnquiryForm />}

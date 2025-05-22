@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/app/components/ui/label"
 import { Textarea } from "@/app/components/ui/textarea"
 import BannerSection from "@/app/components/banner-section"
+import SuccessMessage from "@/app/components/success-message"
 
 export default function ExhibitorForm() {
   const [formData, setFormData] = useState({
@@ -22,9 +23,9 @@ export default function ExhibitorForm() {
     consent2: true,
   })
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
+  const [success, setSuccess] = useState(false)
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
@@ -33,9 +34,48 @@ export default function ExhibitorForm() {
     setFormData((prev) => ({ ...prev, [name]: checked }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Exhibitor Form submitted:", formData)
+
+    try {
+      const res = await fetch("/api/exhibitor", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await res.json()
+
+      if (res.ok) {
+        setSuccess(true)
+        setFormData({
+          name: "",
+          email: "",
+          phoneNumber: "",
+          companyName: "",
+          industry: "",
+          jobTitle: "",
+          message: "",
+          consent1: true,
+          consent2: true,
+        })
+      } else {
+        alert("Error: " + data.message)
+      }
+    } catch (err) {
+      console.error("Submission error:", err)
+      alert("An error occurred. Please try again.")
+    }
+  }
+
+  if (success) {
+    return (
+      <SuccessMessage
+        type="exhibitor"
+        title="Thank You For Your Exhibition Registration!"
+        subtitle="You are now registered as an exhibitor for the Revolution EV event"
+      />
+    )
   }
 
   const industryOptions = [
@@ -77,12 +117,14 @@ export default function ExhibitorForm() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
       {/* Form Section */}
-      <div className="p-6 bg-white">
+      <div className="p-6 bg-white border border-[#56c847] ">
         <h2 className="text-xl font-medium mb-4">Fill the details below to register as an exhibitor</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Name */}
           <div>
-            <Label className="text-sm font-medium">Name <span className="text-red-500">*</span></Label>
+            <Label className="text-sm font-medium">
+              Name <span className="text-red-500">*</span>
+            </Label>
             <Input
               name="name"
               placeholder="Name"
@@ -95,7 +137,9 @@ export default function ExhibitorForm() {
 
           {/* Work Email */}
           <div>
-            <Label className="text-sm font-medium">Work Email <span className="text-red-500">*</span></Label>
+            <Label className="text-sm font-medium">
+              Work Email <span className="text-red-500">*</span>
+            </Label>
             <Input
               name="email"
               placeholder="Work Email"
@@ -109,7 +153,9 @@ export default function ExhibitorForm() {
 
           {/* Phone */}
           <div>
-            <Label className="text-sm font-medium">Phone <span className="text-red-500">*</span></Label>
+            <Label className="text-sm font-medium">
+              Phone <span className="text-red-500">*</span>
+            </Label>
             <Input
               name="phoneNumber"
               placeholder="Phone"
@@ -122,7 +168,9 @@ export default function ExhibitorForm() {
 
           {/* Company Name */}
           <div>
-            <Label className="text-sm font-medium">Company Name <span className="text-red-500">*</span></Label>
+            <Label className="text-sm font-medium">
+              Company Name <span className="text-red-500">*</span>
+            </Label>
             <Input
               name="companyName"
               placeholder="Company Name"
@@ -135,7 +183,9 @@ export default function ExhibitorForm() {
 
           {/* Industry */}
           <div>
-            <Label className="text-sm font-medium">Industry <span className="text-red-500">*</span></Label>
+            <Label className="text-sm font-medium">
+              Industry <span className="text-red-500">*</span>
+            </Label>
             <select
               name="industry"
               value={formData.industry}
@@ -143,7 +193,9 @@ export default function ExhibitorForm() {
               className="w-full border border-gray-300 rounded-md p-2 text-sm"
               required
             >
-              <option value="" disabled>Select Industry</option>
+              <option value="" disabled>
+                Select Industry
+              </option>
               {industryOptions.map((option, index) => (
                 <option key={index} value={option}>
                   {option}
@@ -154,7 +206,9 @@ export default function ExhibitorForm() {
 
           {/* Job Title */}
           <div>
-            <Label className="text-sm font-medium">Job Title <span className="text-red-500">*</span></Label>
+            <Label className="text-sm font-medium">
+              Job Title <span className="text-red-500">*</span>
+            </Label>
             <Input
               name="jobTitle"
               placeholder="Job Title"
@@ -186,8 +240,11 @@ export default function ExhibitorForm() {
                 onCheckedChange={(checked: boolean) => handleCheckboxChange("consent1", checked)}
               />
               <Label htmlFor="consent1" className="text-xs leading-tight">
-              I confirm that I have read, understand and accept the event’s{" "}
-                <a href="#" className="text-blue-600 underline">Terms and Conditions</a>.
+                I confirm that I have read, understand and accept the event's{" "}
+                <a href="#" className="text-blue-600 underline">
+                  Terms and Conditions
+                </a>
+                .
               </Label>
             </div>
             <div className="flex items-start space-x-2">
@@ -197,9 +254,13 @@ export default function ExhibitorForm() {
                 onCheckedChange={(checked: boolean) => handleCheckboxChange("consent2", checked)}
               />
               <Label htmlFor="consent2" className="text-xs leading-tight">
-              Our company may contact you from time to time with updates and information about our events, products and services that may be of interest. We may also pass your details to carefully selected third parties and to sponsors and exhibitors at this event. Please see our{" "}
-                <a href="#" className="text-blue-600 underline">Privacy Policy</a>.
-                for full details.
+                Our company may contact you from time to time with updates and information about our events, products
+                and services that may be of interest. We may also pass your details to carefully selected third parties
+                and to sponsors and exhibitors at this event. Please see our{" "}
+                <a href="#" className="text-blue-600 underline">
+                  Privacy Policy
+                </a>
+                . for full details.
               </Label>
             </div>
           </div>

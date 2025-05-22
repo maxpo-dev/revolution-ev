@@ -45,7 +45,7 @@ export default function Footer() {
             <div className="md:col-span-1">
               <div className="flex items-center mb-4">
                 <Image
-                  src="/image/logo2.png"
+                  src="/image/Frame 3968606 (1).png"
                   alt="Revolution EV Logo"
                   width={160}
                   height={60}
@@ -53,7 +53,7 @@ export default function Footer() {
                 />
               </div>
               <p className="text-sm text-gray-300 mb-4">
-                Malaysia's Sustainable Move towards an Electric, Smart, and Green Future
+                Malaysia's Sustainable Move Towards an Electric, Smart, and Green Future
               </p>
               <div className="mt-4">
                 <p className="text-xs text-gray-400 mb-2">Organized By</p>

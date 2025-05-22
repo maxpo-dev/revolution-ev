@@ -72,7 +72,7 @@ export default function EVEventHero() {
           </h1>
           <p className="text-gray-700 mb-6">
             Revolution EV Malaysia 2025 is Malaysia's flagship EV event dedicated to advancing electric mobility,
-            featuring unrivaled electric vehicles and next-generation zero-emission vehicle innovations.{" "}
+            featuring unrivalled electric vehicles and next-generation zero-emission vehicle innovations.{" "}
             <span className="text-sky-400">#rev25</span>, is designed to bring people together, encourage new ideas,
             growth, and further cooperation within Malaysia's emerging e-mobility industry. The event will bring
             together policymakers, investors, innovators, industry pioneers, and government leaders to propel the
@@ -80,7 +80,7 @@ export default function EVEventHero() {
             <br />
             <b>
               Join us from 23rd to 24th of October 2025 in Kuala Lumpur for two power-packed days of thought leadership,
-              innovation showcases, and strategic networking as we drive Malaysia toward its EV future.
+              innovative showcases, and strategic networking as we drive Malaysia toward its EV future.
             </b>
           </p>
           <div className="flex gap-4">

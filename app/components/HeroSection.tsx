@@ -40,7 +40,7 @@ export default function Hero() {
           className="mb-12 font-menda text-2xl font-bold italic leading-tight tracking-wide"
           style={{ letterSpacing: "0.2em" }}
         >
-          Malaysia's Sustainable Move towards an Electric,
+          Malaysia's Sustainable Move Towards an Electric,
           <br />
           Smart, and Green Future
         </p>
@@ -73,7 +73,7 @@ export default function Hero() {
           </div>
           <div className="flex items-center gap-2">
             <p className="font-semibold text-[#4DC656]">Where:</p>
-            <p>WTC,KL, Malaysia</p>
+            <p>WTC, KL, Malaysia</p>
           </div>
         </div>
       </div>

@@ -15,7 +15,7 @@ const missionData: MissionItem[] = [
   {
     title: "Conference",
     description:
-      "The conference at #REV25 brings together leading voices from across the government, industry verticals, academia and more to help shape the e-mobility landscape within Malaysia and beyond. Participate in thought-provoking discussions on the infrastructure, innovation, investment, and policy that will propel the country's electric future.",
+      "The conference at #rev25 brings together leading voices from across the government, industry verticals, academia, and more to help shape the e-mobility landscape within Malaysia and beyond. Participate in thought-provoking discussions on the infrastructure, innovation, investment, and policy that will propel the country's electric future.",
     image: "/image/conference.jpg",
     buttonText: "Get Delegate Pass",
     buttonLink: "/register?t=delegate",
@@ -24,7 +24,7 @@ const missionData: MissionItem[] = [
   {
     title: "Exhibition",
     description:
-      "Malaysia's most prestigious e-mobility EV event, #REV25, serves as your entry point to South-East Asia's rapidly expanding electric vehicle industry, offering invaluable opportunities whether you're introducing a product, expanding your business, or boosting brand awareness.",
+      "Malaysia's most prestigious e-mobility event, #rev25, serves as your entry point to South-East Asia's rapidly expanding electric vehicle industry, offering invaluable opportunities whether you're introducing a product, expanding your business, or boosting brand awareness.",
     image: "/image/exhibition.jpg",
     buttonText: "Book Your Stand",
     buttonLink: "/image/what-is-an-ev-scaled.jpg",
@@ -54,8 +54,8 @@ export default function EvMissionCard() {
           </h2>
 
           <p className="text-base max-w-xl">
-            At Revolution EV we are paving the way for a greener future while fueling tomorrow by bringing together all
-            stakeholders to shape the future of e-mobility, create impactful solutions and build a lasting legacy for
+            At Revolution EV, we are paving the way for a greener future through innovation, clean energy and sustainable mobility. We are fueling tomorrow by bringing together all
+            stakeholders to shape the future of e-mobility, create impactful solutions, and build a lasting legacy for
             generations to come.
           </p>
         </div>
