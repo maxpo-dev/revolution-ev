@@ -6,13 +6,12 @@ import Image from "next/image"
 export default function Hero() {
   return (
     <section className="relative flex h-screen min-h-[600px] items-center justify-center overflow-hidden bg-black">
-      {/* 🔧 Fullscreen Background Image */}
       <Image
-        src="/image/Hero.jpeg" // ✅ Path must be correct (in /public/image/)
+        src="/image/Hero.jpeg"
         alt="Background EV"
         fill
         priority
-        className="object-cover opacity-60" // Adjusted opacity from 50 to 60
+        className="object-cover opacity-60"
       />
 
       {/* Black gradient overlay from bottom to buttons area only */}
@@ -70,11 +69,11 @@ export default function Hero() {
         >
           <div className="flex items-center gap-2">
             <p className="font-semibold text-[#4DC656]">When:</p>
-            <p>September 3–4, 2025</p>
+            <p>October 23–24, 2025</p>
           </div>
           <div className="flex items-center gap-2">
             <p className="font-semibold text-[#4DC656]">Where:</p>
-            <p>Kuala Lumpur, Malaysia</p>
+            <p>WTC,KL, Malaysia</p>
           </div>
         </div>
       </div>
