@@ -77,10 +77,10 @@ export default function EvMissionCard() {
               <div className="p-8 md:w-1/2 flex flex-col justify-center">
                 <h3 className="text-3xl font-bold mb-4">{item.title}</h3>
                 <p className="text-gray-700 mb-6">
-                  {item.description.split("#REV25").map((part, idx, arr) => (
+                  {item.description.split("#rev25").map((part, idx, arr) => (
                     <span key={idx}>
                       {part}
-                      {idx !== arr.length - 1 && <span className="text-[#3D8CB5] font-semibold">#rev25</span>}
+                      {idx !== arr.length - 1 && <span className="text-sky-400 font-semibold">#rev25</span>}
                     </span>
                   ))}
                 </p>
