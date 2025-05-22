@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
 
     const mailOptions = {
       from: `"Revolution EV - Enquiry" <${process.env.EMAIL_USER}>`,
-      to: "avalasandeep02@gmail.com", // Replace as needed
+      to: "avalasandeep02@gmail.com, info@revolutionevmalaysia.com, mirmmateen.other@gmail.com", // Replace as needed
       subject: "New Enquiry - Revolution EV",
       html: `
         <h2>New Enquiry Submission</h2>
