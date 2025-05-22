@@ -61,7 +61,7 @@ export default function Navbar() {
 
         {/* Register Button */}
         <div className="hidden sm:block">
-          <Link href="/register">
+          <Link href="/register?t=delegate">
             <button
               className="
                 relative z-10 bg-[#333333] text-white px-4 sm:px-6 py-2 font-menda rounded text-xs sm:text-sm
