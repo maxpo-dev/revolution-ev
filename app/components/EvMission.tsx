@@ -41,7 +41,7 @@ const missionData: MissionItem[] = [
   },
 ]
 
-export default function EvMissionCard() {
+export function EvMission() {
   return (
     <section className="px-4 sm:px-6 py-8 sm:py-12 md:py-16 bg-white text-black">
       <div className="max-w-6xl mx-auto">
