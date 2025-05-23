@@ -4,7 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { Twitter, Instagram, Linkedin, MessageSquare } from "lucide-react"
+import { Twitter, Instagram, Linkedin, Youtube, Facebook } from "lucide-react"
 
 export default function Footer() {
   return (
@@ -90,7 +90,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link href="#" className="hover:text-[#00E1B0]">
-                    Speakers
+                    Agenda
                   </Link>
                 </li>
                 <li>
@@ -117,12 +117,12 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link href="#" className="hover:text-[#00E1B0]">
-                    Exhibitors
+                    Sponsors
                   </Link>
                 </li>
                 <li>
                   <Link href="#" className="hover:text-[#00E1B0]">
-                    Exhibition
+                    Partners
                   </Link>
                 </li>
               </ul>
@@ -168,19 +168,22 @@ export default function Footer() {
                     info@revolutionevmalaysia.com
                   </Link>
                 </li>
-                <li>7780985893</li>
+                <li>+91 7780985893</li>
                 <li className="flex space-x-2 sm:space-x-3 mt-3 sm:mt-4">
-                  <Link href="#" className="bg-gray-800 p-1.5 rounded-sm hover:bg-gray-700">
+                  <Link href="https://x.com/revolutionev" className="bg-gray-800 p-1.5 rounded-sm hover:bg-gray-700">
                     <Twitter size={16} />
                   </Link>
-                  <Link href="#" className="bg-gray-800 p-1.5 rounded-sm hover:bg-gray-700">
+                  <Link href="https://www.instagram.com/_revolutionev" className="bg-gray-800 p-1.5 rounded-sm hover:bg-gray-700">
                     <Instagram size={16} />
                   </Link>
-                  <Link href="#" className="bg-gray-800 p-1.5 rounded-sm hover:bg-gray-700">
+                  <Link href="https://www.linkedin.com/company/revolutionev/" className="bg-gray-800 p-1.5 rounded-sm hover:bg-gray-700">
                     <Linkedin size={16} />
                   </Link>
-                  <Link href="#" className="bg-gray-800 p-1.5 rounded-sm hover:bg-gray-700">
-                    <MessageSquare size={16} />
+                  <Link href="https://www.youtube.com/channel/UCYhYC3ZVz64d9L1vVV9rQ5g" className="bg-gray-800 p-1.5 rounded-sm hover:bg-gray-700">
+                     <Youtube size={16} />
+                  </Link>
+                     <Link href="https://www.youtube.com/channel/UCYhYC3ZVz64d9L1vVV9rQ5g" className="bg-gray-800 p-1.5 rounded-sm hover:bg-gray-700">
+                     <Facebook size={16} />
                   </Link>
                 </li>
               </ul>

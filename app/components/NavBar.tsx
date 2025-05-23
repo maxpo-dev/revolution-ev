@@ -49,7 +49,7 @@ export default function Navbar() {
             Conference
           </Link>
           <Link href="/sponsor" className="text-white hover:text-gray-300 transition text-sm md:text-base">
-            Sponsor
+            Sponsors
           </Link>
           <Link href="/partners" className="text-white hover:text-gray-300 transition text-sm md:text-base">
             Partners
@@ -61,7 +61,7 @@ export default function Navbar() {
 
         {/* Register Button */}
         <div className="hidden sm:block">
-          <Link href="/register?t=delegate">
+          <Link href="/register">
             <button
               className="
                 relative z-10 bg-[#333333] text-white px-4 sm:px-6 py-2 font-menda rounded text-xs sm:text-sm
@@ -71,7 +71,7 @@ export default function Navbar() {
                 hover:before:opacity-100 hover:before:shadow-[0_0_40px_10px_rgba(32,198,216,0.6)]
               "
             >
-              GET DELEGATE PASS
+              Register Now
             </button>
           </Link>
         </div>
@@ -124,7 +124,7 @@ export default function Navbar() {
               className="block py-2 text-white hover:text-gray-300 transition"
               onClick={() => setIsMenuOpen(false)}
             >
-              Sponsor
+              Sponsors
             </Link>
             <Link
               href="/partners"
@@ -141,7 +141,7 @@ export default function Navbar() {
               More
             </Link>
             <div className="pt-2">
-              <Link href="/register?t=delegate" onClick={() => setIsMenuOpen(false)}>
+              <Link href="/register" onClick={() => setIsMenuOpen(false)}>
                 <button
                   className="
                     w-full relative z-10 bg-[#333333] text-white px-4 py-2 font-menda rounded text-sm
@@ -151,7 +151,7 @@ export default function Navbar() {
                     hover:before:opacity-100 hover:before:shadow-[0_0_40px_10px_rgba(32,198,216,0.6)]
                   "
                 >
-                  GET DELEGATE PASS
+                  Register Now
                 </button>
               </Link>
             </div>

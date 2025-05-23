@@ -49,7 +49,7 @@ export default function Hero() {
           </Link>
 
           <Link
-            href="/sponsorships"
+            href="/register?t=sponsor"
             className="min-w-[200px] bg-white px-6 py-3 text-sm font-bold font-menda tracking-wider text-black transition-all duration-300 hover:bg-[#0DB6C9] hover:text-white"
           >
             Sponsor

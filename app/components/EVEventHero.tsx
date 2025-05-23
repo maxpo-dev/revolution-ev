@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { useEffect, useState } from "react"
 import CountUp from "react-countup"
 
@@ -88,9 +89,12 @@ export default function EVEventHero() {
             <button className="px-4 sm:px-6 py-2 border border-black hover:bg-black hover:text-white transition text-sm sm:text-base">
               KNOW MORE
             </button>
+            <Link href="/register?t=exhibitor">
             <button className="px-4 sm:px-6 py-2 border border-black hover:bg-black hover:text-white transition text-sm sm:text-base">
               EXHIBIT
             </button>
+            </Link>
+
           </div>
         </div>
 
@@ -110,7 +114,7 @@ export default function EVEventHero() {
         <div className="relative h-auto sm:h-[180px] border border-gray-300 rounded flex flex-col sm:flex-row">
           {/* Left Side: Heading - Fixed */}
           <div className="bg-white p-4 sm:p-6 flex items-center justify-start w-full sm:w-1/3">
-            <h2 className="text-3xl sm:text-5xl lg:text-[70px] font-semibold leading-none">
+            <h2 className="text-3xl sm:text-5xl lg:text-[70px] font-lite leading-none">
               Expected <span className="font-bold">Numbers</span>
             </h2>
           </div>

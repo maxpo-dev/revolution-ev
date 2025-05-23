@@ -1,102 +1,62 @@
-"use client"
-
+import Image from "next/image"
 import Link from "next/link"
 
-type MissionItem = {
-  title: string
-  description: string
-  image: string
-  buttonText: string
-  buttonLink: string
-  imagePosition: "left" | "right"
-}
+export default function EVCategoriesGrid() {
+  const categories = [
+    {
+      title: "Electric Vehicles",
+      image: "/image/ElectricVechicle.jpeg",
+      href: "/image/electric-vehicles",
+    },
+    {
+      title: "Charging Infrastructure & Incentives",
+      image: "/image/Charging.jpeg",
+      href: "",
+    },
+    {
+      title: "Policy, Regulation & Incentives",
+      image: "/image/Policy.jpeg",
+      href: "/policy-regulation",
+    },
+    {
+      title: "Smart Mobility",
+      image: "/image/close-up-electric-car-france.jpg",
+      href: "/smart-mobility",
+    },
+    {
+      title: "Fleet Management & Commercial EVs",
+      image: "/image/fellet.jpeg",
+      href: "/fleet-management",
+    },
+    {
+      title: "Investment, Startups & Innovation",
+      image: "/image/diverse-employees-group-discussing-ways-speed-up-order-delivery.jpg",
+      href: "/investment-startups",
+    },
+  ]
 
-const missionData: MissionItem[] = [
-  {
-    title: "Conference",
-    description:
-      "The conference at #rev25 brings together leading voices from across the government, industry verticals, academia, and more to help shape the e-mobility landscape within Malaysia and beyond. Participate in thought-provoking discussions on the infrastructure, innovation, investment, and policy that will propel the country's electric future.",
-    image: "/image/conference.jpg",
-    buttonText: "Get Delegate Pass",
-    buttonLink: "/register?t=delegate",
-    imagePosition: "left",
-  },
-  {
-    title: "Exhibition",
-    description:
-      "Malaysia's most prestigious e-mobility event, #rev25, serves as your entry point to South-East Asia's rapidly expanding electric vehicle industry, offering invaluable opportunities whether you're introducing a product, expanding your business, or boosting brand awareness.",
-    image: "/image/exhibition.jpg",
-    buttonText: "Book Your Stand",
-    buttonLink: "/image/what-is-an-ev-scaled.jpg",
-    imagePosition: "right",
-  },
-  {
-    title: "Networking",
-    description:
-      "Connect directly with top EV leaders, tech innovators, and investors during Malaysia's e-mobility transformation. Build strong business relationships, share ideas for the future, and open doors to strategic alliances. Expand your impact within the rapidly expanding EV industry to hasten your success.",
-    image: "/image/networking.jpg",
-    buttonText: "Get Delegate Pass",
-    buttonLink: "/register?t=delegate",
-    imagePosition: "left",
-  },
-]
-
-export default function EvMissionCard() {
   return (
-    <section className="px-4 sm:px-6 py-8 sm:py-12 md:py-16 bg-white text-black">
-      <div className="max-w-6xl mx-auto">
-        {/* Header Section */}
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-8 sm:mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-4 md:mb-0 md:mr-8">
-            Our <span className="text-[#3D8CB5]">EV</span>-olution
-            <br />
-            Mission
-          </h2>
-
-          <p className="text-sm sm:text-base max-w-xl">
-            At Revolution EV, we are paving the way for a greener future through innovation, clean energy and
-            sustainable mobility. We are fueling tomorrow by bringing together all stakeholders to shape the future of
-            e-mobility, create impactful solutions, and build a lasting legacy for generations to come.
-          </p>
-        </div>
-
-        {/* Cards Section */}
-        <div className="space-y-6 sm:space-y-8">
-          {missionData.map((item, index) => (
-            <div
-              key={index}
-              className="border border-gray-200 rounded-md overflow-hidden flex flex-col md:flex-row"
-              style={{ flexDirection: item.imagePosition === "right" ? "row-reverse" : "row" }}
-            >
-              {/* Image Section */}
-              <div className="relative w-full md:w-1/2 h-48 sm:h-64 md:h-auto">
-                <img src={item.image || "/placeholder.svg"} alt={item.title} className="w-full h-full object-cover" />
-              </div>
-
-              {/* Content Section */}
-              <div className="p-4 sm:p-6 md:p-8 md:w-1/2 flex flex-col justify-center">
-                <h3 className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-4">{item.title}</h3>
-                <p className="text-gray-700 mb-4 sm:mb-6 text-sm sm:text-base">
-                  {item.description.split("#rev25").map((part, idx, arr) => (
-                    <span key={idx}>
-                      {part}
-                      {idx !== arr.length - 1 && <span className="text-sky-400 font-semibold">#rev25</span>}
-                    </span>
-                  ))}
-                </p>
-                <div>
-                  <Link
-                    href={item.buttonLink}
-                    className="inline-block px-4 sm:px-6 py-2 border border-black text-black hover:bg-black hover:text-white transition-colors text-sm sm:text-base"
-                  >
-                    {item.buttonText}
-                  </Link>
-                </div>
-              </div>
+    <div className="bg-black p-4 md:p-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-7xl mx-auto">
+        {categories.map((category, index) => (
+          <Link
+            key={index}
+            href={category.href}
+            className="group relative overflow-hidden aspect-[4/3] transition-transform hover:scale-[1.02]"
+          >
+            <Image
+              src={category.image || "/placeholder.svg"}
+              alt={category.title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-teal-500/90 via-transparent to-transparent h-full flex items-end">
+              <h3 className="text-white font-medium p-4 text-lg">{category.title}</h3>
             </div>
-          ))}
-        </div>
+          </Link>
+        ))}
       </div>
-    </section>
+    </div>
   )
 }
