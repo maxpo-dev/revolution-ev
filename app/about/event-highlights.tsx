@@ -74,7 +74,7 @@ export default function EventHighlights() {
             </div>
           </div>
         ))}
-                      <div className="flex justify-center">
+ <div className="flex justify-center">
   <Link href="/register?t=enquiry">
     <button className="px-6 py-2 bg-black text-white text-sm font-medium border border-white rounded hover:bg-white hover:text-black transition">
       Enquire Now
