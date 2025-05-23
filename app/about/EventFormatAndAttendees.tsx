@@ -48,9 +48,9 @@ export default function EventFormatAndAttendees() {
   return (
     <section className="bg-white py-16 px-4 max-w-7xl mx-auto">
       {/* Logo */}
-      <div className="flex justify-center mb-10">
+      {/* <div className="flex justify-center mb-10">
         <Image src="/logo.svg" alt="Event Logo" width={180} height={50} />
-      </div>
+      </div> */}
 
       {/* Event Format Title */}
       <h2 className="text-4xl font-bold text-center text-black mb-10">
