@@ -133,17 +133,17 @@ export default function Footer() {
               <h3 className="text-xs sm:text-sm font-semibold mb-3 sm:mb-4">Registration</h3>
               <ul className="space-y-1 sm:space-y-2 text-xs sm:text-sm text-gray-300">
                 <li>
-                  <Link href="#" className="hover:text-[#00E1B0]">
+                  <Link href="/register?t=exhibitor" className="hover:text-[#00E1B0]">
                     Register as Exhibitor
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-[#00E1B0]">
+                  <Link href="/register?t=delegate" className="hover:text-[#00E1B0]">
                     Delegate Pass
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-[#00E1B0]">
+                  <Link href="/register?t=brochure" className="hover:text-[#00E1B0]">
                     Request Brochure
                   </Link>
                 </li>
@@ -182,7 +182,7 @@ export default function Footer() {
                   <Link href="https://www.youtube.com/channel/UCYhYC3ZVz64d9L1vVV9rQ5g" className="bg-gray-800 p-1.5 rounded-sm hover:bg-gray-700">
                      <Youtube size={16} />
                   </Link>
-                     <Link href="https://www.youtube.com/channel/UCYhYC3ZVz64d9L1vVV9rQ5g" className="bg-gray-800 p-1.5 rounded-sm hover:bg-gray-700">
+                     <Link href="https://www.facebook.com/profile.php?id=61576595758079" className="bg-gray-800 p-1.5 rounded-sm hover:bg-gray-700">
                      <Facebook size={16} />
                   </Link>
                 </li>
