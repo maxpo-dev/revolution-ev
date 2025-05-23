@@ -18,20 +18,12 @@ export default function RevolutionEVBanner() {
         {/* First part of text */}
         <div className="space-y-4 text-sm">
 <p>
-  Revolution EV Malaysia 2025 is Malaysia's Flagship EV Event dedicated To advancing Electric Mobility,
-  Featuring Unrivaled Experts, Vehicles And Next-Generation Technologies. This Groundbreaking, <span className="text-sky-500 font-semibold">#rev25</span> Is
-  Designed to Bring People Together, Encourage New Ideas, Growth, And Further Cooperation Within Malaysia's
-  Emerging E-Mobility Industry. The Event Will Bring Together Policy-makers, Investors, Innovators, Industry
-  Pioneers, And Government Leaders To Shape The Global Landscape Of Electric Mobility And Its Adoption And
-  Potential.
+Revolution EV Malaysia 2025 is Malaysia's flagship EV event dedicated to advancing electric mobility, featuring unrivaled electric vehicles and next-generation zero-emission vehicle innovations. <span className="text-sky-500 font-semibold">#rev25</span>  is designed to bring people together, encourage new ideas, growth, and further cooperation within Malaysia's emerging e-mobility industry. The event will bring together policymakers, investors, innovators, industry pioneers, and government leaders to propel the advancements of electric mobility across Malaysia and beyond. 
 </p>
           <p>
-            This Two-Day Event Will Provide A Platform For Industry Leaders, Experts, And Stakeholders To Engage In
-            Meaningful Discussions And Strategic Planning Sessions Over The Future Of Electric Mobility In Malaysia And
-            Explore Opportunities To Further The Advancements Of EVs Through Knowledge Transfer And Strategic
-            Decision-Making. This Is Your Opportunity To Participate In The Dynamic Discussion That Will Influence
-            Malaysia's Sustainable Transportation Landscape Going Forward.
+            The 2-day event will feature a best-of-king conference program with a specifically curated conference agenda, where speakers and panelists will delve into the future of electric mobility in Malaysia and explore opportunities to further the advancements of EVs through knowledge transfer and strategic decision-making. This is your opportunity to participate in the dynamic discussion that will influence Malaysia's sustainable transportation landscape going forward!
           </p>
+          <p>The summit will also host an electrifying exhibition and a showcase of disruptive technologies that will allow all the attendees to explore the latest products, services, and solutions across the industry verticals. In addition to offering visitors a first look at the future of electric mobility, the event will provide direct access to the latest tech innovations and unveil valuable business opportunities.</p>
         </div>
       </div>
 
@@ -49,25 +41,19 @@ export default function RevolutionEVBanner() {
       {/* Second part of text */}
       <div className="max-w-5xl mx-auto p-6 space-y-4 text-sm">
         <p>
-          The Event Will Showcase The Latest Innovations, Cutting-Edge Technologies That Will Allow All The Attendees To
-          Explore The Latest Products, Services, And Solutions Across The Industry Verticals. In Addition To Offering
-          Visitors A Front Seat At The Future Of Electric Mobility, The Event Will Provide Direct Access To The Latest
-          Tech Innovations And Unveil Valuable Business Opportunities.
+The event will draw a diverse range of attendees, from startups to large enterprises and from legislators to EV enthusiasts, all of whom will be bound together by a common goal of advancing sustainability within the mobility value chain. This unique convergence of perspectives will encourage collaboration, innovation, and the development of actionable solutions for a greener, more sustainable future.
         </p>
 
         <p>
-          The Event Will Have A Diverse Range Of Attendees, From Startups To Large Enterprises And From Legislators To
-          EV Enthusiasts, All Of Whom Will Be Bound Together By A Common Goal Of advancing Sustainability Within The
-          Mobility Value Chain. The Diverse Convergence Of Perspectives Will Encourage Collaboration And Accelerate The
-          Development Of Sustainable Solutions For A Greener, More Sustainable Future.
+          Additionally, the event will provide attendees with invaluable networking opportunities, connecting them with like-minded professionals across the entire industry value chain. These interactions will drive innovation, promote strategic partnerships, and create actionable pathways to achieving business objectives and supporting sustainable growth.
         </p>
 
-        <p>
+        {/* <p>
           Moreover, The EV Event Will Provide A Robust Platform For Networking, Allowing Participants To Connect With
           Peers, Establish Partnerships Across The Industry Value Chain. These Interactions Will Drive Innovation,
           Promote Strategic Partnerships, And Create Actionable Pathways To Achieving Business Objectives And Supporting
           Sustainable Growth.
-        </p>
+        </p> */}
 
         <div className="font-medium">
           Join Us From The <span className="text-[#00b8d4]">23rd to 24th Of October 2025</span> In Kuala Lumpur For Two
