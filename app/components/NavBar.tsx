@@ -3,14 +3,14 @@
 import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Menu, X } from "lucide-react"
+import { ChevronDown, Menu, X } from "lucide-react"
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isExhibitionDropdownOpen, setIsExhibitionDropdownOpen] = useState(false)
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
-    // If opening the menu, ensure body can still scroll on mobile
     if (!isMenuOpen) {
       document.body.style.overflow = "auto"
     }
@@ -19,7 +19,6 @@ export default function Navbar() {
   return (
     <nav className="sticky top-0 z-50 bg-black w-full">
       <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4">
-        {/* Logo */}
         <div className="flex items-center">
           <Link href="/" className="flex items-center gap-2">
             <Image
@@ -32,7 +31,6 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Desktop Navigation */}
         <div className="hidden space-x-4 lg:space-x-8 md:flex font-menda">
           <Link href="/" className="text-[#00E1B0] hover:text-gray-300 transition">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -42,9 +40,31 @@ export default function Navbar() {
           <Link href="/about" className="text-white hover:text-gray-300 transition text-sm md:text-base">
             About
           </Link>
-          <Link href="/exhibition" className="text-white hover:text-gray-300 transition text-sm md:text-base">
-            Exhibition
-          </Link>
+
+          <div
+  className="relative"
+  onMouseEnter={() => setIsExhibitionDropdownOpen(true)}
+  onMouseLeave={() => setIsExhibitionDropdownOpen(false)}
+>
+  <button
+    onClick={() => setIsExhibitionDropdownOpen((prev) => !prev)}
+    className="flex items-center gap-1 text-white hover:text-gray-300 transition text-sm md:text-base"
+  >
+    Exhibition
+    <ChevronDown size={16} />
+  </button>
+
+  {isExhibitionDropdownOpen && (
+    <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-50">
+      <Link href="/exhibition/WhyExhibit" className="block px-4 py-2 text-sm text-black hover:bg-gray-100">Why Exhibit</Link>
+      <Link href="/exhibition/Exhibitors" className="block px-4 py-2 text-sm text-black hover:bg-gray-100">Exhibitors</Link>
+      <Link href="/register?t=exhibitor" className="block px-4 py-2 text-sm text-black hover:bg-gray-100">Exhibitors Enquiry</Link>
+      <Link href="/register?t=brochure" className="block px-4 py-2 text-sm text-black hover:bg-gray-100">Request Brochure</Link>
+    </div>
+  )}
+</div>
+
+
           <Link href="/conference" className="text-white hover:text-gray-300 transition text-sm md:text-base">
             Conference
           </Link>
@@ -59,7 +79,6 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Register Button */}
         <div className="hidden sm:block">
           <Link href="/register">
             <button
@@ -76,7 +95,6 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Mobile Menu Button */}
         <div className="md:hidden flex items-center">
           <button
             onClick={toggleMenu}
@@ -87,59 +105,33 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="md:hidden bg-black border-t border-gray-800 max-h-[calc(100vh-70px)] overflow-y-auto">
           <div className="px-4 pt-2 pb-4 space-y-3">
-            <Link
-              href="/"
-              className="block py-2 text-[#00E1B0] hover:text-gray-300 transition"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Home
-            </Link>
-            <Link
-              href="/about"
-              className="block py-2 text-white hover:text-gray-300 transition"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              About
-            </Link>
-            <Link
-              href="/exhibition"
-              className="block py-2 text-white hover:text-gray-300 transition"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Exhibition
-            </Link>
-            <Link
-              href="/conference"
-              className="block py-2 text-white hover:text-gray-300 transition"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Conference
-            </Link>
-            <Link
-              href="/sponsor"
-              className="block py-2 text-white hover:text-gray-300 transition"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Sponsors
-            </Link>
-            <Link
-              href="/partners"
-              className="block py-2 text-white hover:text-gray-300 transition"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Partners
-            </Link>
-            <Link
-              href="/more"
-              className="block py-2 text-white hover:text-gray-300 transition"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              More
-            </Link>
+            <Link href="/" className="block py-2 text-[#00E1B0] hover:text-gray-300 transition" onClick={() => setIsMenuOpen(false)}>Home</Link>
+            <Link href="/about" className="block py-2 text-white hover:text-gray-300 transition" onClick={() => setIsMenuOpen(false)}>About</Link>
+
+            <div className="space-y-1">
+              <button
+                onClick={() => setIsExhibitionDropdownOpen(!isExhibitionDropdownOpen)}
+                className="block w-full text-left py-2 text-white hover:text-gray-300 transition"
+              >
+                Exhibition {isExhibitionDropdownOpen ? "▲" : "▼"}
+              </button>
+              {isExhibitionDropdownOpen && (
+                <div className="ml-4 space-y-1">
+                  <Link href="/exhibition" className="block py-1 text-white hover:text-gray-300 transition" onClick={() => setIsMenuOpen(false)}>Overview</Link>
+                  <Link href="/exhibition/why-exhibit" className="block py-1 text-white hover:text-gray-300 transition" onClick={() => setIsMenuOpen(false)}>Why Exhibit</Link>
+                  <Link href="/exhibition/floor-plan" className="block py-1 text-white hover:text-gray-300 transition" onClick={() => setIsMenuOpen(false)}>Floor Plan</Link>
+                  <Link href="/exhibition/request-brochure" className="block py-1 text-white hover:text-gray-300 transition" onClick={() => setIsMenuOpen(false)}>Request Brochure</Link>
+                </div>
+              )}
+            </div>
+
+            <Link href="/conference" className="block py-2 text-white hover:text-gray-300 transition" onClick={() => setIsMenuOpen(false)}>Conference</Link>
+            <Link href="/sponsor" className="block py-2 text-white hover:text-gray-300 transition" onClick={() => setIsMenuOpen(false)}>Sponsors</Link>
+            <Link href="/partners" className="block py-2 text-white hover:text-gray-300 transition" onClick={() => setIsMenuOpen(false)}>Partners</Link>
+            <Link href="/more" className="block py-2 text-white hover:text-gray-300 transition" onClick={() => setIsMenuOpen(false)}>More</Link>
             <div className="pt-2">
               <Link href="/register" onClick={() => setIsMenuOpen(false)}>
                 <button

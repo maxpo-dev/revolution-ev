@@ -1,64 +1,89 @@
+"use client"
+
+import { Button } from "@/components/ui/button"
 import Image from "next/image"
-
-export default function HeroSection() {
+import Link from "next/link"
+export default function RevolutionEVBanner() {
   return (
-    <section className="max-w-6xl mx-auto px-4 py-8">
-      <div className="space-y-6">
-        <div className="text-center">
-          <span className="text-sm font-medium text-teal-500">Event Announcement</span>
-          <h1 className="text-4xl md:text-5xl font-bold mt-2 bg-gradient-to-r from-teal-400 to-teal-600 text-transparent bg-clip-text">
-            Welcome to Revolution
-            <br />
-            EV Malaysia 2025
-          </h1>
-        </div>
+    <div className="w-full">
+      {/* Text content container */}
+      <div className="max-w-5xl mx-auto p-6 space-y-4">
+        <h1
+          className="w-full text-4xl md:text-7xl font-bold bg-gradient-to-r from-[#00b8d4] to-[#00c853] bg-clip-text text-transparent"
+          style={{ letterSpacing: "0.04em" }}
+        >
+          Welcome to Revolution <br /> EV Malaysia 2025
+        </h1>
 
-        <div className="relative w-full h-[300px] md:h-[400px] rounded-lg overflow-hidden">
-          <Image
-            src="/placeholder.svg?height=800&width=1200"
-            alt="EV Malaysia 2025"
-            fill
-            className="object-cover"
-            priority
-          />
-        </div>
-
-        <div className="space-y-4 text-sm text-gray-600">
+        {/* First part of text */}
+        <div className="space-y-4 text-sm">
+<p>
+  Revolution EV Malaysia 2025 is Malaysia's Flagship EV Event dedicated To advancing Electric Mobility,
+  Featuring Unrivaled Experts, Vehicles And Next-Generation Technologies. This Groundbreaking, <span className="text-sky-500 font-semibold">#rev25</span> Is
+  Designed to Bring People Together, Encourage New Ideas, Growth, And Further Cooperation Within Malaysia's
+  Emerging E-Mobility Industry. The Event Will Bring Together Policy-makers, Investors, Innovators, Industry
+  Pioneers, And Government Leaders To Shape The Global Landscape Of Electric Mobility And Its Adoption And
+  Potential.
+</p>
           <p>
-            The Revolution EV Malaysia 2025 is set to be the premier electric vehicle event in Southeast Asia. Join
-            industry leaders, policymakers, innovators, and enthusiasts as we explore the future of sustainable
-            transportation in Malaysia and beyond. This landmark event will showcase the latest advancements in electric
-            vehicle technology, infrastructure development, and policy frameworks.
+            This Two-Day Event Will Provide A Platform For Industry Leaders, Experts, And Stakeholders To Engage In
+            Meaningful Discussions And Strategic Planning Sessions Over The Future Of Electric Mobility In Malaysia And
+            Explore Opportunities To Further The Advancements Of EVs Through Knowledge Transfer And Strategic
+            Decision-Making. This Is Your Opportunity To Participate In The Dynamic Discussion That Will Influence
+            Malaysia's Sustainable Transportation Landscape Going Forward.
           </p>
-
-          <p>
-            The Malaysian government has set ambitious targets to accelerate EV adoption as part of its commitment to
-            reduce carbon emissions and promote sustainable mobility. Revolution EV Malaysia 2025 will serve as a
-            platform to highlight these initiatives and foster collaboration between public and private sectors.
-          </p>
-
-          <p>
-            From cutting-edge battery technology to innovative charging solutions, from policy incentives to investment
-            opportunities, this event will cover all aspects of the EV ecosystem. Attendees will have the opportunity to
-            network with key stakeholders, participate in insightful panel discussions, and experience firsthand the
-            latest electric vehicles and related technologies.
-          </p>
-
-          <p>
-            Join us in shaping the future of mobility in Malaysia. Together, we can drive the revolution towards a
-            cleaner, more sustainable transportation system.
-          </p>
-
-          <div className="pt-4">
-            <a
-              href="#register"
-              className="inline-block bg-teal-500 text-white px-6 py-3 rounded-md font-medium hover:bg-teal-600 transition-colors"
-            >
-              Register Now
-            </a>
-          </div>
         </div>
       </div>
-    </section>
+
+      {/* Full-width image */}
+      <div className="w-full">
+        <Image
+          src="/image/About/image 280.png"
+          width={1928}
+          height={50}
+          alt="EV Policy Visual"
+          className="w-full h-auto"
+        />
+      </div>
+
+      {/* Second part of text */}
+      <div className="max-w-5xl mx-auto p-6 space-y-4 text-sm">
+        <p>
+          The Event Will Showcase The Latest Innovations, Cutting-Edge Technologies That Will Allow All The Attendees To
+          Explore The Latest Products, Services, And Solutions Across The Industry Verticals. In Addition To Offering
+          Visitors A Front Seat At The Future Of Electric Mobility, The Event Will Provide Direct Access To The Latest
+          Tech Innovations And Unveil Valuable Business Opportunities.
+        </p>
+
+        <p>
+          The Event Will Have A Diverse Range Of Attendees, From Startups To Large Enterprises And From Legislators To
+          EV Enthusiasts, All Of Whom Will Be Bound Together By A Common Goal Of advancing Sustainability Within The
+          Mobility Value Chain. The Diverse Convergence Of Perspectives Will Encourage Collaboration And Accelerate The
+          Development Of Sustainable Solutions For A Greener, More Sustainable Future.
+        </p>
+
+        <p>
+          Moreover, The EV Event Will Provide A Robust Platform For Networking, Allowing Participants To Connect With
+          Peers, Establish Partnerships Across The Industry Value Chain. These Interactions Will Drive Innovation,
+          Promote Strategic Partnerships, And Create Actionable Pathways To Achieving Business Objectives And Supporting
+          Sustainable Growth.
+        </p>
+
+        <div className="font-medium">
+          Join Us From The <span className="text-[#00b8d4]">23rd to 24th Of October 2025</span> In Kuala Lumpur For Two
+          Power-Packed Days Of Thought Leadership, Innovation Showcases, And Strategic Networking As We Drive{" "}
+          <span className="text-[#00b8d4]">Malaysia Toward Its EV Future.</span>
+        </div>
+
+        <div className="flex justify-center pt-4">
+         <Link href="/register?t=brochure">
+  <Button className="bg-white hover:bg-gray-100 text-gray-800 border border-gray-300 px-6 rounded-none">
+    Request Brochure
+  </Button>
+</Link>
+
+        </div>
+      </div>
+    </div>
   )
 }

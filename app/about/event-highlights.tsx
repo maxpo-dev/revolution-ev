@@ -8,17 +8,17 @@ const highlights = [
         E-Mobility From Around The World.
       </>
     ),
-    image: "/image/highlight-1.jpg",
+    image: "/image/About/pexels-divinetechygirl-1181396.jpg",
     align: "left",
   },
   {
     title: (
       <>
-        <span className="text-sky-500 font-semibold">15–20 Exhibitors</span> Showcasing The Latest
+        <span className="text-sky-500 font-semibold">20+ Exhibitors</span> Showcasing The Latest
         Electric Vehicle Innovations.
       </>
     ),
-    image: "/image/highlight-2.jpg",
+    image: "/image/About/expo.png",
     align: "right",
   },
   {
@@ -28,7 +28,7 @@ const highlights = [
         Of The Government.
       </>
     ),
-    image: "/image/highlight-1.jpg",
+    image: "/image/About/pexels-fauxels-3183197.jpg",
     align: "left",
   },
   {
@@ -38,7 +38,7 @@ const highlights = [
         <span className="text-sky-500 font-semibold">Startup Pitching</span> In Real Time
       </>
     ),
-    image: "/image/highlight-2.jpg",
+    image: "/image/About/12354.jpg",
     align: "right",
   },
 ];
@@ -51,19 +51,22 @@ export default function EventHighlights() {
       </h2>
       <div className="space-y-8 max-w-7xl mx-auto">
         {highlights.map((item, idx) => (
-          <div
-            key={idx}
-            className="relative w-full aspect-[4/1] overflow-hidden"
-          >
+          <div key={idx} className="relative w-full aspect-[4/1] overflow-hidden rounded-lg">
+            {/* Background Image */}
             <Image
               src={item.image}
               alt={`Highlight ${idx + 1}`}
               fill
               className="object-cover"
             />
+
+            {/* Sky blue gradient overlay from bottom to 30% height */}
+            <div className="absolute bottom-0 left-0 w-full h-[30%] bg-gradient-to-t from-sky-500 to-transparent z-10" />
+
+            {/* Text Overlay */}
             <div
-              className={`absolute top-1/2 -translate-y-1/2 bg-white text-black text-sm md:text-base p-4 md:p-6 shadow-lg max-w-md ${
-                item.align === "left" ? "left-6 md:left-12" : "right-6 md:right-12"
+              className={`absolute top-1/2 -translate-y-1/2 bg-white text-black text-sm md:text-base p-4 md:p-6 shadow-lg max-w-md z-20 ${
+                item.align === "left" ? "left-6 mt-26" : "right-6 mt-26"
               }`}
             >
               {item.title}

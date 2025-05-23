@@ -1,3 +1,4 @@
+// app/register/RegisterPageClient.tsx
 "use client"
 
 import { Suspense, useState, useEffect } from "react"
@@ -11,11 +12,12 @@ import BrochureForm from "@/app/components/brochure-form"
 
 type TabType = "enquiry" | "delegate" | "exhibitor" | "sponsor" | "brochure"
 
-export default function RegisterPage({ searchParams }: { searchParams: { t?: string } }) {
+export default function RegisterPageClient({ initialTab }: { initialTab: string }) {
   const router = useRouter()
-  const initialTab = searchParams.t || "enquiry"
   const validTypes = ["enquiry", "delegate", "exhibitor", "sponsor", "brochure"]
-  const [activeTab, setActiveTab] = useState<TabType>(initialTab as TabType)
+  const [activeTab, setActiveTab] = useState<TabType>(
+    validTypes.includes(initialTab) ? (initialTab as TabType) : "enquiry"
+  )
 
   useEffect(() => {
     if (!validTypes.includes(initialTab)) {
@@ -25,12 +27,7 @@ export default function RegisterPage({ searchParams }: { searchParams: { t?: str
 
   const handleTabChange = (value: string) => {
     setActiveTab(value as TabType)
-
-    if (value === "enquiry") {
-      router.replace("/register", { scroll: false })
-    } else {
-      router.replace(`/register?t=${value}`, { scroll: false })
-    }
+    router.replace(value === "enquiry" ? "/register" : `/register?t=${value}`, { scroll: false })
   }
 
   useEffect(() => {
@@ -46,34 +43,19 @@ export default function RegisterPage({ searchParams }: { searchParams: { t?: str
         <div className="overflow-x-auto whitespace-nowrap border-b">
           <Tabs value={activeTab} onValueChange={handleTabChange} className="min-w-max w-full">
             <TabsList className="inline-flex bg-white h-auto p-0">
-              <TabsTrigger
-                value="enquiry"
-                className="px-6 py-2 data-[state=active]:bg-black data-[state=active]:text-white rounded-none"
-              >
+              <TabsTrigger value="enquiry" className="px-6 py-2 data-[state=active]:bg-black data-[state=active]:text-white rounded-none">
                 Enquiry
               </TabsTrigger>
-              <TabsTrigger
-                value="delegate"
-                className="px-6 py-2 data-[state=active]:bg-black data-[state=active]:text-white rounded-none"
-              >
+              <TabsTrigger value="delegate" className="px-6 py-2 data-[state=active]:bg-black data-[state=active]:text-white rounded-none">
                 Delegate
               </TabsTrigger>
-              <TabsTrigger
-                value="exhibitor"
-                className="px-6 py-2 data-[state=active]:bg-black data-[state=active]:text-white rounded-none"
-              >
+              <TabsTrigger value="exhibitor" className="px-6 py-2 data-[state=active]:bg-black data-[state=active]:text-white rounded-none">
                 Exhibition
               </TabsTrigger>
-              <TabsTrigger
-                value="sponsor"
-                className="px-6 py-2 data-[state=active]:bg-black data-[state=active]:text-white rounded-none"
-              >
+              <TabsTrigger value="sponsor" className="px-6 py-2 data-[state=active]:bg-black data-[state=active]:text-white rounded-none">
                 Sponsorship
               </TabsTrigger>
-              <TabsTrigger
-                value="brochure"
-                className="px-6 py-2 data-[state=active]:bg-black data-[state=active]:text-white rounded-none"
-              >
+              <TabsTrigger value="brochure" className="px-6 py-2 data-[state=active]:bg-black data-[state=active]:text-white rounded-none">
                 Brochure
               </TabsTrigger>
             </TabsList>
