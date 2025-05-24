@@ -56,9 +56,9 @@ The event will draw a diverse range of attendees, from startups to large enterpr
         </p> */}
 
         <div className="font-medium">
-          Join Us From The <span className="text-[#00b8d4]">23rd to 24th Of October 2025</span> In Kuala Lumpur For Two
-          Power-Packed Days Of Thought Leadership, Innovation Showcases, And Strategic Networking As We Drive{" "}
-          <span className="text-[#00b8d4]">Malaysia Toward Its EV Future.</span>
+          Join us from the <span className="text-[#00b8d4]">23rd to 24th of October 2025</span> in Kuala Lumpur for two
+          power-packed days of thought leadership, innovation showcases, and strategic networking as we drive{" "}
+          <span className="text-[#00b8d4]">Malaysia towards its EV future.</span>
         </div>
 
         <div className="flex justify-center pt-4">

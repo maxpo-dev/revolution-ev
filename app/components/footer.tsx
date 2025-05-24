@@ -156,7 +156,22 @@ export default function Footer() {
               <ul className="space-y-1 sm:space-y-2 text-xs sm:text-sm text-gray-300">
                 <li>
                   <Link href="#" className="hover:text-[#00E1B0]">
-                    Blogs
+                    News & Blogs
+                  </Link>
+                </li>
+                 <li>
+                  <Link href="#" className="hover:text-[#00E1B0]">
+                    Market Outlook
+                  </Link>
+                </li>
+                                 <li>
+                  <Link href="#" className="hover:text-[#00E1B0]">
+                    FAQs
+                  </Link>
+                </li>
+                 <li>
+                  <Link href="#" className="hover:text-[#00E1B0]">
+                    Testimonials
                   </Link>
                 </li>
               </ul>
