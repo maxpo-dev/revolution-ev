@@ -114,9 +114,10 @@ export default function EVEventHero() {
         <div className="relative h-auto sm:h-[180px] border border-gray-300 rounded flex flex-col sm:flex-row">
           {/* Left Side: Heading - Fixed */}
           <div className="bg-white p-4 sm:p-6 flex items-center justify-start w-full sm:w-1/3">
-            <h2 className="text-3xl sm:text-5xl lg:text-[70px] font-lite leading-none">
-              Expected <span className="font-bold">Numbers</span>
-            </h2>
+<h2 className="text-3xl sm:text-5xl lg:text-[70px] font-light leading-none">
+  <span className="text-gray-400">Expected</span> <span className="font-bold text-black">Numbers</span>
+</h2>
+
           </div>
 
           {/* Right Side: Stat Cards - Dynamic */}
