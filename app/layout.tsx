@@ -4,6 +4,7 @@ import { DM_Sans } from "next/font/google"
 import localFont from "next/font/local"
 import Navbar from "./components/NavBar"
 import Footer from "./components/footer"
+import Script from "next/script"
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -11,7 +12,6 @@ const dmSans = DM_Sans({
   variable: "--font-dm-sans",
 })
 
-// Load Menda font locally
 const mendaFont = localFont({
   src: [
     {
@@ -40,7 +40,25 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${dmSans.variable} ${mendaFont.variable}`}>
-      <body><Navbar/>{children}<Footer/></body>
+      <head>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-PV6VP3BEPR"
+        />
+        <Script id="google-analytics">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-PV6VP3BEPR');
+          `}
+        </Script>
+      </head>
+      <body>
+        <Navbar />
+        {children}
+        <Footer />
+      </body>
     </html>
   )
 }
