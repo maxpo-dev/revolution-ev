@@ -85,10 +85,13 @@ export default function EVEventHero() {
               innovative showcases, and strategic networking as we drive Malaysia toward its EV future.
             </b>
           </p>
+           
           <div className="flex flex-wrap gap-4">
+            <Link href="/about">
             <button className="px-4 sm:px-6 py-2 border border-black hover:bg-black hover:text-white transition text-sm sm:text-base">
               KNOW MORE
             </button>
+            </Link>
             <Link href="/register?t=exhibitor">
             <button className="px-4 sm:px-6 py-2 border border-black hover:bg-black hover:text-white transition text-sm sm:text-base">
               EXHIBIT

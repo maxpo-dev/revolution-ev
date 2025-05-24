@@ -1,8 +1,7 @@
-// app/register/RegisterPageClient.tsx
 "use client"
 
 import { Suspense, useState, useEffect } from "react"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import DelegateForm from "@/app/components/delegate-form"
 import ExhibitorForm from "@/app/components/exhibitor-form"
@@ -12,29 +11,35 @@ import BrochureForm from "@/app/components/brochure-form"
 
 type TabType = "enquiry" | "delegate" | "exhibitor" | "sponsor" | "brochure"
 
+const validTabs: TabType[] = ["enquiry", "delegate", "exhibitor", "sponsor", "brochure"]
+
 export default function RegisterPageClient({ initialTab }: { initialTab: string }) {
   const router = useRouter()
-  const validTypes = ["enquiry", "delegate", "exhibitor", "sponsor", "brochure"]
-  const [activeTab, setActiveTab] = useState<TabType>(
-    validTypes.includes(initialTab) ? (initialTab as TabType) : "enquiry"
-  )
+  const searchParams = useSearchParams()
 
-  useEffect(() => {
-    if (!validTypes.includes(initialTab)) {
-      router.replace("/register?t=enquiry")
-    }
-  }, [initialTab, router])
+  const initial = validTabs.includes(initialTab as TabType)
+    ? (initialTab as TabType)
+    : "enquiry"
 
+  const [activeTab, setActiveTab] = useState<TabType>(initial)
+
+  // Sync tab changes with the URL
   const handleTabChange = (value: string) => {
-    setActiveTab(value as TabType)
-    router.replace(value === "enquiry" ? "/register" : `/register?t=${value}`, { scroll: false })
+    const tab = value as TabType
+    setActiveTab(tab)
+    const newUrl = tab === "enquiry" ? "/register" : `/register?t=${tab}`
+    router.replace(newUrl, { scroll: false })
   }
 
+  // React to URL changes dynamically (e.g., back/forward browser navigation)
   useEffect(() => {
-    if (initialTab === "enquiry" && window.location.search) {
-      router.replace("/register", { scroll: false })
+    const urlTab = searchParams.get("t") as TabType | null
+    if (urlTab && validTabs.includes(urlTab) && urlTab !== activeTab) {
+      setActiveTab(urlTab)
+    } else if (!urlTab && activeTab !== "enquiry") {
+      setActiveTab("enquiry")
     }
-  }, [initialTab, router])
+  }, [searchParams])
 
   return (
     <div className="container mx-auto mt-6">
