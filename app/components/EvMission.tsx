@@ -15,8 +15,8 @@ const missionData: MissionItem[] = [
   {
     title: "Conference",
     description:
-      "The conference at #REV25 brings together leading voices from across the government, industry verticals, academia and more to help shape the e-mobility landscape within Malaysia and beyond. Participate in thought-provoking discussions on the infrastructure, innovation, investment, and policy that will propel the country's electric future.",
-    image: "/image/conference.jpg",
+      "The conference at #rev25 brings together leading voices from across the government, industry verticals, academia, and more to help shape the e-mobility landscape within Malaysia and beyond. Participate in thought-provoking discussions on the infrastructure, innovation, investment, and policy that will propel the country's electric future.",
+    image: "/image/exhibition.jpg",
     buttonText: "Get Delegate Pass",
     buttonLink: "/register?t=delegate",
     imagePosition: "left",
@@ -24,10 +24,10 @@ const missionData: MissionItem[] = [
   {
     title: "Exhibition",
     description:
-      "Malaysia's most prestigious e-mobility EV event, #REV25, serves as your entry point to South-East Asia's rapidly expanding electric vehicle industry, offering invaluable opportunities whether you're introducing a product, expanding your business, or boosting brand awareness.",
-    image: "/image/exhibition.jpg",
+      "Malaysia's most prestigious e-mobility event, #rev25, serves as your entry point to South-East Asia's rapidly expanding electric vehicle industry, offering invaluable opportunities whether you're introducing a product, expanding your business, or boosting brand awareness.",
+    image: "/image/conference.jpg",
     buttonText: "Book Your Stand",
-    buttonLink: "/image/what-is-an-ev-scaled.jpg",
+    buttonLink: "/register?t=exhibitor",
     imagePosition: "right",
   },
   {
@@ -41,27 +41,27 @@ const missionData: MissionItem[] = [
   },
 ]
 
-export default function EvMissionCard() {
+export function EvMission() {
   return (
-    <section className="px-6 py-16 bg-white text-black">
+    <section className="px-4 sm:px-6 py-8 sm:py-12 md:py-16 bg-white text-black">
       <div className="max-w-6xl mx-auto">
         {/* Header Section */}
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-12">
-          <h2 className="text-4xl font-bold mb-4 md:mb-0 md:mr-8">
+        <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-8 sm:mb-12">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 md:mb-0 md:mr-8">
             Our <span className="text-[#3D8CB5]">EV</span>-olution
             <br />
             Mission
           </h2>
 
-          <p className="text-base max-w-xl">
-            At Revolution EV we are paving the way for a greener future while fueling tomorrow by bringing together all
-            stakeholders to shape the future of e-mobility, create impactful solutions and build a lasting legacy for
-            generations to come.
+          <p className="text-sm sm:text-base max-w-xl">
+            At Revolution EV, we are paving the way for a greener future through innovation, clean energy and
+            sustainable mobility. We are fueling tomorrow by bringing together all stakeholders to shape the future of
+            e-mobility, create impactful solutions, and build a lasting legacy for generations to come.
           </p>
         </div>
 
         {/* Cards Section */}
-        <div className="space-y-8">
+        <div className="space-y-6 sm:space-y-8">
           {missionData.map((item, index) => (
             <div
               key={index}
@@ -69,25 +69,25 @@ export default function EvMissionCard() {
               style={{ flexDirection: item.imagePosition === "right" ? "row-reverse" : "row" }}
             >
               {/* Image Section */}
-              <div className="relative w-full md:w-1/2 h-64 md:h-auto">
+              <div className="relative w-full md:w-1/2 h-48 sm:h-64 md:h-auto">
                 <img src={item.image || "/placeholder.svg"} alt={item.title} className="w-full h-full object-cover" />
               </div>
 
               {/* Content Section */}
-              <div className="p-8 md:w-1/2 flex flex-col justify-center">
-                <h3 className="text-3xl font-bold mb-4">{item.title}</h3>
-                <p className="text-gray-700 mb-6">
-                  {item.description.split("#REV25").map((part, idx, arr) => (
+              <div className="p-4 sm:p-6 md:p-8 md:w-1/2 flex flex-col justify-center">
+                <h3 className="text-2xl sm:text-3xl font-bold mb-2 sm:mb-4">{item.title}</h3>
+                <p className="text-gray-700 mb-4 sm:mb-6 text-sm sm:text-base">
+                  {item.description.split("#rev25").map((part, idx, arr) => (
                     <span key={idx}>
                       {part}
-                      {idx !== arr.length - 1 && <span className="text-[#3D8CB5] font-semibold">#rev25</span>}
+                      {idx !== arr.length - 1 && <span className="text-sky-400 font-semibold">#rev25</span>}
                     </span>
                   ))}
                 </p>
                 <div>
                   <Link
                     href={item.buttonLink}
-                    className="inline-block px-6 py-2 border border-black text-black hover:bg-black hover:text-white transition-colors"
+                    className="inline-block px-4 sm:px-6 py-2 border border-black text-black hover:bg-black hover:text-white transition-colors text-sm sm:text-base"
                   >
                     {item.buttonText}
                   </Link>
