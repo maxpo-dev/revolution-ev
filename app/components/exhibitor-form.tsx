@@ -275,7 +275,8 @@ export default function ExhibitorForm() {
       </div>
 
       {/* Banner Section */}
-      <BannerSection />
+      <BannerSection  />
+
     </div>
   )
 }

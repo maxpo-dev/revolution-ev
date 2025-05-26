@@ -41,20 +41,34 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${dmSans.variable} ${mendaFont.variable}`}>
       <head>
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-PV6VP3BEPR"
+        {/* ✅ Google Site Verification (optional) */}
+        <meta
+          name="google-site-verification"
+          content="Yr_AowC4ajXeufTLujsbaqo_mC7DI1G2fAgN0pfeGXA"
         />
-        <Script id="google-analytics">
+
+        {/* ✅ Google Tag Manager (Head) */}
+        <Script id="gtm-head" strategy="beforeInteractive">
           {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-PV6VP3BEPR');
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-TWMN4XJV');
           `}
         </Script>
       </head>
       <body>
+        {/* ✅ Google Tag Manager (noscript, immediately after <body>) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-TWMN4XJV"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
+
         <Navbar />
         {children}
         <Footer />
