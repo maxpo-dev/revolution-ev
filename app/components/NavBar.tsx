@@ -194,7 +194,7 @@ export default function Navbar() {
                   Agenda
                 </Link>
                 <Link
-                  href="/register"
+                  href="/register?t=speaker"
                   className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors rounded-b-md"
                   onClick={() => setIsConferenceDropdownOpen(false)}
                 >
