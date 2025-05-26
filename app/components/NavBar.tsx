@@ -137,14 +137,14 @@ export default function Navbar() {
                 </Link>
                 <Link
                   href="/register?t=exhibitor"
-                  className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors"
+                  className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors font-bold"
                   onClick={() => setIsExhibitionDropdownOpen(false)}
                 >
                   Exhibitors Enquiry
                 </Link>
                 <Link
                   href="/register?t=brochure"
-                  className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors rounded-b-md"
+                  className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors rounded-b-md font-bold"
                   onClick={() => setIsExhibitionDropdownOpen(false)}
                 >
                   Request Brochure
@@ -195,7 +195,7 @@ export default function Navbar() {
                 </Link>
                 <Link
                   href="/register?t=speaker"
-                  className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors rounded-b-md"
+                  className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors rounded-b-md font-bold"
                   onClick={() => setIsConferenceDropdownOpen(false)}
                 >
                   Speaker Enquiry
@@ -288,14 +288,14 @@ export default function Navbar() {
                   </Link>
                   <Link
                     href="/register?t=exhibitor"
-                    className="block py-1 text-white hover:text-gray-300 transition"
+                    className="block py-1 text-white hover:text-gray-300 transition font-bold"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Exhibitors Enquiry
                   </Link>
                   <Link
                     href="/register?t=brochure"
-                    className="block py-1 text-white hover:text-gray-300 transition"
+                    className="block py-1 text-white hover:text-gray-300 transition font-bold"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Request Brochure
@@ -333,7 +333,7 @@ export default function Navbar() {
                   </Link>
                   <Link
                     href="/register?t=speaker"
-                    className="block py-1 text-white hover:text-gray-300 transition"
+                    className="block py-1 text-white hover:text-gray-300 transition font-bold"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     Speaker Enquiry
