@@ -343,7 +343,7 @@ export default function Navbar() {
             </div>
 
             <Link
-              href="/sponsor"
+              href="/register?t=speaker"
               className="block py-2 text-white hover:text-gray-300 transition"
               onClick={() => setIsMenuOpen(false)}
             >
