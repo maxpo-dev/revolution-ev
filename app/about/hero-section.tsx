@@ -6,7 +6,7 @@ import Link from "next/link"
 export default function RevolutionEVBanner() {
   return (
     <div className="w-full">
-      {/* Text content container */}
+      {/* Text content container... */}
       <div className="max-w-5xl mx-auto p-6 space-y-4">
         <h1
           className="w-full text-4xl md:text-7xl font-bold bg-gradient-to-r from-[#00b8d4] to-[#00c853] bg-clip-text text-transparent"
