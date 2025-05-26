@@ -332,7 +332,7 @@ export default function Navbar() {
                     Agenda
                   </Link>
                   <Link
-                    href="/register"
+                    href="/register?t=speaker"
                     className="block py-1 text-white hover:text-gray-300 transition"
                     onClick={() => setIsMenuOpen(false)}
                   >
