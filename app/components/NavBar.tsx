@@ -14,7 +14,6 @@ export default function Navbar() {
   const conferenceDropdownRef = useRef<HTMLDivElement>(null)
   const [isMobileConferenceDropdownOpen, setIsMobileConferenceDropdownOpen] = useState(false)
 
-
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
     if (!isMenuOpen) {
@@ -35,6 +34,19 @@ export default function Navbar() {
     }, 150) // Small delay to allow moving to dropdown
   }
 
+  const handleConferenceMouseEnter = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+    }
+    setIsConferenceDropdownOpen(true)
+  }
+
+  const handleConferenceMouseLeave = () => {
+    timeoutRef.current = setTimeout(() => {
+      setIsConferenceDropdownOpen(false)
+    }, 150)
+  }
+
   const handleDropdownClick = () => {
     setIsExhibitionDropdownOpen(!isExhibitionDropdownOpen)
   }
@@ -42,16 +54,15 @@ export default function Navbar() {
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-     if (
-  dropdownRef.current &&
-  !dropdownRef.current.contains(event.target as Node) &&
-  conferenceDropdownRef.current &&
-  !conferenceDropdownRef.current.contains(event.target as Node)
-) {
-  setIsExhibitionDropdownOpen(false)
-  setIsConferenceDropdownOpen(false)
-}
-
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node) &&
+        conferenceDropdownRef.current &&
+        !conferenceDropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsExhibitionDropdownOpen(false)
+        setIsConferenceDropdownOpen(false)
+      }
     }
 
     document.addEventListener("mousedown", handleClickOutside)
@@ -101,7 +112,15 @@ export default function Navbar() {
             </button>
 
             {isExhibitionDropdownOpen && (
-              <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-50 border border-gray-200">
+              <div 
+                className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-50 border border-gray-200"
+                onMouseEnter={() => {
+                  if (timeoutRef.current) {
+                    clearTimeout(timeoutRef.current)
+                  }
+                }}
+                onMouseLeave={handleMouseLeave}
+              >
                 <Link
                   href="/exhibition/WhyExhibit"
                   className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors"
@@ -134,56 +153,56 @@ export default function Navbar() {
             )}
           </div>
 
-<div
-  ref={conferenceDropdownRef}
-  className="relative"
-  onMouseEnter={() => setIsConferenceDropdownOpen(true)}
-  onMouseLeave={() => setIsConferenceDropdownOpen(false)}
->
-  <button
-    onClick={() => setIsConferenceDropdownOpen(!isConferenceDropdownOpen)}
-    className="flex items-center gap-1 text-white hover:text-gray-300 transition text-sm md:text-base"
-  >
-    Conference
-    <ChevronDown
-      size={16}
-      className={`transition-transform duration-200 ${isConferenceDropdownOpen ? "rotate-180" : ""}`}
-    />
-  </button>
-{isConferenceDropdownOpen && (
-  <div className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-50 border border-gray-200">
-
-      <Link
-        href="/conference/WhyAttend"
-        className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors"
-        onClick={() => setIsConferenceDropdownOpen(false)}
-      >
-        Why Attend
-      </Link>
-      <Link
-        href="/conference/agenda"
-        className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors"
-        onClick={() => setIsConferenceDropdownOpen(false)}
-      >
-        Agenda
-      </Link>
-      {/* <Link
-        href="/conference/spekars"
-        className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors"
-        onClick={() => setIsConferenceDropdownOpen(false)}
-      >
-        Speakers
-      </Link> */}
-      <Link
-        href="/register"
-        className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors rounded-b-md"
-        onClick={() => setIsConferenceDropdownOpen(false)}
-      >
-        Speaker Enquiry
-      </Link>
-    </div>
-  )}
-</div>
+          <div
+            ref={conferenceDropdownRef}
+            className="relative"
+            onMouseEnter={handleConferenceMouseEnter}
+            onMouseLeave={handleConferenceMouseLeave}
+          >
+            <button
+              onClick={() => setIsConferenceDropdownOpen(!isConferenceDropdownOpen)}
+              className="flex items-center gap-1 text-white hover:text-gray-300 transition text-sm md:text-base"
+            >
+              Conference
+              <ChevronDown
+                size={16}
+                className={`transition-transform duration-200 ${isConferenceDropdownOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+            {isConferenceDropdownOpen && (
+              <div 
+                className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-50 border border-gray-200"
+                onMouseEnter={() => {
+                  if (timeoutRef.current) {
+                    clearTimeout(timeoutRef.current)
+                  }
+                }}
+                onMouseLeave={handleConferenceMouseLeave}
+              >
+                <Link
+                  href="/conference/WhyAttend"
+                  className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors"
+                  onClick={() => setIsConferenceDropdownOpen(false)}
+                >
+                  Why Attend
+                </Link>
+                <Link
+                  href="/conference/agenda"
+                  className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors"
+                  onClick={() => setIsConferenceDropdownOpen(false)}
+                >
+                  Agenda
+                </Link>
+                <Link
+                  href="/register"
+                  className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors rounded-b-md"
+                  onClick={() => setIsConferenceDropdownOpen(false)}
+                >
+                  Speaker Enquiry
+                </Link>
+              </div>
+            )}
+          </div>
 
           <Link href="/sponsor" className="text-white hover:text-gray-300 transition text-sm md:text-base">
             Sponsors
@@ -254,13 +273,6 @@ export default function Navbar() {
               {isExhibitionDropdownOpen && (
                 <div className="ml-4 space-y-1 bg-gray-900 rounded-md p-2">
                   <Link
-                    href="/exhibition"
-                    className="block py-1 text-white hover:text-gray-300 transition"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Overview
-                  </Link>
-                  <Link
                     href="/exhibition/WhyExhibit"
                     className="block py-1 text-white hover:text-gray-300 transition"
                     onClick={() => setIsMenuOpen(false)}
@@ -292,44 +304,43 @@ export default function Navbar() {
               )}
             </div>
 
-<div className="space-y-1">
-  <button
-    onClick={() => setIsMobileConferenceDropdownOpen(!isMobileConferenceDropdownOpen)}
-    className="flex items-center justify-between w-full text-left py-2 text-white hover:text-gray-300 transition"
-  >
-    Conference
-    <ChevronDown
-      size={16}
-      className={`transition-transform duration-200 ${isMobileConferenceDropdownOpen ? "rotate-180" : ""}`}
-    />
-  </button>
-  {isMobileConferenceDropdownOpen && (
-    <div className="ml-4 space-y-1 bg-gray-900 rounded-md p-2">
-      <Link
-        href="/conference/WhyAttend"
-        className="block py-1 text-white hover:text-gray-300 transition"
-        onClick={() => setIsMenuOpen(false)}
-      >
-        Why Attend
-      </Link>
-      <Link
-        href="/conference/agenda"
-        className="block py-1 text-white hover:text-gray-300 transition"
-        onClick={() => setIsMenuOpen(false)}
-      >
-        Agenda
-      </Link>
-      <Link
-        href="/register"
-        className="block py-1 text-white hover:text-gray-300 transition"
-        onClick={() => setIsMenuOpen(false)}
-      >
-        Speaker Enquiry
-      </Link>
-    </div>
-  )}
-</div>
-
+            <div className="space-y-1">
+              <button
+                onClick={() => setIsMobileConferenceDropdownOpen(!isMobileConferenceDropdownOpen)}
+                className="flex items-center justify-between w-full text-left py-2 text-white hover:text-gray-300 transition"
+              >
+                Conference
+                <ChevronDown
+                  size={16}
+                  className={`transition-transform duration-200 ${isMobileConferenceDropdownOpen ? "rotate-180" : ""}`}
+                />
+              </button>
+              {isMobileConferenceDropdownOpen && (
+                <div className="ml-4 space-y-1 bg-gray-900 rounded-md p-2">
+                  <Link
+                    href="/conference/WhyAttend"
+                    className="block py-1 text-white hover:text-gray-300 transition"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Why Attend
+                  </Link>
+                  <Link
+                    href="/conference/agenda"
+                    className="block py-1 text-white hover:text-gray-300 transition"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Agenda
+                  </Link>
+                  <Link
+                    href="/register"
+                    className="block py-1 text-white hover:text-gray-300 transition"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Speaker Enquiry
+                  </Link>
+                </div>
+              )}
+            </div>
 
             <Link
               href="/sponsor"

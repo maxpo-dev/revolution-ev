@@ -3,7 +3,7 @@
 import Hero from "./components/HeroSection";
 import EVEventHero from "./components/EVEventHero";
 // import FocusSectors from "./components/FocusSectors";
-// import SpeakersSection from "./components/SpeakersSection";
+import SpeakersSection from "./components/SpeakersSection";
 import WhyAttend from "./components/whyAttend";
 import { EvMission } from "./components/EvMission";
 import EVCategoriesGrid from "./components/FocusSectors";
@@ -19,7 +19,7 @@ export default function Home() {
       {/* <FocusSectors/> */}
       <EVCategoriesGrid/>
       <EvMission/>
-      {/* <SpeakersSection/> */}
+      <SpeakersSection/>
       <WhyAttend/>
       {/* <Footer/> */}
       {/* <TestimonialCarousel/> */}
