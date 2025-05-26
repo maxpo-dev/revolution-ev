@@ -77,29 +77,29 @@ export default function Component() {
 
       {/* Features Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {features.map((feature, index) => (
-         <Card
-  key={index}
-  className={`relative overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow ${
-    index === features.length - 1 ? "lg:col-span-2" : ""
-  }`}
->
-            <div className="relative h-48 md:h-56 bg-black">
-    <Image
-      src={feature.image || "/placeholder.svg"}
-      alt={feature.title}
-      fill
-      className="object-contain w-full h-full transition-transform duration-300"
-    />
-  
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <h3 className="text-white font-semibold text-lg leading-tight">{feature.title}</h3>
-              </div>
-            </div>
-          </Card>
-        ))}
+ {features.map((feature, index) => (
+  <Card
+    key={index}
+    className={`group relative overflow-hidden p-0 border-none bg-black rounded-none ${
+      index === features.length - 1 ? "lg:col-span-2" : ""
+    }`}
+  >
+    <div className="relative w-full h-48 md:h-56">
+      <Image
+        src={feature.image || "/placeholder.svg"}
+        alt={feature.title}
+        fill
+        className="object-cover w-full h-full transition-transform duration-300 rounded-none"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent rounded-none" />
+      <div className="absolute bottom-0 left-0 right-0 p-4">
+        <h3 className="text-white font-semibold text-lg leading-tight">{feature.title}</h3>
       </div>
     </div>
+  </Card>
+))}
+   </div>
+    </div>
+
   )
 }

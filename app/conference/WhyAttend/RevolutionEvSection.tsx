@@ -13,7 +13,7 @@ export default function RevolutionEVSection() {
         {/* Image only inside container */}
         <div className="relative z-10 h-64 md:h-80 mb-[-8rem] md:mb-[-10rem]">
           <Image
-            src="/image/about/Rectangle 1804.png"
+            src="/image/About/Rectangle 1804.png"
             alt="EV Conference"
             fill
             className="object-cover rounded-lg shadow-lg"
