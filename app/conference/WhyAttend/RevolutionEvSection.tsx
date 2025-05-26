@@ -30,7 +30,7 @@ export default function RevolutionEVSection() {
   className="text-5xl md:text-6xl font-extrabold text-transparent tracking-tight"
   style={{ WebkitTextStroke: "1px white" }}
 >
-  #REVS25
+  #revs25
 </div>
 
 
@@ -40,15 +40,10 @@ export default function RevolutionEVSection() {
           <div className="w-full md:w-1/2 mt-7 flex items-center">
             <div className="text-white space-y-3 text-xs md:text-sm leading-relaxed">
               <p>
-                The Conference Is The Incubation Of Malaysia's Wildest EV Ideas! Minds From The Industry Including
-                Policymakers, Business Leaders, Investors, Environmental Activists, And Key Stakeholders To Make
-                Real Decisions On The Policy & Regulatory Frameworks, Current Challenges, And Most Important
-                Accelerators In Malaysia's Fast-Emerging EV Sector.
+The conference at the Revolution EV Malaysia will host the best minds from the industry, including policymakers, business leaders, investors, entrepreneurs, and other key stakeholders, to meet and debate on the policy & regulatory frameworks, current challenges, and most important advancements in Malaysia's fast-developing EV sector.
               </p>
               <p>
-                The Country's EV Agenda Will Be Spearheaded By The Revolution EV Malaysia 2025, With Support To The
-                Government's Goal Of 20% EV Adoption In New Car Sales By 2030. Revolution EV 2025 Drives A
-                360-Degree Perspective Of The Ecosystem For Both Car Developers And Implementors.
+               The country's EV agenda will be spearheaded by Revolution EV Malaysia 2025, which supports the government's goal of 20% EV adoption in new car sales by 2030. Revolution EV will give a 360-degree perspective of the ecosystem for electric car development and implementation.  
               </p>
             </div>
           </div>
