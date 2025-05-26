@@ -8,9 +8,10 @@ import ExhibitorForm from "@/app/components/exhibitor-form"
 import SponsorForm from "@/app/components/sponsor-form"
 import EnquiryForm from "@/app/components/enquiry-form"
 import BrochureForm from "@/app/components/brochure-form"
+import SpeakerForm from "@/app/components/speaker-form" // Updated import path
 
-type TabType = "enquiry" | "delegate" | "exhibitor" | "sponsor" | "brochure"
-const validTabs: TabType[] = ["enquiry", "delegate", "exhibitor", "sponsor", "brochure"]
+type TabType = "enquiry" | "delegate" | "exhibitor" | "sponsor" | "brochure" | "speaker"
+const validTabs: TabType[] = ["enquiry", "delegate", "exhibitor", "sponsor", "brochure", "speaker"]
 
 export default function RegisterPageClient({ initialTab }: { initialTab: string }) {
   const router = useRouter()
@@ -55,7 +56,9 @@ export default function RegisterPageClient({ initialTab }: { initialTab: string 
                     ? "Exhibition"
                     : tab === "sponsor"
                     ? "Sponsorship"
-                    : "Brochure"}
+                    : tab === "brochure"
+                    ? "Brochure"
+                    : "Speaker"}
                 </TabsTrigger>
               ))}
             </TabsList>
@@ -69,6 +72,7 @@ export default function RegisterPageClient({ initialTab }: { initialTab: string 
         {activeTab === "exhibitor" && <ExhibitorForm />}
         {activeTab === "sponsor" && <SponsorForm />}
         {activeTab === "brochure" && <BrochureForm />}
+        {activeTab === "speaker" && <SpeakerForm />}
       </div>
     </div>
   )
