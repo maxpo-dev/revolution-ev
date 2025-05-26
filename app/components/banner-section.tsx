@@ -28,6 +28,10 @@ const bannerImageMap: { [key: string]: { image: string; alt: string } } = {
     image: '/image/banner/brochure.png',
     alt: 'Brochure Banner',
   },
+    speaker: {
+    image: '/image/banner/speaker.png',
+    alt: 'Speaker Banner',
+  },
 };
 
 export default function BannerSection({ imageUrl, altText }: BannerSectionProps) {
