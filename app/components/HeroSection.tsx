@@ -42,7 +42,7 @@ export default function Hero() {
         {/* Buttons */}
         <div className="mb-8 md:mb-16 flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
           <Link
-            href="/agenda"
+            href="/conference/agenda"
             className="min-w-[200px] border border-white bg-transparent px-6 py-3 text-sm font-normal font-menda tracking-wider text-white transition-all duration-300 hover:bg-white hover:text-black flex items-center justify-center"
           >
             View Agenda
