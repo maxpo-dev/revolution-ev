@@ -30,12 +30,9 @@ export default function RevolutionEVSection() {
   className="text-5xl md:text-6xl font-extrabold text-transparent tracking-tight"
   style={{ WebkitTextStroke: "1px white" }}
 >
-  #revs25
+  #rev25
 </div>
-
-
           </div>
-
           {/* Right - Paragraph */}
           <div className="w-full md:w-1/2 mt-7 flex items-center">
             <div className="text-white space-y-3 text-xs md:text-sm leading-relaxed">

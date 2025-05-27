@@ -79,22 +79,22 @@ export default function Footer() {
               <h3 className="text-xs sm:text-sm font-semibold mb-3 sm:mb-4">Event Information</h3>
               <ul className="space-y-1 sm:space-y-2 text-xs sm:text-sm text-gray-300">
                 <li>
-                  <Link href="#" className="hover:text-[#00E1B0]">
+                  <Link href="/about" className="hover:text-[#00E1B0]">
                     About
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-[#00E1B0]">
+                  <Link href="/conference/WhyAttend" className="hover:text-[#00E1B0]">
                     Conference
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-[#00E1B0]">
+                  <Link href="/conference/agenda" className="hover:text-[#00E1B0]">
                     Agenda
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-[#00E1B0]">
+                  <Link href="/exhibition/WhyExhibit" className="hover:text-[#00E1B0]">
                     Exhibition
                   </Link>
                 </li>
@@ -121,7 +121,7 @@ export default function Footer() {
                   </Link>
                 </li>
                                 <li>
-                  <Link href="#" className="hover:text-[#00E1B0]">
+                  <Link href="/exhibition/Exhibitors" className="hover:text-[#00E1B0]">
                     Exhibitors
                   </Link>
                 </li>
@@ -160,7 +160,7 @@ export default function Footer() {
                   </Link>
                 </li>
                  <li>
-                  <Link href="#" className="hover:text-[#00E1B0]">
+                  <Link href="/market-outlook" className="hover:text-[#00E1B0]">
                     Market Outlook
                   </Link>
                 </li>
