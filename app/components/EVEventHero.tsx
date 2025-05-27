@@ -10,7 +10,7 @@ const statsData = [
   { label: "Delegates", count: 300, suffix: "+", color: "bg-green-400" },
   { label: "Sponsors & Exhibitors", count: 20, suffix: "+", color: "bg-cyan-400" },
   { label: "Attendees", count: 3000, suffix: "+", color: "bg-green-400" },
-  { label: "Partners", count: 20, suffix: "+", color: "bg-cyan-400" },
+  { label: "Partners", count: 40, suffix: "+", color: "bg-cyan-400" },
 ]
 
 type StatCardProps = {
