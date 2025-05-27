@@ -36,7 +36,15 @@ export default function EVCategoriesGrid() {
   ]
 
   return (
+    <div>
+<h2 className="text-5xl font-semibold ml-50 mb-6">
+  Focus <span className="text-sky-500 font-bold">Sectors</span>
+</h2>
+
+
+    
     <div className="bg-black p-4 md:p-8">
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-7xl mx-auto">
         {categories.map((category, index) => (
           <Link
@@ -58,5 +66,7 @@ export default function EVCategoriesGrid() {
         ))}
       </div>
     </div>
+    </div>
+    
   )
 }

@@ -28,69 +28,72 @@ export default function ExhibitorsComponent() {
   };
 
   return (
-    <div className="w-full px-4 py-10 md:px-20 bg-white">
-      <h2 className="text-3xl font-semibold text-center mb-10">Exhibitors</h2>
+    // <div className="w-full px-4 py-10 md:px-20 bg-white">
+    //   <h2 className="text-3xl font-semibold text-center mb-10">Exhibitors</h2>
 
-      <div className="space-y-6">
-        {currentData.map((exhibitor, index) => (
-          <div
-            key={index}
-            className="flex flex-col md:flex-row bg-black text-white rounded-md overflow-hidden shadow-md"
-          >
-            {/* Left Card: Logo + Actions */}
-            <div className="md:w-1/4 w-full bg-white flex flex-col items-center justify-between p-4 space-y-4">
-              <div className="w-24 h-24 rounded-full bg-black flex items-center justify-center">
-                <img
-                  src={exhibitor.logo}
-                  alt={exhibitor.name}
-                  className="w-16 h-16 object-contain"
-                />
-              </div>
+    //   <div className="space-y-6">
+    //     {currentData.map((exhibitor, index) => (
+    //       <div
+    //         key={index}
+    //         className="flex flex-col md:flex-row bg-black text-white rounded-md overflow-hidden shadow-md"
+    //       >
+    //         {/* Left Card: Logo + Actions */}
+    //         <div className="md:w-1/4 w-full bg-white flex flex-col items-center justify-between p-4 space-y-4">
+    //           <div className="w-24 h-24 rounded-full bg-black flex items-center justify-center">
+    //             <img
+    //               src={exhibitor.logo}
+    //               alt={exhibitor.name}
+    //               className="w-16 h-16 object-contain"
+    //             />
+    //           </div>
 
-              {/* Actions */}
-              <div className="w-full flex justify-between mt-4">
-                <a
-                  href={exhibitor.website}
-                  className="bg-[#00C3FF] text-white text-xs px-2 py-1 rounded-l-md font-medium w-3/4 text-center hover:opacity-90"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Visit Website →
-                </a>
-                <span className="bg-[#00C27E] text-black px-2 py-1 text-xs rounded-r-md font-semibold w-1/4 text-center">
-                  {exhibitor.booth}
-                </span>
-              </div>
-            </div>
+    //           {/* Actions */}
+    //           <div className="w-full flex justify-between mt-4">
+    //             <a
+    //               href={exhibitor.website}
+    //               className="bg-[#00C3FF] text-white text-xs px-2 py-1 rounded-l-md font-medium w-3/4 text-center hover:opacity-90"
+    //               target="_blank"
+    //               rel="noopener noreferrer"
+    //             >
+    //               Visit Website →
+    //             </a>
+    //             <span className="bg-[#00C27E] text-black px-2 py-1 text-xs rounded-r-md font-semibold w-1/4 text-center">
+    //               {exhibitor.booth}
+    //             </span>
+    //           </div>
+    //         </div>
 
-            {/* Right Card: Details */}
-            <div className="md:w-3/4 w-full p-6 flex flex-col justify-between">
-              <h3 className="text-xl font-semibold mb-2">{exhibitor.name}</h3>
-              <p className="text-sm leading-relaxed">{exhibitor.description}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+    //         {/* Right Card: Details */}
+    //         <div className="md:w-3/4 w-full p-6 flex flex-col justify-between">
+    //           <h3 className="text-xl font-semibold mb-2">{exhibitor.name}</h3>
+    //           <p className="text-sm leading-relaxed">{exhibitor.description}</p>
+    //         </div>
+    //       </div>
+    //     ))}
+    //   </div>
 
-      {/* Pagination */}
-      <div className="flex justify-center mt-10">
-        <div className="flex space-x-2 text-sm">
-          {Array.from({ length: totalPages }, (_, i) => (
-            <button
-              key={i}
-              onClick={() => goToPage(i + 1)}
-              className={`w-8 h-8 border border-gray-400 ${
-                currentPage === i + 1
-                  ? "bg-black text-white"
-                  : "text-black hover:bg-black hover:text-white"
-              } transition-colors`}
-            >
-              {i + 1 < 10 ? `0${i + 1}` : i + 1}
-            </button>
-          ))}
-        </div>
-      </div>
-    </div>
+    //   {/* Pagination */}
+    //   <div className="flex justify-center mt-10">
+    //     <div className="flex space-x-2 text-sm">
+    //       {Array.from({ length: totalPages }, (_, i) => (
+    //         <button
+    //           key={i}
+    //           onClick={() => goToPage(i + 1)}
+    //           className={`w-8 h-8 border border-gray-400 ${
+    //             currentPage === i + 1
+    //               ? "bg-black text-white"
+    //               : "text-black hover:bg-black hover:text-white"
+    //           } transition-colors`}
+    //         >
+    //           {i + 1 < 10 ? `0${i + 1}` : i + 1}
+    //         </button>
+    //       ))}
+    //     </div>
+    //   </div>
+    // </div>
+    <div className="bg-white h-screen flex items-center justify-center">
+  <h1 className="text-4xl font-bold text-black">This Page Is being Updated</h1>
+</div>
   );
 }
 
@@ -101,8 +104,6 @@ export default function ExhibitorsComponent() {
 
 // export default function ExhibitorsComponent() {
 // return(
-// <div className="bg-white h-screen flex items-center justify-center">
-//   <h1 className="text-4xl font-bold text-black">This Page Is being Updated</h1>
-// </div>
+
 // )
 // }
