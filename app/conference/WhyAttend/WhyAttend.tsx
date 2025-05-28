@@ -4,31 +4,31 @@ import { Card } from "@/components/ui/card"
 export default function Component() {
   const features = [
     {
-      title: "",
-      image: "/image/conferrence/Frame 3968613.png?height=200&width=300",
+      title: "Thoughtfully Curated Conference Programme",
+      image: "/image/conferrence/Frame 3968622.png?height=200&width=300",
     },
     {
-      title: "",
+      title: "Learning Opportunities",
       image: "/image/conferrence/Frame 3968614.png?height=200&width=300",
     },
     {
-      title: "",
+      title: "Hear from the Best EV Minds",
       image: "/image/conferrence/Frame 3968616.png?height=200&width=300",
     },
     {
-      title: "",
-      image: "/image/conferrence/Frame 3968616 (1).png?height=200&width=300",
+      title: "Share and Collaborate",
+      image: "/image/conferrence/Frame 3968647.png?height=200&width=300",
     },
     {
-      title: "",
+      title: "Hands On Workshops",
      image: "/image/conferrence/Frame 3968617.png?height=200&width=300",
     },
     {
-      title: "",
+      title: "Sponsorship and Partnership Opportunities",
      image: "/image/conferrence/Frame 3968618.png?height=200&width=300",
     },
     {
-      title: "",
+      title: "Get Inspired",
      image: "/image/conferrence/Frame 3968619.png?height=200&width=300",
     },
     {

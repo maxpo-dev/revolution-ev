@@ -41,7 +41,7 @@ export default function WhyMalaysia() {
             </div>
             <div className="flex-shrink-0">
               <Image
-                src="/placeholder.svg?height=120&width=200"
+                src="/image/Market Outlook/mcms.jpg?height=120&width=200"
                 alt="Government officials and business people in meeting"
                 width={200}
                 height={120}
@@ -75,11 +75,11 @@ export default function WhyMalaysia() {
             </div>
             <div className="flex-shrink-0">
               <Image
-                src="/placeholder.svg?height=120&width=200"
+                src="/image/Market Outlook/four-steps-to-sustainable-business-model-innovation-rectangle.jpg?height=120&width=200"
                 alt="Dark automotive manufacturing scene"
                 width={200}
                 height={120}
-                className="rounded-lg"
+                className=""
               />
             </div>
           </div>
@@ -109,11 +109,11 @@ export default function WhyMalaysia() {
             </div>
             <div className="flex-shrink-0">
               <Image
-                src="/placeholder.svg?height=120&width=200"
+                src="/image/Market Outlook/images.jpg?height=120&width=200"
                 alt="Business conference or technology presentation"
                 width={200}
                 height={120}
-                className="rounded-lg"
+                className=""
               />
             </div>
           </div>
@@ -143,11 +143,11 @@ export default function WhyMalaysia() {
             </div>
             <div className="flex-shrink-0">
               <Image
-                src="/placeholder.svg?height=120&width=200"
+                src="/image/Market Outlook/Nov-Dec18.jpg?height=120&width=200"
                 alt="Dark automotive technology scene"
                 width={200}
                 height={120}
-                className="rounded-lg"
+                className=""
               />
             </div>
           </div>
@@ -177,11 +177,11 @@ export default function WhyMalaysia() {
             </div>
             <div className="flex-shrink-0">
               <Image
-                src="/placeholder.svg?height=120&width=200"
+                src="/image/Market Outlook/Introduction-Of-Vehicle-to-Grid-Energy-Distribution-1001x630.jpg?height=120&width=200"
                 alt="Business meeting or technology showcase"
                 width={200}
                 height={120}
-                className="rounded-lg"
+                className=""
               />
             </div>
           </div>
