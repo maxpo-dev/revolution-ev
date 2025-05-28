@@ -2,8 +2,6 @@ import HeroSection from "./hero-section"
 import EventHighlights from "./event-highlights"
 import EventFormatAndAttendees from "./EventFormatAndAttendees"
 
-
-
 const attendeeProfiles = [
   "Original Equipment Manufacturers",
   "Battery Tech Providers",
@@ -19,18 +17,13 @@ const attendeeProfiles = [
   "Renewable Energy Companies",
   "Legal Compliance & Intellectual Property Experts",
 ]
-export default function Home() {
 
-  
+export default function Home() {
   return (
-    <main>
+    <main className="min-h-screen">
       <HeroSection />
       <EventHighlights />
-      <EventFormatAndAttendees  attendeeProfiles={attendeeProfiles}/>
-{/* <div>
-  <p className="text-8xl font-bold item-center">It's On Process</p>
-</div> */}
-
+      <EventFormatAndAttendees attendeeProfiles={attendeeProfiles} />
     </main>
   )
 }

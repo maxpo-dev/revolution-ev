@@ -185,7 +185,7 @@ export default function Footer() {
                 </li>
                 <li>+91 7780985893</li>
                 <li className="flex space-x-2 sm:space-x-3 mt-3 sm:mt-4">
-                  <Link href="https://x.com/revolutionev" className="bg-gray-800 p-1.5 rounded-sm hover:bg-gray-700">
+                  <Link href="https://x.com/revolutionev_" className="bg-gray-800 p-1.5 rounded-sm hover:bg-gray-700">
                     <Twitter size={16} />
                   </Link>
                   <Link href="https://www.instagram.com/_revolutionev" className="bg-gray-800 p-1.5 rounded-sm hover:bg-gray-700">

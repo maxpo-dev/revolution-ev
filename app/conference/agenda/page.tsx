@@ -1,6 +1,6 @@
 "use client"
 import Link from "next/link"
-import { Key, useState } from "react"
+import { useState } from "react"
 
 export default function Agenda() {
   type DayKey = 'day1' | 'day2'
@@ -41,8 +41,10 @@ export default function Agenda() {
         </button>
       </div>
 
-      {/* Day Label */}
-      <h2 className="text-xl font-semibold mb-6">Day 01</h2>
+      {/* Dynamic Day Label */}
+      <h2 className="text-xl font-semibold mb-6">
+        {activeDay === 'day1' ? 'Day 01 – 23 October 2025' : 'Day 02 – 24 October 2025'}
+      </h2>
 
       {/* Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mb-12">
@@ -55,7 +57,7 @@ export default function Agenda() {
                 : 'bg-gradient-to-br from-green-50 via-white to-cyan-100 text-black'
             }`}
           >
-            {title}
+            {title || 'TBA'}
           </div>
         ))}
       </div>
@@ -63,9 +65,9 @@ export default function Agenda() {
       {/* Call to Action */}
       <div className="flex justify-center">
         <Link href="/register?t=delegate">
-                <button className="px-6 py-3 border border-white text-white hover:bg-white hover:text-black transition rounded">
-          Get Delegate Pass
-        </button>
+          <button className="px-6 py-3 border border-white text-white hover:bg-white hover:text-black transition rounded">
+            Get Delegate Pass
+          </button>
         </Link>
       </div>
     </div>

@@ -22,7 +22,6 @@ export default function Navbar() {
   const moreDropdownRef = useRef<HTMLDivElement>(null)
   const [isMobileMoreDropdownOpen, setIsMobileMoreDropdownOpen] = useState(false)
 
-
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
     if (!isMenuOpen) {
@@ -30,96 +29,50 @@ export default function Navbar() {
     }
   }
 
-  const handleMouseEnter = () => {
+  const handleDropdownEnter = (setter: React.Dispatch<React.SetStateAction<boolean>>) => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current)
     }
-    setIsExhibitionDropdownOpen(true)
+    setter(true)
   }
 
-  const handleMouseLeave = () => {
+  const handleDropdownLeave = (setter: React.Dispatch<React.SetStateAction<boolean>>) => {
     timeoutRef.current = setTimeout(() => {
-      setIsExhibitionDropdownOpen(false)
-    }, 150) // Small delay to allow moving to dropdown
+      setter(false)
+    }, 200)
   }
-  const handleSponsorMouseEnter = () => {
-  if (timeoutRef.current) clearTimeout(timeoutRef.current)
-  setIsSponsorDropdownOpen(true)
-}
 
-const handleSponsorMouseLeave = () => {
-  timeoutRef.current = setTimeout(() => {
-    setIsSponsorDropdownOpen(false)
-  }, 150)
-}
-const handlePartnersMouseEnter = () => {
-  if (timeoutRef.current) clearTimeout(timeoutRef.current)
-  setIsPartnersDropdownOpen(true)
-}
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const dropdowns = [
+        dropdownRef.current,
+        conferenceDropdownRef.current,
+        sponsorDropdownRef.current,
+        partnersDropdownRef.current,
+        moreDropdownRef.current
+      ]
 
-const handlePartnersMouseLeave = () => {
-  timeoutRef.current = setTimeout(() => {
-    setIsPartnersDropdownOpen(false)
-  }, 150)
-}
-const handleMoreMouseEnter = () => {
-  if (timeoutRef.current) clearTimeout(timeoutRef.current)
-  setIsMoreDropdownOpen(true)
-}
-
-const handleMoreMouseLeave = () => {
-  timeoutRef.current = setTimeout(() => {
-    setIsMoreDropdownOpen(false)
-  }, 150)
-}
-  const handleConferenceMouseEnter = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current)
+      const isOutside = dropdowns.every(
+        ref => ref && !ref.contains(event.target as Node)
+      )
+      if (isOutside) {
+        setIsExhibitionDropdownOpen(false)
+        setIsConferenceDropdownOpen(false)
+        setIsSponsorDropdownOpen(false)
+        setIsPartnersDropdownOpen(false)
+        setIsMoreDropdownOpen(false)
+      }
+    
     }
-    setIsConferenceDropdownOpen(true)
-  }
 
-  const handleConferenceMouseLeave = () => {
-    timeoutRef.current = setTimeout(() => {
-      setIsConferenceDropdownOpen(false)
-    }, 150)
-  }
-
-  const handleDropdownClick = () => {
-    setIsExhibitionDropdownOpen(!isExhibitionDropdownOpen)
-  }
-
-  // Close dropdown when clicking outside
-useEffect(() => {
-  const handleClickOutside = (event: MouseEvent) => {
-    if (
-      dropdownRef.current &&
-      !dropdownRef.current.contains(event.target as Node) &&
-      conferenceDropdownRef.current &&
-      !conferenceDropdownRef.current.contains(event.target as Node) &&
-      sponsorDropdownRef.current &&
-      !sponsorDropdownRef.current.contains(event.target as Node) &&
-      partnersDropdownRef.current &&
-      !partnersDropdownRef.current.contains(event.target as Node) &&
-      moreDropdownRef.current &&
-      !moreDropdownRef.current.contains(event.target as Node)
-    ) {
-      setIsExhibitionDropdownOpen(false)
-      setIsConferenceDropdownOpen(false)
-      setIsSponsorDropdownOpen(false)
-      setIsPartnersDropdownOpen(false)
-      setIsMoreDropdownOpen(false)
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside)
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
     }
-  }
-
-  document.addEventListener("mousedown", handleClickOutside)
-  return () => {
-    document.removeEventListener("mousedown", handleClickOutside)
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current)
-    }
-  }
-}, [])
+  }, [])
 
   return (
     <nav className="sticky top-0 z-50 bg-black w-full">
@@ -146,9 +99,14 @@ useEffect(() => {
             About
           </Link>
 
-          <div ref={dropdownRef} className="relative" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+          <div 
+            ref={dropdownRef} 
+            className="relative"
+            onMouseEnter={() => handleDropdownEnter(setIsExhibitionDropdownOpen)}
+            onMouseLeave={() => handleDropdownLeave(setIsExhibitionDropdownOpen)}
+          >
             <button
-              onClick={handleDropdownClick}
+              onClick={() => setIsExhibitionDropdownOpen(!isExhibitionDropdownOpen)}
               className="flex items-center gap-1 text-white hover:text-gray-300 transition text-sm md:text-base"
             >
               Exhibition
@@ -161,12 +119,8 @@ useEffect(() => {
             {isExhibitionDropdownOpen && (
               <div 
                 className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-50 border border-gray-200"
-                onMouseEnter={() => {
-                  if (timeoutRef.current) {
-                    clearTimeout(timeoutRef.current)
-                  }
-                }}
-                onMouseLeave={handleMouseLeave}
+                onMouseEnter={() => handleDropdownEnter(setIsExhibitionDropdownOpen)}
+                onMouseLeave={() => handleDropdownLeave(setIsExhibitionDropdownOpen)}
               >
                 <Link
                   href="/exhibition/WhyExhibit"
@@ -203,8 +157,8 @@ useEffect(() => {
           <div
             ref={conferenceDropdownRef}
             className="relative"
-            onMouseEnter={handleConferenceMouseEnter}
-            onMouseLeave={handleConferenceMouseLeave}
+            onMouseEnter={() => handleDropdownEnter(setIsConferenceDropdownOpen)}
+            onMouseLeave={() => handleDropdownLeave(setIsConferenceDropdownOpen)}
           >
             <button
               onClick={() => setIsConferenceDropdownOpen(!isConferenceDropdownOpen)}
@@ -219,12 +173,8 @@ useEffect(() => {
             {isConferenceDropdownOpen && (
               <div 
                 className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-50 border border-gray-200"
-                onMouseEnter={() => {
-                  if (timeoutRef.current) {
-                    clearTimeout(timeoutRef.current)
-                  }
-                }}
-                onMouseLeave={handleConferenceMouseLeave}
+                onMouseEnter={() => handleDropdownEnter(setIsConferenceDropdownOpen)}
+                onMouseLeave={() => handleDropdownLeave(setIsConferenceDropdownOpen)}
               >
                 <Link
                   href="/conference/WhyAttend"
@@ -251,154 +201,149 @@ useEffect(() => {
             )}
           </div>
 
-    <div
-  ref={sponsorDropdownRef}
-  className="relative"
-  onMouseEnter={handleSponsorMouseEnter}
-  onMouseLeave={handleSponsorMouseLeave}
->
-  <button
-    onClick={() => setIsSponsorDropdownOpen(!isSponsorDropdownOpen)}
-    className="flex items-center gap-1 text-white hover:text-gray-300 transition text-sm md:text-base"
-  >
-    Sponsors
-    <ChevronDown
-      size={16}
-      className={`transition-transform duration-200 ${isSponsorDropdownOpen ? "rotate-180" : ""}`}
-    />
-  </button>
+          <div
+            ref={sponsorDropdownRef}
+            className="relative"
+            onMouseEnter={() => handleDropdownEnter(setIsSponsorDropdownOpen)}
+            onMouseLeave={() => handleDropdownLeave(setIsSponsorDropdownOpen)}
+          >
+            <button
+              onClick={() => setIsSponsorDropdownOpen(!isSponsorDropdownOpen)}
+              className="flex items-center gap-1 text-white hover:text-gray-300 transition text-sm md:text-base"
+            >
+              Sponsors
+              <ChevronDown
+                size={16}
+                className={`transition-transform duration-200 ${isSponsorDropdownOpen ? "rotate-180" : ""}`}
+              />
+            </button>
 
-  {isSponsorDropdownOpen && (
-    <div 
-      className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-50 border border-gray-200"
-      onMouseEnter={() => {
-        if (timeoutRef.current) clearTimeout(timeoutRef.current)
-      }}
-      onMouseLeave={handleSponsorMouseLeave}
-    >
-      <Link
-        href="/sponsors/WhySponsor"
-        className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors"
-        onClick={() => setIsSponsorDropdownOpen(false)}
-      >
-        Why Sponsor
-      </Link>
-      <Link
-        href="/register?t=sponsor"
-        className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors font-bold"
-        onClick={() => setIsSponsorDropdownOpen(false)}
-      >
-        Sponsorship Enquiry
-      </Link>
-    </div>
-  )}
-</div>
+            {isSponsorDropdownOpen && (
+              <div 
+                className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-50 border border-gray-200"
+                onMouseEnter={() => handleDropdownEnter(setIsSponsorDropdownOpen)}
+                onMouseLeave={() => handleDropdownLeave(setIsSponsorDropdownOpen)}
+              >
+                <Link
+                  href="/sponsors/WhySponsor"
+                  className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors"
+                  onClick={() => setIsSponsorDropdownOpen(false)}
+                >
+                  Why Sponsor
+                </Link>
+                <Link
+                  href="/register?t=sponsor"
+                  className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors font-bold"
+                  onClick={() => setIsSponsorDropdownOpen(false)}
+                >
+                  Sponsorship Enquiry
+                </Link>
+              </div>
+            )}
+          </div>
 
-<div
-  ref={partnersDropdownRef}
-  className="relative"
-  onMouseEnter={handlePartnersMouseEnter}
-  onMouseLeave={handlePartnersMouseLeave}
->
-  <button
-    onClick={() => setIsPartnersDropdownOpen(!isPartnersDropdownOpen)}
-    className="flex items-center gap-1 text-white hover:text-gray-300 transition text-sm md:text-base"
-  >
-    Partners
-    <ChevronDown
-      size={16}
-      className={`transition-transform duration-200 ${isPartnersDropdownOpen ? "rotate-180" : ""}`}
-    />
-  </button>
+          <div
+            ref={partnersDropdownRef}
+            className="relative"
+            onMouseEnter={() => handleDropdownEnter(setIsPartnersDropdownOpen)}
+            onMouseLeave={() => handleDropdownLeave(setIsPartnersDropdownOpen)}
+          >
+            <button
+              onClick={() => setIsPartnersDropdownOpen(!isPartnersDropdownOpen)}
+              className="flex items-center gap-1 text-white hover:text-gray-300 transition text-sm md:text-base"
+            >
+              Partners
+              <ChevronDown
+                size={16}
+                className={`transition-transform duration-200 ${isPartnersDropdownOpen ? "rotate-180" : ""}`}
+              />
+            </button>
 
-  {isPartnersDropdownOpen && (
-    <div 
-      className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-50 border border-gray-200"
-      onMouseEnter={() => {
-        if (timeoutRef.current) clearTimeout(timeoutRef.current)
-      }}
-      onMouseLeave={handlePartnersMouseLeave}
-    >
-      <Link
-        href="/partners/MediaPartner"
-        className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors"
-        onClick={() => setIsPartnersDropdownOpen(false)}
-      >
-        Media Partner
-      </Link>
-            <Link
-        href="/partners/SupportingPartners"
-        className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors"
-        onClick={() => setIsPartnersDropdownOpen(false)}
-      >
-        Supporting Partner
-      </Link>
-      <Link
-        href="/register?t=partner"
-        className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors font-bold"
-        onClick={() => setIsPartnersDropdownOpen(false)}
-      >
-        Partner Enquiry
-      </Link>
-    </div>
-  )}
-</div>
-<div
-  ref={moreDropdownRef}
-  className="relative"
-  onMouseEnter={handleMoreMouseEnter}
-  onMouseLeave={handleMoreMouseLeave}
->
-  <button
-    onClick={() => setIsMoreDropdownOpen(!isMoreDropdownOpen)}
-    className="flex items-center gap-1 text-white hover:text-gray-300 transition text-sm md:text-base"
-  >
-    More
-    <ChevronDown
-      size={16}
-      className={`transition-transform duration-200 ${isMoreDropdownOpen ? "rotate-180" : ""}`}
-    />
-  </button>
+            {isPartnersDropdownOpen && (
+              <div 
+                className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-50 border border-gray-200"
+                onMouseEnter={() => handleDropdownEnter(setIsPartnersDropdownOpen)}
+                onMouseLeave={() => handleDropdownLeave(setIsPartnersDropdownOpen)}
+              >
+                <Link
+                  href="/partners/MediaPartner"
+                  className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors"
+                  onClick={() => setIsPartnersDropdownOpen(false)}
+                >
+                  Media Partner
+                </Link>
+                <Link
+                  href="/partners/SupportingPartners"
+                  className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors"
+                  onClick={() => setIsPartnersDropdownOpen(false)}
+                >
+                  Supporting Partner
+                </Link>
+                <Link
+                  href="/register?t=partner"
+                  className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors font-bold"
+                  onClick={() => setIsPartnersDropdownOpen(false)}
+                >
+                  Partner Enquiry
+                </Link>
+              </div>
+            )}
+          </div>
 
-  {isMoreDropdownOpen && (
-    <div 
-      className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-50 border border-gray-200"
-      onMouseEnter={() => {
-        if (timeoutRef.current) clearTimeout(timeoutRef.current)
-      }}
-      onMouseLeave={handleMoreMouseLeave}
-    >
-      <Link
-        href="/market-outlook"
-        className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors"
-        onClick={() => setIsMoreDropdownOpen(false)}
-      >
-        Market Outlook
-      </Link>
-      <Link
-        href="/more/contact"
-        className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors"
-        onClick={() => setIsMoreDropdownOpen(false)}
-      >
-        News & Blogs
-      </Link>
-       <Link
-        href="/more/contact"
-        className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors"
-        onClick={() => setIsMoreDropdownOpen(false)}
-      >
-        Testimonials
-      </Link>
-      <Link
-        href="/FAQs"
-        className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors rounded-b-md"
-        onClick={() => setIsMoreDropdownOpen(false)}
-      >
-        FAQs
-      </Link>
-    </div>
-  )}
-</div>
+          <div
+            ref={moreDropdownRef}
+            className="relative"
+            onMouseEnter={() => handleDropdownEnter(setIsMoreDropdownOpen)}
+            onMouseLeave={() => handleDropdownLeave(setIsMoreDropdownOpen)}
+          >
+            <button
+              onClick={() => setIsMoreDropdownOpen(!isMoreDropdownOpen)}
+              className="flex items-center gap-1 text-white hover:text-gray-300 transition text-sm md:text-base"
+            >
+              More
+              <ChevronDown
+                size={16}
+                className={`transition-transform duration-200 ${isMoreDropdownOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+
+            {isMoreDropdownOpen && (
+              <div 
+                className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-50 border border-gray-200"
+                onMouseEnter={() => handleDropdownEnter(setIsMoreDropdownOpen)}
+                onMouseLeave={() => handleDropdownLeave(setIsMoreDropdownOpen)}
+              >
+                <Link
+                  href="/market-outlook"
+                  className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors"
+                  onClick={() => setIsMoreDropdownOpen(false)}
+                >
+                  Market Outlook
+                </Link>
+                <Link
+                  href="/more/contact"
+                  className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors"
+                  onClick={() => setIsMoreDropdownOpen(false)}
+                >
+                  News & Blogs
+                </Link>
+                <Link
+                  href="/more/contact"
+                  className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors"
+                  onClick={() => setIsMoreDropdownOpen(false)}
+                >
+                  Testimonials
+                </Link>
+                <Link
+                  href="/FAQs"
+                  className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors rounded-b-md"
+                  onClick={() => setIsMoreDropdownOpen(false)}
+                >
+                  FAQs
+                </Link>
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="hidden sm:block">
@@ -528,129 +473,120 @@ useEffect(() => {
               )}
             </div>
 
-         <div
-  ref={sponsorDropdownRef}
-  className="relative"
-  onMouseEnter={handleSponsorMouseEnter}
-  onMouseLeave={handleSponsorMouseLeave}
->
-  <button
-    onClick={() => setIsSponsorDropdownOpen(!isSponsorDropdownOpen)}
-    className="flex items-center gap-1 text-white hover:text-gray-300 transition text-sm md:text-base"
-  >
-    Sponsors
-    <ChevronDown
-      size={16}
-      className={`transition-transform duration-200 ${isSponsorDropdownOpen ? "rotate-180" : ""}`}
-    />
-  </button>
+            <div className="space-y-1">
+              <button
+                onClick={() => setIsSponsorDropdownOpen(!isSponsorDropdownOpen)}
+                className="flex items-center justify-between w-full text-left py-2 text-white hover:text-gray-300 transition"
+              >
+                Sponsors
+                <ChevronDown
+                  size={16}
+                  className={`transition-transform duration-200 ${isSponsorDropdownOpen ? "rotate-180" : ""}`}
+                />
+              </button>
+              {isSponsorDropdownOpen && (
+                <div className="ml-4 space-y-1 bg-gray-900 rounded-md p-2">
+                  <Link
+                    href="/sponsors/WhySponsor"
+                    className="block py-1 text-white hover:text-gray-300 transition"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Why Sponsor
+                  </Link>
+                  <Link
+                    href="/register?t=sponsor"
+                    className="block py-1 text-white hover:text-gray-300 transition font-bold"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Sponsorship Enquiry
+                  </Link>
+                </div>
+              )}
+            </div>
 
-  {isSponsorDropdownOpen && (
-    <div 
-      className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-50 border border-gray-200"
-      onMouseEnter={() => {
-        if (timeoutRef.current) clearTimeout(timeoutRef.current)
-      }}
-      onMouseLeave={handleSponsorMouseLeave}
-    >
-      <Link
-        href="/sponsors"
-        className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors"
-        onClick={() => setIsSponsorDropdownOpen(false)}
-      >
-        Why Sponsor
-      </Link>
-      <Link
-        href="/register?t=sponsor"
-        className="block px-4 py-2 text-sm text-black hover:bg-gray-100 transition-colors font-bold"
-        onClick={() => setIsSponsorDropdownOpen(false)}
-      >
-        Sponsor Enquiry
-      </Link>
-    </div>
-  )}
-</div>
-<div className="space-y-1">
-  <button
-    onClick={() => setIsMobilePartnersDropdownOpen(!isMobilePartnersDropdownOpen)}
-    className="flex items-center justify-between w-full text-left py-2 text-white hover:text-gray-300 transition"
-  >
-    Partners
-    <ChevronDown
-      size={16}
-      className={`transition-transform duration-200 ${isMobilePartnersDropdownOpen ? "rotate-180" : ""}`}
-    />
-  </button>
-  {isMobilePartnersDropdownOpen && (
-    <div className="ml-4 space-y-1 bg-gray-900 rounded-md p-2">
-      <Link
-        href="/partners/WhyPartner"
-        className="block py-1 text-white hover:text-gray-300 transition"
-        onClick={() => setIsMenuOpen(false)}
-      >
-      Media Partners
-      </Link>
-            <Link
-        href="/partners/WhyPartner"
-        className="block py-1 text-white hover:text-gray-300 transition"
-        onClick={() => setIsMenuOpen(false)}
-      >
-      Supporting Partners
-      </Link>
-      <Link
-        href="/register?t=partner"
-        className="block py-1 text-white hover:text-gray-300 transition font-bold"
-        onClick={() => setIsMenuOpen(false)}
-      >
-        Partnership Enquiry
-      </Link>
-    </div>
-  )}
-</div>
-<div className="space-y-1">
-  <button
-    onClick={() => setIsMobileMoreDropdownOpen(!isMobileMoreDropdownOpen)}
-    className="flex items-center justify-between w-full text-left py-2 text-white hover:text-gray-300 transition"
-  >
-    More
-    <ChevronDown
-      size={16}
-      className={`transition-transform duration-200 ${isMobileMoreDropdownOpen ? "rotate-180" : ""}`}
-    />
-  </button>
-  {isMobileMoreDropdownOpen && (
-    <div className="ml-4 space-y-1 bg-gray-900 rounded-md p-2">
-      <Link
-        href="/market-outlook"
-        className="block py-1 text-white hover:text-gray-300 transition"
-        onClick={() => setIsMenuOpen(false)}
-      >
-        Market Outlook
-      </Link>
-      <Link
-        href="/more/contact"
-        className="block py-1 text-white hover:text-gray-300 transition"
-        onClick={() => setIsMenuOpen(false)}
-      >
-        News & Blogs
-      </Link>
-        <Link
-        href="/more/contact"
-        className="block py-1 text-white hover:text-gray-300 transition"
-        onClick={() => setIsMenuOpen(false)}
-      >
-        Testimonials
-      </Link>
-      <Link
-        href="/FAQs"
-        className="block py-1 text-white hover:text-gray-300 transition"
-        onClick={() => setIsMenuOpen(false)}
-      >
-        FAQs
-      </Link>
-    </div>
-  )}
-</div>
+            <div className="space-y-1">
+              <button
+                onClick={() => setIsMobilePartnersDropdownOpen(!isMobilePartnersDropdownOpen)}
+                className="flex items-center justify-between w-full text-left py-2 text-white hover:text-gray-300 transition"
+              >
+                Partners
+                <ChevronDown
+                  size={16}
+                  className={`transition-transform duration-200 ${isMobilePartnersDropdownOpen ? "rotate-180" : ""}`}
+                />
+              </button>
+              {isMobilePartnersDropdownOpen && (
+                <div className="ml-4 space-y-1 bg-gray-900 rounded-md p-2">
+                  <Link
+                    href="/partners/MediaPartner"
+                    className="block py-1 text-white hover:text-gray-300 transition"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Media Partners
+                  </Link>
+                  <Link
+                    href="/partners/SupportingPartners"
+                    className="block py-1 text-white hover:text-gray-300 transition"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Supporting Partners
+                  </Link>
+                  <Link
+                    href="/register?t=partner"
+                    className="block py-1 text-white hover:text-gray-300 transition font-bold"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Partnership Enquiry
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            <div className="space-y-1">
+              <button
+                onClick={() => setIsMobileMoreDropdownOpen(!isMobileMoreDropdownOpen)}
+                className="flex items-center justify-between w-full text-left py-2 text-white hover:text-gray-300 transition"
+              >
+                More
+                <ChevronDown
+                  size={16}
+                  className={`transition-transform duration-200 ${isMobileMoreDropdownOpen ? "rotate-180" : ""}`}
+                />
+              </button>
+              {isMobileMoreDropdownOpen && (
+                <div className="ml-4 space-y-1 bg-gray-900 rounded-md p-2">
+                  <Link
+                    href="/market-outlook"
+                    className="block py-1 text-white hover:text-gray-300 transition"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Market Outlook
+                  </Link>
+                  <Link
+                    href="/more/contact"
+                    className="block py-1 text-white hover:text-gray-300 transition"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    News & Blogs
+                  </Link>
+                  <Link
+                    href="/more/contact"
+                    className="block py-1 text-white hover:text-gray-300 transition"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Testimonials
+                  </Link>
+                  <Link
+                    href="/FAQs"
+                    className="block py-1 text-white hover:text-gray-300 transition"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    FAQs
+                  </Link>
+                </div>
+              )}
+            </div>
+
             <div className="pt-2">
               <Link href="/register" onClick={() => setIsMenuOpen(false)}>
                 <button

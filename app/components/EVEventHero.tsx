@@ -53,15 +53,24 @@ function StatCard({ count, label, suffix = "", color = "bg-cyan-400" }: StatCard
 
 export default function EVEventHero() {
   const [activeIndex, setActiveIndex] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
+
+  const handleArrowClick = () => {
+    setActiveIndex((current) => (current + 1) % statsData.length)
+    setIsPaused(true)
+    // Resume auto-cycle after 8 seconds of no interaction
+    setTimeout(() => setIsPaused(false), 8000)
+  }
 
   useEffect(() => {
-    // Set up a timer to cycle through the stats
+    if (isPaused) return
+
     const interval = setInterval(() => {
       setActiveIndex((current) => (current + 1) % statsData.length)
-    }, 4000) // Change every 4 seconds for slower transitions
+    }, 4000)
 
     return () => clearInterval(interval)
-  }, [])
+  }, [isPaused])
 
   return (
     <section className="px-4 sm:px-6 py-8 sm:py-12 md:py-20 bg-white text-black">
@@ -85,19 +94,18 @@ export default function EVEventHero() {
               innovative showcases, and strategic networking as we drive Malaysia toward its EV future.
             </b>
           </p>
-           
+
           <div className="flex flex-wrap gap-4">
             <Link href="/about">
-            <button className="px-4 sm:px-6 py-2 border border-black hover:bg-black hover:text-white transition text-sm sm:text-base">
-              KNOW MORE
-            </button>
+              <button className="px-4 sm:px-6 py-2 border border-black hover:bg-black hover:text-white transition text-sm sm:text-base">
+                KNOW MORE
+              </button>
             </Link>
             <Link href="/register?t=exhibitor">
-            <button className="px-4 sm:px-6 py-2 border border-black hover:bg-black hover:text-white transition text-sm sm:text-base">
-              EXHIBIT
-            </button>
+              <button className="px-4 sm:px-6 py-2 border border-black hover:bg-black hover:text-white transition text-sm sm:text-base">
+                EXHIBIT
+              </button>
             </Link>
-
           </div>
         </div>
 
@@ -117,10 +125,9 @@ export default function EVEventHero() {
         <div className="relative h-auto sm:h-[180px] border border-gray-300 rounded flex flex-col sm:flex-row">
           {/* Left Side: Heading - Fixed */}
           <div className="bg-white p-4 sm:p-6 flex items-center justify-start w-full sm:w-1/3">
-<h2 className="text-3xl sm:text-5xl lg:text-[70px] font-light leading-none">
-  <span className="text-gray-400">Expected</span> <span className="font-bold text-black">Numbers</span>
-</h2>
-
+            <h2 className="text-3xl sm:text-5xl lg:text-[70px] font-light leading-none">
+              <span className="text-gray-400">Expected</span> <span className="font-bold text-black">Numbers</span>
+            </h2>
           </div>
 
           {/* Right Side: Stat Cards - Dynamic */}
@@ -137,7 +144,7 @@ export default function EVEventHero() {
                 }`}
               >
                 <div
-                  className={`${stat.color} text-black px-4 sm:px-6 py-4 flex items-center justify-between h-full rounded-b-md sm:rounded-b-none sm:rounded-r-md`}
+                  className={`${stat.color} text-black px-4 sm:px-6 py-4 flex items-center justify-between h-full rounded-b-md sm:rounded-b-none sm:rounded-r-md relative`}
                 >
                   <div className="flex items-baseline gap-2">
                     <h3 className="text-4xl sm:text-6xl lg:text-[100px] leading-none font-extrabold">
@@ -146,13 +153,23 @@ export default function EVEventHero() {
                     </h3>
                     <p className="text-xl sm:text-3xl lg:text-[50px] font-medium">{stat.label}</p>
                   </div>
-                  <div className="text-black">
+
+                  {/* Clickable Dynamic Arrow - advances to next stat when clicked */}
+                  <button
+                    onClick={handleArrowClick}
+                    className={`text-black transition-all duration-1000 ease-in-out hover:scale-110 active:scale-95 ${
+                      index === activeIndex
+                        ? "transform translate-x-0 opacity-100"
+                        : "transform translate-x-4 opacity-0"
+                    }`}
+                    aria-label="Next statistic"
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
                       height="24"
                       fill="currentColor"
-                      className="bi bi-chevron-right sm:w-[30px] sm:h-[30px] lg:w-[50px] lg:h-[50px]"
+                      className="bi bi-chevron-right sm:w-[30px] sm:h-[30px] lg:w-[50px] lg:h-[50px] cursor-pointer"
                       viewBox="0 0 16 16"
                     >
                       <path
@@ -160,7 +177,7 @@ export default function EVEventHero() {
                         d="M6.646 12.854a.5.5 0 0 1 0-.708L10.293 8 6.646 4.354a.5.5 0 1 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708 0z"
                       />
                     </svg>
-                  </div>
+                  </button>
                 </div>
               </div>
             ))}
@@ -178,6 +195,20 @@ export default function EVEventHero() {
             />
           ))}
         </div>
+
+        {/* Optional: Add navigation dots that are clickable */}
+        {/* <div className="flex justify-center mt-6 gap-3">
+          {statsData.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setActiveIndex(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                index === activeIndex ? "bg-cyan-400 scale-125" : "bg-gray-300 hover:bg-gray-400"
+              }`}
+              aria-label={`Go to stat ${index + 1}`}
+            />
+          ))}
+        </div> */}
       </div>
     </section>
   )
