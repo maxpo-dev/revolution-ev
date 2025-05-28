@@ -70,20 +70,13 @@ export default function ExhibitionSection() {
           <div className="space-y-6 bg-white/90 backdrop-blur-sm p-6 rounded-lg">
             <div className="space-y-4 text-sm leading-relaxed text-black">
               <p>
-                Revolution EV Malaysia Will Offer Exhibitors A Platform To Showcase The Latest EV Models, Innovative
-                Solutions, And Next-Gen Technologies In Front Of Thousands Of Industry Professionals. The Event Will
-                Draw A Large International & Regional Audience. #REVS25 Will Provide Participants With An Exclusive
-                Opportunity To Engage With Thousands Of Potential Clients Actively Seeking The Best Solutions To Meet
-                Their Specific Needs. With An Unmatched Networking And Business Matchmaking Scene, Participants Will Be
-                Able To Engage With The Prospects In Real-Time, Generate Qualified Leads, And Gauge Instant Market
-                Reaction.
+Revolution EV Malaysia will offer exhibitors a platform to showcase the latest EV models, innovative solutions, and next-gen technologies in front of thousands of industry professionals. The event will draw a large international & regional audience; #revEV will provide participants with an exclusive opportunity to engage with thousands of potential clients actively seeking the best solutions to meet their specific needs. With an unmatched networking and business matchmaking space, participants will be able to engage with the prospects in real-time, generate qualified leads, and gauge instant market reaction.
               </p>
 
-              <p>The Event Will Feature An Expansive Space Of 3000Sqm For 2 Days</p>
+              <p>The event will feature an expansive space of 3000sqm for 2 days</p>
 
               <p>
-                Featuring Brand New EV Cars, Trucks, And Lightweight Options Such As Electric Scooters, Skateboards, And
-                Bikes. Everything EV Will Be On Display At Malaysia's Signature EV Tradeshow And Conference, with participation from leading automakers, tech innovators, mobility startups, charging infrastructure providers, and government agencies.
+               Featuring brand-new EV cars, trucks, and lightweight options such as electric scooters, skateboards, and bikes, everything EV will be on display at Malaysia's signature EV tradeshow and conference — with participation from leading automakers, tech innovators, mobility startups, charging infrastructure providers, and government agencies — offering attendees a glimpse into the future of mobility
               </p>
             </div>
           </div>
