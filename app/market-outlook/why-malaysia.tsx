@@ -10,10 +10,7 @@ export default function WhyMalaysia() {
         <div className="mb-12">
           <h1 className="text-4xl font-light text-teal-400 mb-4">Why Malaysia</h1>
           <p className="text-sm text-gray-300 max-w-4xl leading-relaxed">
-            Malaysia Has Emerged As A Leading Hub For Electric Vehicle (EV) Innovation In Southeast Asia, Driven By
-            Strong Government Support And A Commitment To Sustainable Transportation. The Country Offers Unique
-            Advantages For EV Manufacturers, Technology Providers, And Investors Looking To Establish A Presence In The
-            Rapidly Growing ASEAN Market.
+    With its proactive policies and expanding infrastructure, Malaysia is quickly becoming a critical hub for EV growth in Southeast Asia as the shift from mobility to e-mobility becomes more evident in the face of increasing climate challenges.
           </p>
         </div>
 
@@ -34,10 +31,8 @@ export default function WhyMalaysia() {
             <div className="flex-1 ml-16">
               <h2 className="text-2xl font-light text-teal-400 mb-3">Government Policies</h2>
               <p className="text-sm text-gray-300 leading-relaxed">
-                Malaysia's Government Has Implemented Comprehensive EV Policies, Including The National Automotive
-                Policy 2020 And Low Carbon Mobility Blueprint 2021-2030. These Initiatives Provide Tax Incentives,
-                Import Duty Exemptions, And Infrastructure Development Support, Creating A Conducive Environment For EV
-                Adoption And Manufacturing.
+                The Malaysian government’s pro-EV policies, such as tax incentives for EV manufacturers and consumers, expansion of charging infrastructure, and efforts to strengthen Malaysia as a regional EV manufacturing hub, have significantly accelerated the adoption of EVs.
+
               </p>
             </div>
             <div className="flex-shrink-0">
@@ -69,9 +64,8 @@ export default function WhyMalaysia() {
             <div className="flex-1 ml-16">
               <h2 className="text-2xl font-light text-teal-400 mb-3">Focus on Sustainability and Green Innovation</h2>
               <p className="text-sm text-gray-300 leading-relaxed">
-                Malaysia Is Committed To Achieving Carbon Neutrality By 2050, With EVs Playing A Central Role In This
-                Vision. The Country Promotes Green Technology Through Research And Development Initiatives, Renewable
-                Energy Integration, And Sustainable Manufacturing Practices That Align With Global Environmental Goals.
+                Malaysia’s innovation trajectory is gaining momentum, with a strong focus on funding for startups, EV manufacturing, and the expansion of charging infrastructure, transforming the country into a dynamic hub for sustainable mobility and tech-driven growth.
+
               </p>
             </div>
             <div className="flex-shrink-0">
@@ -103,9 +97,8 @@ export default function WhyMalaysia() {
             <div className="flex-1 ml-16">
               <h2 className="text-2xl font-light text-teal-400 mb-3">Advanced Infrastructure Technologies</h2>
               <p className="text-sm text-gray-300 leading-relaxed">
-                Malaysia Boasts World-Class Infrastructure Including Modern Ports, Highways, And Digital Connectivity.
-                The Country Is Rapidly Expanding Its EV Charging Network With Plans For 15,000 Charging Points By 2025,
-                Supported By Smart Grid Technologies And Renewable Energy Sources.
+                Better EV performance and cost are being driven by advancements in battery technology, and the most recent developments in the Malaysian market are creating exciting prospects for the e-mobility sector.
+
               </p>
             </div>
             <div className="flex-shrink-0">
@@ -137,9 +130,7 @@ export default function WhyMalaysia() {
             <div className="flex-1 ml-16">
               <h2 className="text-2xl font-light text-teal-400 mb-3">Vehicle to Grid Integration</h2>
               <p className="text-sm text-gray-300 leading-relaxed">
-                Malaysia Is Pioneering Vehicle-To-Grid (V2G) Technology Integration, Allowing EVs To Feed Energy Back
-                Into The National Grid. This Innovation Creates New Revenue Streams For EV Owners While Supporting Grid
-                Stability And Renewable Energy Integration Across The Country.
+              Vehicle to Grid (V2G) allows electric vehicles to send power back to the grid whenever needed.  As Malaysia accelerates EV adoption, V2G can play a key role in integrating energy and technology.
               </p>
             </div>
             <div className="flex-shrink-0">
@@ -171,9 +162,8 @@ export default function WhyMalaysia() {
             <div className="flex-1 ml-16">
               <h2 className="text-2xl font-light text-teal-400 mb-3">Smart Mobility Solutions for Smart Cities</h2>
               <p className="text-sm text-gray-300 leading-relaxed">
-                Malaysia's Smart City Initiatives Integrate EVs Into Comprehensive Urban Mobility Solutions. From
-                Autonomous Vehicle Testing To Integrated Transportation Systems, The Country Provides A Living
-                Laboratory For Next-Generation Mobility Technologies And Smart Infrastructure Development.
+               Malaysia’s strategic move to integrate e-mobility with smart technologies such as IoT and AI aims to create a more efficient, sustainable, and interconnected transportation system.
+
               </p>
             </div>
             <div className="flex-shrink-0">

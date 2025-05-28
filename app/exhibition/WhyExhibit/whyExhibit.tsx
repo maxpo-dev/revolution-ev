@@ -6,63 +6,63 @@ export default function WhyExhibit() {
     {
       title: "Connect Directly with EV Industry Decision-Makers",
       content:
-        "Secure Exclusive Access To Top-Level Executives, Government Policymakers, And Thought Leaders Driving The Next Phase Of The Electric Vehicle (EV) And Sustainable Mobility Revolution.",
+        "Secure exclusive access to top-level executives, government policymakers, and thought leaders driving the next phase of the electric vehicle (EV) and sustainable mobility revolution.",
       bgColor: "bg-gray-900",
       textColor: "text-white",
     },
     {
       title: "Maximise Brand Visibility in a Growing Market",
       content:
-        "Showcase Your Brand In Front Of A Highly Targeted Audience. Passionate About Electric Mobility, Smart Transportation Technologies, Position Your Business As A Leader In The EV Ecosystem.",
+        "Showcase your brand in front of a highly targeted audience passionate about electric mobility, smart transportation solutions, and green technologies. Position your business as a leader in the EV ecosystem.",
       bgColor: "bg-cyan-400",
       textColor: "text-gray-900",
     },
     {
       title: "Growing Business Opportunities",
       content:
-        "Generate High-Value Leads By Connecting With Potential Buyers, Investors, Venture Capitalists, Business Strategy Partners Searching For Innovation In E-Mobility, Battery Technology, And Clean Energy Solutions.",
+        "Generate high-value leads by connecting with potential buyers, investors, venture capitalists, and strategic partners actively searching for innovation in e-mobility, battery technology, and clean energy solutions.",
       bgColor: "bg-gray-900",
       textColor: "text-white",
     },
     {
       title: "Lead the Clean Mobility Movement",
       content:
-        "Promote The Transition To Zero-Emission Transportation. Align Your Brand With Global Sustainability Initiatives And Demonstrate Your Commitment To Building A Cleaner, Greener Future.",
+        "Promote the transition to zero-emission transportation. Align your brand with global sustainability initiatives and demonstrate your commitment to building a cleaner, greener future.",
       bgColor: "bg-cyan-400",
       textColor: "text-gray-900",
     },
     {
       title: "The Latest Trends in EV Technology",
       content:
-        "Stay Ahead Of The Curve With The Newest Electric Vehicle Models, Latest Charging Solutions, Battery Advancements, Autonomous Driving Technology And Renewable Energy Integration Transforming The Transportation Industry.",
+        "Get an inside look at the newest electric vehicle models, latest charging solutions, battery advancements, autonomous vehicle technologies, and renewable energy integrations transforming the transportation industry.",
       bgColor: "bg-cyan-400",
       textColor: "text-gray-900",
     },
     {
       title: "Gain Media Exposure",
       content:
-        "Increase Your Brand's Visibility Across Digital, Automotive And Tech Publications, And Industry Reports. Strengthen Your Public Relations Footprint And Amplify Your Marketing Reach.",
+        "Expand your brand's visibility across major media outlets, automotive and tech publications, and influential EV blogs. Strengthen your public relations footprint and amplify your marketing reach.",
       bgColor: "bg-gray-900",
       textColor: "text-white",
     },
     {
       title: "Learn from Industry Experts and Visionaries",
       content:
-        "Attend Keynote Sessions, Expert Panels And Workshops Featuring World-Renowned Automotive CEOs, Climate Tech Pioneers, And Mobility Futurists.",
+        "Attend keynote sessions, expert panels, and masterclasses featuring world-renowned speakers, automotive CEOs, climate tech pioneers, and mobility futurists.",
       bgColor: "bg-gray-900",
       textColor: "text-white",
     },
     {
       title: "Understand the Emerging Trends in Global E-Mobility",
       content:
-        "Get Insights On Breakthrough Technologies As Vehicle-To-Grid (V2G) Technology, Battery Swapping Networks, Hydrogen-Powered Vehicles, And Autonomous Electric Fleets.",
+ "Get insights on future trends such as vehicle-to-grid (V2G) technology, battery swapping networks, hydrogen-powered vehicles, and autonomous electric fleets.",
       bgColor: "bg-cyan-400",
       textColor: "text-gray-900",
     },
     {
       title: "Get Inspired by Innovation",
       content:
-        "Walk Away Energized And Inspired By The World's Most Cutting-Edge Tech, Prototypes, And Strategies That Are Reshaping The Future Of Transportation.",
+        "Walk away energized and inspired by the world's most innovative ideas, prototypes, and strategies that are reshaping the future of transportation.",
       bgColor: "bg-gray-900",
       textColor: "text-white",
     },
