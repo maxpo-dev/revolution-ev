@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import car from "@/public/image/exhibit/car.png";
+import Link from "next/link";
 
 export default function ShowcaseConnectLead() {
   return (
@@ -22,7 +23,7 @@ export default function ShowcaseConnectLead() {
             <div className="text-white p-6 rounded-lg" style={{ backgroundColor: "#0DB6C9" }}>
               <h3 className="text-xl font-bold mb-3">Showcase:</h3>
               <p className="text-sm leading-relaxed">
-                At <span className="text-black font-semibold">#Rev2025</span>, bring your ideas to life by showcasing the latest EV models,
+                At <span className="text-black font-semibold">#rev2025</span>, bring your ideas to life by showcasing the latest EV models,
                 sustainable charging solutions, and technologies from across the industry vertical.
               </p>
             </div>
@@ -42,7 +43,7 @@ export default function ShowcaseConnectLead() {
             <div className="text-white p-6 rounded-lg" style={{ backgroundColor: "#0DB6C9" }}>
               <h3 className="text-xl font-bold mb-3">Connect:</h3>
               <p className="text-sm leading-relaxed">
-                <span className="text-black font-semibold">#Rev2025</span> is your platform to connect with investors, tech innovators,
+                <span className="text-black font-semibold">#rev2025</span> is your platform to connect with investors, tech innovators,
                 manufacturers, suppliers, policymakers, and decision makers within Malaysia and beyond.
               </p>
             </div>
@@ -62,7 +63,7 @@ export default function ShowcaseConnectLead() {
             <div className="text-white p-6 rounded-lg" style={{ backgroundColor: "#0DB6C9" }}>
               <h3 className="text-xl font-bold mb-3">Lead:</h3>
               <p className="text-sm leading-relaxed">
-                Make your brand the star of the event at <span className="text-black font-semibold">#Rev2025</span> by proudly showcasing
+                Make your brand the star of the event at <span className="text-black font-semibold">#rev2025</span> by proudly showcasing
                 your commitment towards green mobility solutions.
               </p>
             </div>
@@ -78,10 +79,15 @@ export default function ShowcaseConnectLead() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/register?t=exhibitor">
             <Button className="bg-black text-white hover:bg-gray-800 px-8 py-3">Book Your Stand</Button>
-            <Button variant="outline" className="border-black text-black hover:bg-gray-50 px-8 py-3">
+            </Link>
+            <Link href="/register?t=sponsor">
+                        <Button variant="outline" className="border-black text-black hover:bg-gray-50 px-8 py-3">
               Enquire For Sponsorships
             </Button>
+            </Link>
+
           </div>
         </div>
       </div>
