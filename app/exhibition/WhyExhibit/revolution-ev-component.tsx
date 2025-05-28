@@ -79,12 +79,11 @@ export default function ExhibitionSection() {
                 Reaction.
               </p>
 
-              <p>The Event Will Feature An Expansive Space Of ****Sqm For 3 Days</p>
+              <p>The Event Will Feature An Expansive Space Of 3000Sqm For 2 Days</p>
 
               <p>
                 Featuring Brand New EV Cars, Trucks, And Lightweight Options Such As Electric Scooters, Skateboards, And
-                Bikes. Everything EV Will Be On Display At Malaysia's Signature EV Tradeshow And Conference, Offering
-                Participants A Glimpse Into The Future Of Mobility.
+                Bikes. Everything EV Will Be On Display At Malaysia's Signature EV Tradeshow And Conference, with participation from leading automakers, tech innovators, mobility startups, charging infrastructure providers, and government agencies.
               </p>
             </div>
           </div>
