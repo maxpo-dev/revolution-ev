@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 export default function WhyMalaysia() {
   return (
@@ -192,12 +193,15 @@ export default function WhyMalaysia() {
           <h3 className="text-xl font-light text-white mb-4">
             Interested in Showcasing Your Solutions To A Targeted Audience
           </h3>
-          <Button
+          <Link href="/register">
+           <Button
             variant="outline"
             className="border-teal-400 text-white bg-black hover:bg-black hover:text-white "
           >
             Request Call Back
           </Button>
+          </Link>
+
         </div>
       </div>
     </div>
