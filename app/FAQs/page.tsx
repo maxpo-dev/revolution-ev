@@ -106,7 +106,7 @@ export default function FAQSection() {
       return (
         <span>
           Yes, those who all are interested in speaking, exhibiting, or sponsorship can contact our team via the{" "}
-          <Link href="/register" className="text-blue-600 hover:text-blue-800 underline font-medium">
+          <Link href="/register " className="text-blue-600 hover:text-blue-800 underline font-medium">
             Get in Touch Section
           </Link>{" "}
           on our website
