@@ -1,5 +1,7 @@
 "use client"
 
+import type React from "react"
+
 import { useState, useRef, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
@@ -14,7 +16,7 @@ export default function Navbar() {
   const conferenceDropdownRef = useRef<HTMLDivElement>(null)
   const [isMobileConferenceDropdownOpen, setIsMobileConferenceDropdownOpen] = useState(false)
   const [isSponsorDropdownOpen, setIsSponsorDropdownOpen] = useState(false)
-  const sponsorDropdownRef = useRef<HTMLDivElement>(null) 
+  const sponsorDropdownRef = useRef<HTMLDivElement>(null)
   const [isPartnersDropdownOpen, setIsPartnersDropdownOpen] = useState(false)
   const partnersDropdownRef = useRef<HTMLDivElement>(null)
   const [isMobilePartnersDropdownOpen, setIsMobilePartnersDropdownOpen] = useState(false)
@@ -30,16 +32,34 @@ export default function Navbar() {
   }
 
   const handleDropdownEnter = (setter: React.Dispatch<React.SetStateAction<boolean>>) => {
+    // Clear any existing timeout
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current)
+      timeoutRef.current = null
     }
-    setter(true)
+
+    // Close all dropdowns first
+    setIsExhibitionDropdownOpen(false)
+    setIsConferenceDropdownOpen(false)
+    setIsSponsorDropdownOpen(false)
+    setIsPartnersDropdownOpen(false)
+    setIsMoreDropdownOpen(false)
+
+    // Then open the current one after a small delay to ensure others are closed
+    setTimeout(() => {
+      setter(true)
+    }, 10)
   }
 
   const handleDropdownLeave = (setter: React.Dispatch<React.SetStateAction<boolean>>) => {
+    // Clear any existing timeout
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current)
+    }
+
     timeoutRef.current = setTimeout(() => {
       setter(false)
-    }, 200)
+    }, 150) // Slightly longer timeout for better UX
   }
 
   useEffect(() => {
@@ -49,12 +69,10 @@ export default function Navbar() {
         conferenceDropdownRef.current,
         sponsorDropdownRef.current,
         partnersDropdownRef.current,
-        moreDropdownRef.current
+        moreDropdownRef.current,
       ]
 
-      const isOutside = dropdowns.every(
-        ref => ref && !ref.contains(event.target as Node)
-      )
+      const isOutside = dropdowns.every((ref) => ref && !ref.contains(event.target as Node))
       if (isOutside) {
         setIsExhibitionDropdownOpen(false)
         setIsConferenceDropdownOpen(false)
@@ -62,7 +80,6 @@ export default function Navbar() {
         setIsPartnersDropdownOpen(false)
         setIsMoreDropdownOpen(false)
       }
-    
     }
 
     document.addEventListener("mousedown", handleClickOutside)
@@ -71,6 +88,81 @@ export default function Navbar() {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current)
       }
+    }
+  }, [])
+
+  useEffect(() => {
+    const handleGlobalMouseMove = (event: MouseEvent) => {
+      // Get all dropdown containers
+      const dropdownContainers = [
+        dropdownRef.current,
+        conferenceDropdownRef.current,
+        sponsorDropdownRef.current,
+        partnersDropdownRef.current,
+        moreDropdownRef.current,
+      ]
+
+      // Check if mouse is over any dropdown container or its children
+      const isOverAnyDropdown = dropdownContainers.some((container) => {
+        if (!container) return false
+        return container.contains(event.target as Node)
+      })
+
+      // If not over any dropdown, close all after a delay
+      if (!isOverAnyDropdown) {
+        if (timeoutRef.current) {
+          clearTimeout(timeoutRef.current)
+        }
+
+        timeoutRef.current = setTimeout(() => {
+          setIsExhibitionDropdownOpen(false)
+          setIsConferenceDropdownOpen(false)
+          setIsSponsorDropdownOpen(false)
+          setIsPartnersDropdownOpen(false)
+          setIsMoreDropdownOpen(false)
+        }, 200)
+      } else {
+        // If over a dropdown, clear any pending close timeout
+        if (timeoutRef.current) {
+          clearTimeout(timeoutRef.current)
+          timeoutRef.current = null
+        }
+      }
+    }
+
+    document.addEventListener("mousemove", handleGlobalMouseMove)
+    return () => {
+      document.removeEventListener("mousemove", handleGlobalMouseMove)
+    }
+  }, [])
+
+  useEffect(() => {
+    const handleDocumentClick = (event: MouseEvent) => {
+      const dropdownContainers = [
+        dropdownRef.current,
+        conferenceDropdownRef.current,
+        sponsorDropdownRef.current,
+        partnersDropdownRef.current,
+        moreDropdownRef.current,
+      ]
+
+      const isClickInsideAnyDropdown = dropdownContainers.some((container) => {
+        if (!container) return false
+        return container.contains(event.target as Node)
+      })
+
+      if (!isClickInsideAnyDropdown) {
+        setIsExhibitionDropdownOpen(false)
+        setIsConferenceDropdownOpen(false)
+        setIsSponsorDropdownOpen(false)
+        setIsPartnersDropdownOpen(false)
+        setIsMoreDropdownOpen(false)
+      }
+    }
+
+    document.addEventListener("click", handleDocumentClick)
+    return () => {
+      document.removeEventListener("click", handleDocumentClick)
     }
   }, [])
 
@@ -99,8 +191,8 @@ export default function Navbar() {
             About
           </Link>
 
-          <div 
-            ref={dropdownRef} 
+          <div
+            ref={dropdownRef}
             className="relative"
             onMouseEnter={() => handleDropdownEnter(setIsExhibitionDropdownOpen)}
             onMouseLeave={() => handleDropdownLeave(setIsExhibitionDropdownOpen)}
@@ -117,7 +209,7 @@ export default function Navbar() {
             </button>
 
             {isExhibitionDropdownOpen && (
-              <div 
+              <div
                 className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-50 border border-gray-200"
                 onMouseEnter={() => handleDropdownEnter(setIsExhibitionDropdownOpen)}
                 onMouseLeave={() => handleDropdownLeave(setIsExhibitionDropdownOpen)}
@@ -171,7 +263,7 @@ export default function Navbar() {
               />
             </button>
             {isConferenceDropdownOpen && (
-              <div 
+              <div
                 className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-50 border border-gray-200"
                 onMouseEnter={() => handleDropdownEnter(setIsConferenceDropdownOpen)}
                 onMouseLeave={() => handleDropdownLeave(setIsConferenceDropdownOpen)}
@@ -219,7 +311,7 @@ export default function Navbar() {
             </button>
 
             {isSponsorDropdownOpen && (
-              <div 
+              <div
                 className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-50 border border-gray-200"
                 onMouseEnter={() => handleDropdownEnter(setIsSponsorDropdownOpen)}
                 onMouseLeave={() => handleDropdownLeave(setIsSponsorDropdownOpen)}
@@ -260,7 +352,7 @@ export default function Navbar() {
             </button>
 
             {isPartnersDropdownOpen && (
-              <div 
+              <div
                 className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-50 border border-gray-200"
                 onMouseEnter={() => handleDropdownEnter(setIsPartnersDropdownOpen)}
                 onMouseLeave={() => handleDropdownLeave(setIsPartnersDropdownOpen)}
@@ -308,7 +400,7 @@ export default function Navbar() {
             </button>
 
             {isMoreDropdownOpen && (
-              <div 
+              <div
                 className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-50 border border-gray-200"
                 onMouseEnter={() => handleDropdownEnter(setIsMoreDropdownOpen)}
                 onMouseLeave={() => handleDropdownLeave(setIsMoreDropdownOpen)}
