@@ -23,7 +23,7 @@ export default function ShowcaseConnectLead() {
             <div className="text-white p-6 rounded-lg" style={{ backgroundColor: "#0DB6C9" }}>
               <h3 className="text-xl font-bold mb-3">Showcase:</h3>
               <p className="text-sm leading-relaxed">
-                At <span className="text-black font-semibold">#rev2025</span>, bring your ideas to life by showcasing the latest EV models,
+                At <span className="text-black font-semibold">#rev25</span>, bring your ideas to life by showcasing the latest EV models,
                 sustainable charging solutions, and technologies from across the industry vertical.
               </p>
             </div>
@@ -43,7 +43,7 @@ export default function ShowcaseConnectLead() {
             <div className="text-white p-6 rounded-lg" style={{ backgroundColor: "#0DB6C9" }}>
               <h3 className="text-xl font-bold mb-3">Connect:</h3>
               <p className="text-sm leading-relaxed">
-                <span className="text-black font-semibold">#rev2025</span> is your platform to connect with investors, tech innovators,
+                <span className="text-black font-semibold">#rev25</span> is your platform to connect with investors, tech innovators,
                 manufacturers, suppliers, policymakers, and decision makers within Malaysia and beyond.
               </p>
             </div>
@@ -63,7 +63,7 @@ export default function ShowcaseConnectLead() {
             <div className="text-white p-6 rounded-lg" style={{ backgroundColor: "#0DB6C9" }}>
               <h3 className="text-xl font-bold mb-3">Lead:</h3>
               <p className="text-sm leading-relaxed">
-                Make your brand the star of the event at <span className="text-black font-semibold">#rev2025</span> by proudly showcasing
+                Make your brand the star of the event at <span className="text-black font-semibold">#rev25</span> by proudly showcasing
                 your commitment towards green mobility solutions.
               </p>
             </div>

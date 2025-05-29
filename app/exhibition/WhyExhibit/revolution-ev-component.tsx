@@ -70,7 +70,7 @@ export default function ExhibitionSection() {
           <div className="space-y-6 bg-white/90 backdrop-blur-sm p-6 rounded-lg">
             <div className="space-y-4 text-sm leading-relaxed text-black">
               <p>
-Revolution EV Malaysia will offer exhibitors a platform to showcase the latest EV models, innovative solutions, and next-gen technologies in front of thousands of industry professionals. The event will draw a large international & regional audience; #revEV will provide participants with an exclusive opportunity to engage with thousands of potential clients actively seeking the best solutions to meet their specific needs. With an unmatched networking and business matchmaking space, participants will be able to engage with the prospects in real-time, generate qualified leads, and gauge instant market reaction.
+Revolution EV Malaysia will offer exhibitors a platform to showcase the latest EV models, innovative solutions, and next-gen technologies in front of thousands of industry professionals. The event will draw a large international & regional audience;  <span className="text-sky-500">#rev25</span> will provide participants with an exclusive opportunity to engage with thousands of potential clients actively seeking the best solutions to meet their specific needs. With an unmatched networking and business matchmaking space, participants will be able to engage with the prospects in real-time, generate qualified leads, and gauge instant market reaction.
               </p>
 
               <p>The event will feature an expansive space of 3000sqm for 2 days</p>
