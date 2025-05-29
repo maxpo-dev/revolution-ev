@@ -171,7 +171,7 @@ export default function Navbar() {
         <div className="flex items-center">
           <Link href="/" className="flex items-center gap-2">
             <Image
-              src="/placeholder.svg?height=60&width=200"
+              src="/image/Frame 3968606 (1).png?height=60&width=200"
               alt="Revolution EV Logo"
               width={150}
               height={60}
