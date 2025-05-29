@@ -8,7 +8,7 @@ export default function Agenda() {
 
   const days: Record<DayKey, string[]> = {
     day1: ['Audi 1', '', '', '', ''],
-    day2: ['Audi A', 'Audi B', 'Audi C', 'Audi D', 'Audi E'],
+    day2: ['Audi 1', 'Audi B', 'Audi C', 'Audi D', 'Audi E'],
   }
 
   return (
