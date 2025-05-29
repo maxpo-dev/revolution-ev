@@ -98,13 +98,13 @@ export default function Navbar() {
     ],
     partners: [
       { href: "/partners/MediaPartner", label: "Media Partner" },
-      { href: "/partners/SupportingPartners", label: "Supporting Partner" },
+      { href: "/supportingpartners", label: "Supporting Partner" },
       { href: "/register?t=partner", label: "Partner Enquiry", bold: true },
     ],
     more: [
       { href: "/market-outlook", label: "Market Outlook" },
-      { href: "/more/contact", label: "News & Blogs" },
-      { href: "/more/contact", label: "Testimonials" },
+      { href: "/News&Blogs", label: "News & Blogs" },
+      { href: "/testimonial", label: "Testimonials" },
       { href: "/FAQs", label: "FAQs" },
     ],
   }
