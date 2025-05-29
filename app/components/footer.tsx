@@ -1,12 +1,63 @@
 "use client"
 
+import type React from "react"
+
+import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
-import { Twitter, Instagram, Linkedin, Youtube, Facebook } from "lucide-react"
+import { Twitter, Instagram, Linkedin, Youtube, Facebook, CheckCircle } from "lucide-react"
 
 export default function Footer() {
+  const [email, setEmail] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [showThankYou, setShowThankYou] = useState(false)
+  const [error, setError] = useState("")
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault()
+
+    if (!email) {
+      setError("Please enter your email address")
+      return
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError("Please enter a valid email address")
+      return
+    }
+
+    setIsSubmitting(true)
+    setError("")
+
+    try {
+      const response = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      })
+
+      if (response.ok) {
+        setShowThankYou(true)
+        setEmail("")
+        // Hide thank you message after 5 seconds
+        setTimeout(() => {
+          setShowThankYou(false)
+        }, 5000)
+      } else {
+        const data = await response.json()
+        setError(data.error || "Something went wrong. Please try again.")
+      }
+    } catch (error) {
+      setError("Network error. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <>
       {/* Gradient Top Bar */}
@@ -25,19 +76,34 @@ export default function Footer() {
             <p className="text-white font-medium mb-1 text-sm sm:text-base text-center md:text-left">
               Join our Mailing list
             </p>
-            <form className="flex w-full max-w-xs sm:max-w-md mx-auto md:mx-0">
-              <Input
-                type="email"
-                placeholder="Enter Your email address"
-                className="bg-white text-black rounded-none h-9 text-xs sm:text-sm w-full max-w-[200px] sm:w-64 border-none"
-              />
-              <Button
-                type="submit"
-                className="bg-[#00c2de] text-white rounded-none h-9 text-xs sm:text-sm px-2 sm:px-4 hover:bg-[#00a8c0] whitespace-nowrap"
-              >
-                Subscribe
-              </Button>
-            </form>
+
+            {showThankYou ? (
+              <div className="flex items-center justify-center md:justify-start bg-white rounded px-4 py-2 max-w-xs sm:max-w-md mx-auto md:mx-0">
+                <CheckCircle className="text-green-500 mr-2" size={20} />
+                <span className="text-green-700 text-sm font-medium">Thank you for subscribing!</span>
+              </div>
+            ) : (
+              <form onSubmit={handleSubscribe} className="flex flex-col w-full max-w-xs sm:max-w-md mx-auto md:mx-0">
+                <div className="flex">
+                  <Input
+                    type="email"
+                    placeholder="Enter Your email address"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="bg-white text-black rounded-none h-9 text-xs sm:text-sm w-full max-w-[200px] sm:w-64 border-none"
+                    disabled={isSubmitting}
+                  />
+                  <Button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="bg-[#00c2de] text-white rounded-none h-9 text-xs sm:text-sm px-2 sm:px-4 hover:bg-[#00a8c0] whitespace-nowrap disabled:opacity-50"
+                  >
+                    {isSubmitting ? "..." : "Subscribe"}
+                  </Button>
+                </div>
+                {error && <p className="text-red-200 text-xs mt-1">{error}</p>}
+              </form>
+            )}
           </div>
         </div>
       </div>
@@ -120,7 +186,7 @@ export default function Footer() {
                     Partners
                   </Link>
                 </li>
-                                <li>
+                <li>
                   <Link href="/exhibition/Exhibitors" className="hover:text-[#00E1B0]">
                     Exhibitors
                   </Link>
@@ -159,17 +225,17 @@ export default function Footer() {
                     News & Blogs
                   </Link>
                 </li>
-                 <li>
+                <li>
                   <Link href="/market-outlook" className="hover:text-[#00E1B0]">
                     Market Outlook
                   </Link>
                 </li>
-                                 <li>
+                <li>
                   <Link href="/FAQs" className="hover:text-[#00E1B0]">
                     FAQs
                   </Link>
                 </li>
-                 <li>
+                <li>
                   <Link href="#" className="hover:text-[#00E1B0]">
                     Testimonials
                   </Link>
@@ -188,17 +254,29 @@ export default function Footer() {
                   <Link href="https://x.com/revolutionev_" className="bg-gray-800 p-1.5 rounded-sm hover:bg-gray-700">
                     <Twitter size={16} />
                   </Link>
-                  <Link href="https://www.instagram.com/_revolutionev" className="bg-gray-800 p-1.5 rounded-sm hover:bg-gray-700">
+                  <Link
+                    href="https://www.instagram.com/_revolutionev"
+                    className="bg-gray-800 p-1.5 rounded-sm hover:bg-gray-700"
+                  >
                     <Instagram size={16} />
                   </Link>
-                  <Link href="https://www.linkedin.com/company/revolutionev/" className="bg-gray-800 p-1.5 rounded-sm hover:bg-gray-700">
+                  <Link
+                    href="https://www.linkedin.com/company/revolutionev/"
+                    className="bg-gray-800 p-1.5 rounded-sm hover:bg-gray-700"
+                  >
                     <Linkedin size={16} />
                   </Link>
-                  <Link href="https://www.youtube.com/channel/UCYhYC3ZVz64d9L1vVV9rQ5g" className="bg-gray-800 p-1.5 rounded-sm hover:bg-gray-700">
-                     <Youtube size={16} />
+                  <Link
+                    href="https://www.youtube.com/channel/UCYhYC3ZVz64d9L1vVV9rQ5g"
+                    className="bg-gray-800 p-1.5 rounded-sm hover:bg-gray-700"
+                  >
+                    <Youtube size={16} />
                   </Link>
-                     <Link href="https://www.facebook.com/profile.php?id=61576595758079" className="bg-gray-800 p-1.5 rounded-sm hover:bg-gray-700">
-                     <Facebook size={16} />
+                  <Link
+                    href="https://www.facebook.com/profile.php?id=61576595758079"
+                    className="bg-gray-800 p-1.5 rounded-sm hover:bg-gray-700"
+                  >
+                    <Facebook size={16} />
                   </Link>
                 </li>
               </ul>
