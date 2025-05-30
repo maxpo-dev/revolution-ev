@@ -115,7 +115,7 @@ export default function BrochureForm() {
     <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
       {/* Form Section */}
       <div className="p-6 bg-white border border-[#56c847] ">
-        <h2 className="text-xl font-medium mb-4">Fill the details below to download our brochure</h2>
+        <h2 className="text-xl font-medium mb-4">Enquire now to receive brochure details</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Name */}
           <div>
@@ -265,7 +265,7 @@ export default function BrochureForm() {
           {/* Submit */}
           <div className="flex justify-center mt-6">
             <Button type="submit" className="bg-[#30A685] text-white hover:bg-[#268a6f] px-8">
-              Download Brochure
+              Enquire Now
             </Button>
           </div>
         </form>
