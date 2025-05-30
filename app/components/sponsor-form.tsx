@@ -114,7 +114,7 @@ export default function SponsorForm() {
     <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
       {/* Form Section */}
       <div className="p-6 bg-white border border-[#56c847] ">
-        <h2 className="text-xl font-medium mb-4">Fill the details below to enquire about sponsorship</h2>
+        <h2 className="text-xl font-medium mb-4"> Apply for Sponsorship</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Name */}
           <div>
@@ -134,7 +134,7 @@ export default function SponsorForm() {
           {/* Email */}
           <div>
             <Label className="text-sm font-medium">
-              Email <span className="text-red-500">*</span>
+              Work Email <span className="text-red-500">*</span>
             </Label>
             <Input
               name="email"
