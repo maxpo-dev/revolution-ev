@@ -177,8 +177,8 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-[#00E1B0]">
-                    Sponsors
+                  <Link href="/exhibition/Exhibitors" className="hover:text-[#00E1B0]">
+                    Exhibitor
                   </Link>
                 </li>
                 <li>
@@ -187,8 +187,8 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/exhibition/Exhibitors" className="hover:text-[#00E1B0]">
-                    Exhibitors
+                  <Link href="#" className="hover:text-[#00E1B0]">
+                    Sponsors
                   </Link>
                 </li>
               </ul>
