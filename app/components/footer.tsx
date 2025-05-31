@@ -172,7 +172,7 @@ export default function Footer() {
               <h3 className="text-xs sm:text-sm font-semibold mb-3 sm:mb-4">Participants</h3>
               <ul className="space-y-1 sm:space-y-2 text-xs sm:text-sm text-gray-300">
                 <li>
-                  <Link href="#" className="hover:text-[#00E1B0]">
+                  <Link href="/speakers" className="hover:text-[#00E1B0]">
                     Speakers
                   </Link>
                 </li>
@@ -182,12 +182,12 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-[#00E1B0]">
+                  <Link href="/partners/MediaPartner" className="hover:text-[#00E1B0]">
                     Partners
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-[#00E1B0]">
+                  <Link href="/sponsors/WhySponsor" className="hover:text-[#00E1B0]">
                     Sponsors
                   </Link>
                 </li>
