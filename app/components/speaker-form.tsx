@@ -11,7 +11,9 @@ export default function SpeakerForm() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     organization: "",
+    industry: "",
     topic: "",
     bio: "",
   })
@@ -36,7 +38,9 @@ export default function SpeakerForm() {
         setFormData({
           name: "",
           email: "",
+          phone: "",
           organization: "",
+          industry: "",
           topic: "",
           bio: "",
         })
@@ -73,7 +77,7 @@ export default function SpeakerForm() {
           {/* Email */}
           <div>
             <Label className="text-sm font-medium">
-              Email <span className="text-red-500">*</span>
+              Work Email <span className="text-red-500">*</span>
             </Label>
             <Input
               name="email"
@@ -86,9 +90,34 @@ export default function SpeakerForm() {
             />
           </div>
 
+                    <div>
+            <Label className="text-sm font-medium">
+              Phone Number <span className="text-red-500">*</span>
+            </Label>
+            <Input
+              name="phone"
+              type="text"
+              placeholder="Phone Number"
+              value={formData.phone}
+              onChange={handleChange}
+              className="border-gray-300"
+              required
+            />
+          </div>
+
           {/* Organization */}
           <div>
-            <Label className="text-sm font-medium">Organization</Label>
+            <Label className="text-sm font-medium">Company</Label>
+            <Input
+              name="organization"
+              placeholder="Company / Organization"
+              value={formData.organization}
+              onChange={handleChange}
+              className="border-gray-300"
+            />
+          </div>
+            <div>
+            <Label className="text-sm font-medium">Industry</Label>
             <Input
               name="organization"
               placeholder="Company / Organization"

@@ -21,7 +21,7 @@ export async function POST(request: Request) {
   try {
     const formData = await request.json()
 
-    const { name, email, organization, topic, bio } = formData
+    const { name, email, phone, organization, industry, topic, bio } = formData
 
     const mailOptions = {
       from: `"Speaker Form" <${EMAIL_USER}>`,
@@ -31,7 +31,9 @@ export async function POST(request: Request) {
         <h2>Speaker Proposal Submission</h2>
         <p><strong>Name:</strong> ${name}</p>
         <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Email:</strong> ${phone}</p>
         <p><strong>Organization:</strong> ${organization || "N/A"}</p>
+        <p><strong>Email:</strong> ${industry || "N/A"}</p>
         <p><strong>Proposed Topic:</strong> ${topic || "N/A"}</p>
         <p><strong>Bio:</strong><br/>${bio ? bio.replace(/\n/g, "<br/>") : "N/A"}</p>
       `,
