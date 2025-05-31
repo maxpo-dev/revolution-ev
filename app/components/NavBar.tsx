@@ -98,7 +98,7 @@ export default function Navbar() {
     ],
     partners: [
       { href: "/partners/MediaPartner", label: "Media Partner" },
-      { href: "/supportingpartners", label: "Supporting Partner" },
+      { href: "/partners/supportingpartners", label: "Supporting Partner" },
       { href: "/register?t=partner", label: "Partner Enquiry", bold: true },
     ],
     more: [
