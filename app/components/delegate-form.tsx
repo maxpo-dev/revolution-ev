@@ -116,7 +116,7 @@ export default function DelegateForm() {
     <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
       {/* Form Section */}
       <div className="p-6 bg-white border border-[#56c847] ">
-        <h2 className="text-xl font-medium mb-4">Join us as a delegate – fill in your details below</h2>
+        <h2 className="text-xl font-medium mb-4">Join Us as a delegate – fill in your details below </h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Name */}
           <div>
@@ -136,7 +136,7 @@ export default function DelegateForm() {
           {/* Email */}
           <div>
             <Label htmlFor="email" className="text-sm font-medium">
-              Work Email <span className="text-red-500">*</span>
+             Work Email <span className="text-red-500">*</span>
             </Label>
             <Input
               name="email"
