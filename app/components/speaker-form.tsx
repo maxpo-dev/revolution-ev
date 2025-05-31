@@ -129,7 +129,7 @@ export default function SpeakerForm() {
 
           {/* Topic */}
           <div>
-            <Label className="text-sm font-medium">Proposed Topic</Label>
+            <Label className="text-sm font-medium">Topic</Label>
             <Input
               name="topic"
               placeholder="Your speaking topic"
@@ -141,7 +141,7 @@ export default function SpeakerForm() {
 
           {/* Bio */}
           <div>
-            <Label className="text-sm font-medium">Short Bio</Label>
+            <Label className="text-sm font-medium">Message</Label>
             <Textarea
               name="bio"
               placeholder="Tell us about your background and experience"
