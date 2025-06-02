@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import BannerSection from "@/app/components/banner-section"
+import SuccessMessage from "@/app/components/success-message"
 
 export default function SponsorForm() {
   const [formData, setFormData] = useState({
@@ -22,9 +23,9 @@ export default function SponsorForm() {
     consent2: true,
   })
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
+  const [success, setSuccess] = useState(false)
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
@@ -33,10 +34,44 @@ export default function SponsorForm() {
     setFormData((prev) => ({ ...prev, [name]: checked }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Sponsor Form submitted:", formData)
-    // Add your form submission logic here
+    try {
+      const res = await fetch("/api/sponsor", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+      const data = await res.json()
+      if (res.ok) {
+        setSuccess(true)
+        setFormData({
+          name: "",
+          email: "",
+          companyName: "",
+          phoneNumber: "",
+          industry: "",
+          jobTitle: "",
+          message: "",
+          consent1: true,
+          consent2: true,
+        })
+      } else {
+        alert("Failed to send enquiry: " + data.message)
+      }
+    } catch (error) {
+      alert("Error sending enquiry: " + error)
+    }
+  }
+
+  if (success) {
+    return (
+      <SuccessMessage
+        type="sponsor"
+        title="Thank You For Your Sponsorship Enquiry!"
+        subtitle="You are now part of the Revolution EV sponsorship network"
+      />
+    )
   }
 
   const industryOptions = [
@@ -78,8 +113,8 @@ export default function SponsorForm() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
       {/* Form Section */}
-      <div className="p-6 bg-white">
-        <h2 className="text-xl font-medium mb-4">Fill the details below to enquire about sponsorship</h2>
+      <div className="p-6 bg-white border border-[#56c847] ">
+        <h2 className="text-xl font-medium mb-4"> Apply for Sponsorship</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Name */}
           <div>
@@ -99,7 +134,7 @@ export default function SponsorForm() {
           {/* Email */}
           <div>
             <Label className="text-sm font-medium">
-              Email <span className="text-red-500">*</span>
+              Work Email <span className="text-red-500">*</span>
             </Label>
             <Input
               name="email"
@@ -201,7 +236,7 @@ export default function SponsorForm() {
                 onCheckedChange={(checked: boolean) => handleCheckboxChange("consent1", checked)}
               />
               <Label htmlFor="consent1" className="text-xs leading-tight">
-                I confirm that I have read, understand and accept the event’s{" "}
+                I confirm that I have read, understand and accept the event's{" "}
                 <a href="#" className="text-blue-600 underline">
                   Terms and Conditions
                 </a>
@@ -215,7 +250,9 @@ export default function SponsorForm() {
                 onCheckedChange={(checked: boolean) => handleCheckboxChange("consent2", checked)}
               />
               <Label htmlFor="consent2" className="text-xs leading-tight">
-                Our company may contact you from time to time with updates and information about our events, products and services that may be of interest. We may also pass your details to carefully selected third parties and to sponsors and exhibitors at this event. Please see our{" "}
+                Our company may contact you from time to time with updates and information about our events, products
+                and services that may be of interest. We may also pass your details to carefully selected third parties
+                and to sponsors and exhibitors at this event. Please see our{" "}
                 <a href="#" className="text-blue-600 underline">
                   Privacy Policy
                 </a>{" "}

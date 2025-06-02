@@ -5,7 +5,7 @@ import type React from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
-type RegistrationType = "delegate" | "exhibitor" | "sponsor" | "enquiry" | "brochure"
+type RegistrationType = "delegate" | "exhibitor" | "sponsor" | "enquiry" | "brochure" | "speaker"
 
 export default function RegistrationLayout({
   children,
@@ -38,6 +38,9 @@ export default function RegistrationLayout({
               </TabLink>
               <TabLink href={`${pathname}?t=brochure`} isActive={activeTab === "brochure"}>
                 Brochure
+              </TabLink>
+                            <TabLink href={`${pathname}?t=brochure`} isActive={activeTab === "brochure"}>
+                Speaker
               </TabLink>
             </div>
 

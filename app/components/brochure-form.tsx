@@ -5,9 +5,10 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/app/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+import { Label } from "@/app/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import BannerSection from "@/app/components/banner-section"
+import SuccessMessage from "@/app/components/success-message"
 
 export default function BrochureForm() {
   const [formData, setFormData] = useState({
@@ -22,6 +23,8 @@ export default function BrochureForm() {
     consent2: true,
   })
 
+  const [success, setSuccess] = useState(false)
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
@@ -31,10 +34,45 @@ export default function BrochureForm() {
     setFormData((prev) => ({ ...prev, [name]: checked }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Brochure Form submitted:", formData)
-    // Add your form submission logic here
+    try {
+      const res = await fetch("/api/brochure", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await res.json()
+      if (res.ok) {
+        setSuccess(true)
+        setFormData({
+          name: "",
+          email: "",
+          phoneNumber: "",
+          companyName: "",
+          industry: "",
+          jobTitle: "",
+          message: "",
+          consent1: true,
+          consent2: true,
+        })
+      } else {
+        alert("Failed to send request: " + data.message)
+      }
+    } catch (error) {
+      alert("Error sending request: " + error)
+    }
+  }
+
+  if (success) {
+    return (
+      <SuccessMessage
+        type="brochure"
+        title="Thank You For Your Brochure Request!"
+        subtitle="Your brochure download will begin shortly"
+      />
+    )
   }
 
   const industryOptions = [
@@ -76,8 +114,8 @@ export default function BrochureForm() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
       {/* Form Section */}
-      <div className="p-6 bg-white">
-        <h2 className="text-xl font-medium mb-4">Fill the details below to download our brochure</h2>
+      <div className="p-6 bg-white border border-[#56c847] ">
+        <h2 className="text-xl font-medium mb-4">Enquire now to receive brochure details</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Name */}
           <div>
@@ -199,7 +237,7 @@ export default function BrochureForm() {
                 onCheckedChange={(checked: boolean) => handleCheckboxChange("consent1", checked)}
               />
               <Label htmlFor="consent1" className="text-xs leading-tight">
-              I confirm that I have read, understand and accept the event’s {" "}
+                I confirm that I have read, understand and accept the event's{" "}
                 <a href="#" className="text-blue-600 underline">
                   Terms and Conditions
                 </a>
@@ -213,7 +251,9 @@ export default function BrochureForm() {
                 onCheckedChange={(checked: boolean) => handleCheckboxChange("consent2", checked)}
               />
               <Label htmlFor="consent2" className="text-xs leading-tight">
-              Our company may contact you from time to time with updates and information about our events, products and services that may be of interest. We may also pass your details to carefully selected third parties and to sponsors and exhibitors at this event. Please see our{" "}
+                Our company may contact you from time to time with updates and information about our events, products
+                and services that may be of interest. We may also pass your details to carefully selected third parties
+                and to sponsors and exhibitors at this event. Please see our{" "}
                 <a href="#" className="text-blue-600 underline">
                   Privacy Policy
                 </a>{" "}
@@ -225,7 +265,7 @@ export default function BrochureForm() {
           {/* Submit */}
           <div className="flex justify-center mt-6">
             <Button type="submit" className="bg-[#30A685] text-white hover:bg-[#268a6f] px-8">
-              Download Brochure
+              Enquire Now
             </Button>
           </div>
         </form>
