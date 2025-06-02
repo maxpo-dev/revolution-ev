@@ -22,10 +22,14 @@ export default function SpeakerForm() {
     bio: "",
   })
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target
-    setFormData((prev) => ({ ...prev, [name]: value }))
-  }
+  const [isSubmitting, setIsSubmitting] = useState(false)
+const handleChange = (
+  e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+) => {
+  const { name, value } = e.target
+  setFormData((prev) => ({ ...prev, [name]: value }))
+}
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -48,7 +52,41 @@ export default function SpeakerForm() {
       alert("Error submitting speaker proposal: " + error)
     }
   }
-
+  const industryOptions = [
+    "Electric Vehicles (EVs)",
+    "Autonomous Electric Vehicles",
+    "Urban Air Mobility / eVTOL",
+    "Micro-Mobility (eBikes, Scooters, etc.)",
+    "Shared Mobility/MaaS Providers",
+    "Last-Mile Delivery Solutions",
+    "Low-Emission Vehicle Fleets",
+    "Smart Transportation Systems",
+    "Public Transport Integration",
+    "EV Charging Stations",
+    "Fast / Ultra-Fast Charging",
+    "Home & Workplace Charging",
+    "Wireless / Inductive Charging",
+    "Battery Swapping Stations",
+    "Charging Network Management",
+    "Smart Grid & Bidirectional (V2X) Charging",
+    "Renewable-Energy-Powered Charging",
+    "AI-Driven Energy Management",
+    "Integrated Solar EVs",
+    "EV-Integrated Smart Homes",
+    "Swappable-Battery EVs",
+    "Blockchain Payments for EV Charging",
+    "Smart In-Vehicle Operating Systems",
+    "Charging Hardware & Electronics Manufacturers",
+    "Electronic Production & Additive Manufacturing",
+    "Testing, Measurement & Certification",
+    "Consultants & R&D Experts",
+    "Investors & Venture Capitalists",
+    "Automotive Finance & Insurance",
+    "Government Ministries & Departments",
+    "City Councils & Local Authorities",
+    "Trade Associations & NGOs",
+    "Environmentalists",
+  ]
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
       {/* Form Section */}
@@ -114,14 +152,26 @@ export default function SpeakerForm() {
           </div>
 
           <div>
-            <Label className="text-sm font-medium">Industry</Label>
-            <Input
+            <Label className="text-sm font-medium">
+              Industry <span className="text-red-500">*</span>
+            </Label>
+            <select
               name="industry"
-              placeholder="Industry"
               value={formData.industry}
               onChange={handleChange}
-              className="border-gray-300"
-            />
+              className="w-full border border-gray-300 rounded-md p-2 text-sm"
+              required
+              disabled={isSubmitting}
+            >
+              <option value="" disabled>
+                Select Industry
+              </option>
+              {industryOptions.map((option, index) => (
+                <option key={index} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
           </div>
 
           {/* Topic */}
