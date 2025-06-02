@@ -2,15 +2,16 @@
 
 import type React from "react"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/app/components/ui/checkbox"
+import { Checkbox } from "@/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/app/components/ui/label"
-import { Textarea } from "@/app/components/ui/textarea"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
 import BannerSection from "@/app/components/banner-section"
-import SuccessMessage from "@/app/components/success-message"
 
 export default function DelegateForm() {
+  const router = useRouter()
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -22,8 +23,6 @@ export default function DelegateForm() {
     consent1: true,
     consent2: true,
   })
-
-  const [success, setSuccess] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
@@ -48,32 +47,13 @@ export default function DelegateForm() {
 
       const data = await res.json()
       console.log("Success:", data)
-      setSuccess(true)
-      setFormData({
-        name: "",
-        email: "",
-        companyName: "",
-        phoneNumber: "",
-        jobTitle: "",
-        industry: "",
-        message: "",
-        consent1: true,
-        consent2: true,
-      })
+
+      // Redirect to success page
+      router.push("/register?t=delegate/thankyou")
     } catch (error) {
       console.error("Error:", error)
       alert("There was a problem submitting the form.")
     }
-  }
-
-  if (success) {
-    return (
-      <SuccessMessage
-        type="delegate"
-        title="Thank You For Your Registration!"
-        subtitle="You are now registered as a delegate for the Revolution EV event"
-      />
-    )
   }
 
   const industryOptions = [
@@ -136,7 +116,7 @@ export default function DelegateForm() {
           {/* Email */}
           <div>
             <Label htmlFor="email" className="text-sm font-medium">
-             Work Email <span className="text-red-500">*</span>
+              Work Email <span className="text-red-500">*</span>
             </Label>
             <Input
               name="email"

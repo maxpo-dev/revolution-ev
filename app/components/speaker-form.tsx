@@ -1,13 +1,17 @@
 "use client"
 
+import type React from "react"
+
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/app/components/ui/label"
+import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import BannerSection from "@/app/components/banner-section"
 
 export default function SpeakerForm() {
+  const router = useRouter()
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -34,16 +38,8 @@ export default function SpeakerForm() {
       })
 
       if (res.ok) {
-        alert("Speaker proposal submitted successfully!")
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          organization: "",
-          industry: "",
-          topic: "",
-          bio: "",
-        })
+        // Redirect to success page instead of showing alert
+        router.push("/register?t=speaker/thankyou")
       } else {
         const data = await res.json()
         alert("Submission failed: " + data.message)
@@ -90,7 +86,7 @@ export default function SpeakerForm() {
             />
           </div>
 
-                    <div>
+          <div>
             <Label className="text-sm font-medium">
               Phone Number <span className="text-red-500">*</span>
             </Label>
@@ -116,12 +112,13 @@ export default function SpeakerForm() {
               className="border-gray-300"
             />
           </div>
-            <div>
+
+          <div>
             <Label className="text-sm font-medium">Industry</Label>
             <Input
-              name="organization"
-              placeholder="Company / Organization"
-              value={formData.organization}
+              name="industry"
+              placeholder="Industry"
+              value={formData.industry}
               onChange={handleChange}
               className="border-gray-300"
             />

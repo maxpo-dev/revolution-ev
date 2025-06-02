@@ -6,11 +6,11 @@ import Navbar from "./components/NavBar"
 import Footer from "./components/footer"
 import Script from "next/script"
 
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-  variable: "--font-dm-sans",
-})
+// const dmSans = DM_Sans({
+//   subsets: ["latin"],
+//   weight: ["400", "500", "700"],
+//   variable: "--font-dm-sans",
+// })  
 
 const mendaFont = localFont({
   src: [
@@ -26,6 +26,17 @@ const mendaFont = localFont({
     },
   ],
   variable: "--font-menda",
+})
+
+const dmSans= localFont({
+  src: [
+    {
+      path: "../public/fonts/dmSans/DMSans Bold.otf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-dm-sans",
 })
 
 export const metadata = {
