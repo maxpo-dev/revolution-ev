@@ -106,37 +106,37 @@ function getSuccessProps(type: string) {
       return {
         type: "delegate" as const,
         title: "Thank You For Your Registration!",
-        subtitle: "You are now registered as a delegate for the Revolution EV event",
+        subtitle: "You are now part of the Revolution EV community",
       }
     case "exhibitor":
       return {
         type: "exhibitor" as const,
         title: "Thank You For Your Exhibition Registration!",
-        subtitle: "You are now registered as an exhibitor for the Revolution EV event",
+        subtitle: "You are now part of the Revolution EV community",
       }
     case "sponsor":
       return {
         type: "sponsor" as const,
         title: "Thank You For Your Sponsorship Enquiry!",
-        subtitle: "You are now part of the Revolution EV sponsorship network",
+        subtitle: "You are now part of the Revolution EV community",
       }
     case "brochure":
       return {
         type: "brochure" as const,
         title: "Thank You For Your Brochure Request!",
-        subtitle: "Your brochure download will begin shortly",
+        subtitle: "You are now part of the Revolution EV community",
       }
     case "speaker":
       return {
         type: "speaker" as const,
         title: "Thank You For Your Speaker Proposal!",
-        subtitle: "You are now part of the Revolution EV speaker community",
+        subtitle: "You are now part of the Revolution EV community",
       }
     default:
       return {
         type: "enquiry" as const,
         title: "Thank You!",
-        subtitle: "Your submission has been received",
+        subtitle: "You are now part of the Revolution EV community",
       }
   }
 }
