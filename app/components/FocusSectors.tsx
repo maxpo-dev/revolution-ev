@@ -5,32 +5,32 @@ export default function EVCategoriesGrid() {
   const categories = [
     {
       title: "Electric Vehicles",
-      image: "/image/ElectricVechicle.jpeg",
-      href: "/image/electric-vehicles",
+      image: "/image/focusSectors/ElectricVechicle.jpeg",
+      href: "/electric-vehicles",
     },
     {
       title: "Charging Infrastructure & Incentives",
-      image: "/image/Charging.jpeg",
-      href: "",
+      image: "/image/focusSectors/Charging.jpeg",
+      href: "/charging",
     },
     {
       title: "Policy, Regulation & Incentives",
-      image: "/image/Policy.jpeg",
+      image: "/image/focusSectors/Policy.jpeg",
       href: "/policy-regulation",
     },
     {
       title: "Smart Mobility",
-      image: "/image/close-up-electric-car-france.jpg",
+      image: "/image/focusSectors/close-up-electric-car-france.jpg",
       href: "/smart-mobility",
     },
     {
       title: "Fleet Management & Commercial EVs",
-      image: "/image/fellet.jpeg",
+      image: "/image/focusSectors/fellet.jpeg",
       href: "/fleet-management",
     },
     {
       title: "Investment, Startups & Innovation",
-      image: "/image/diverse-employees-group-discussing-ways-speed-up-order-delivery.jpg",
+      image: "/image/focusSectors/diverse-employees-group-discussing-ways-speed-up-order-delivery.jpg",
       href: "/investment-startups",
     },
   ]
