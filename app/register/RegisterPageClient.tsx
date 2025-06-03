@@ -21,10 +21,13 @@ export default function RegisterPageClient({ initialTab }: { initialTab: string 
   const initial = validTabs.includes(initialTab as TabType) ? (initialTab as TabType) : "enquiry"
   const [activeTab, setActiveTab] = useState<TabType>(initial)
 
-  // Check if we're on a success page
+  // Check if we're on a success page - must end with "/thankyou" exactly
   const tabParam = searchParams.get("t") || ""
-  const isSuccessPage = tabParam.includes("/thankyou")
+  const isSuccessPage = tabParam.endsWith("/thankyou")
   const formType = isSuccessPage ? (tabParam.split("/")[0] as TabType) : null
+
+  // Validate that the form type is valid
+  const isValidSuccessPage = isSuccessPage && formType && validTabs.includes(formType)
 
   const handleTabChange = (value: string) => {
     const tab = value as TabType
@@ -34,6 +37,17 @@ export default function RegisterPageClient({ initialTab }: { initialTab: string 
   }
 
   useEffect(() => {
+    // If we have an invalid success page URL, redirect to the form
+    if (isSuccessPage && !isValidSuccessPage) {
+      const baseTab = tabParam.split("/")[0] as TabType
+      if (validTabs.includes(baseTab)) {
+        router.replace(`/register?t=${baseTab}`)
+      } else {
+        router.replace("/register")
+      }
+      return
+    }
+
     // Only update active tab if we're not on a success page
     if (!isSuccessPage) {
       const urlTab = searchParams.get("t") as TabType | null
@@ -43,10 +57,10 @@ export default function RegisterPageClient({ initialTab }: { initialTab: string 
         setActiveTab("enquiry")
       }
     }
-  }, [searchParams, isSuccessPage, activeTab])
+  }, [searchParams, isSuccessPage, isValidSuccessPage, activeTab, tabParam, router])
 
-  // If we're on a success page, show the success message
-  if (isSuccessPage && formType) {
+  // If we're on a valid success page, show the success message
+  if (isValidSuccessPage && formType) {
     const successProps = getSuccessProps(formType)
     return <SuccessMessage {...successProps} />
   }
@@ -106,37 +120,37 @@ function getSuccessProps(type: string) {
       return {
         type: "delegate" as const,
         title: "Thank You For Your Registration!",
-        subtitle: "You are now registered as a delegate for the Revolution EV event",
+        subtitle: "You are now part of the Revolution EV community",
       }
     case "exhibitor":
       return {
         type: "exhibitor" as const,
         title: "Thank You For Your Exhibition Registration!",
-        subtitle: "You are now registered as an exhibitor for the Revolution EV event",
+        subtitle: "You are now part of the Revolution EV community",
       }
     case "sponsor":
       return {
         type: "sponsor" as const,
         title: "Thank You For Your Sponsorship Enquiry!",
-        subtitle: "You are now part of the Revolution EV sponsorship network",
+        subtitle: "You are now part of the Revolution EV community",
       }
     case "brochure":
       return {
         type: "brochure" as const,
         title: "Thank You For Your Brochure Request!",
-        subtitle: "Your brochure download will begin shortly",
+        subtitle: "You are now part of the Revolution EV community",
       }
     case "speaker":
       return {
         type: "speaker" as const,
         title: "Thank You For Your Speaker Proposal!",
-        subtitle: "You are now part of the Revolution EV speaker community",
+        subtitle: "You are now part of the Revolution EV community",
       }
     default:
       return {
         type: "enquiry" as const,
         title: "Thank You!",
-        subtitle: "Your submission has been received",
+        subtitle: "You are now part of the Revolution EV community",
       }
   }
 }
