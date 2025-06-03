@@ -8,7 +8,8 @@ import ExhibitorForm from "@/app/components/exhibitor-form"
 import SponsorForm from "@/app/components/sponsor-form"
 import EnquiryForm from "@/app/components/enquiry-form"
 import BrochureForm from "@/app/components/brochure-form"
-import SpeakerForm from "@/app/components/speaker-form" // Updated import path
+import SpeakerForm from "@/app/components/speaker-form"
+import SuccessMessage from "@/app/components/success-message"
 
 type TabType = "enquiry" | "delegate" | "exhibitor" | "sponsor" | "brochure" | "speaker"
 const validTabs: TabType[] = ["enquiry", "delegate", "exhibitor", "sponsor", "brochure", "speaker"]
@@ -20,6 +21,11 @@ export default function RegisterPageClient({ initialTab }: { initialTab: string 
   const initial = validTabs.includes(initialTab as TabType) ? (initialTab as TabType) : "enquiry"
   const [activeTab, setActiveTab] = useState<TabType>(initial)
 
+  // Check if we're on a success page
+  const tabParam = searchParams.get("t") || ""
+  const isSuccessPage = tabParam.includes("/thankyou")
+  const formType = isSuccessPage ? (tabParam.split("/")[0] as TabType) : null
+
   const handleTabChange = (value: string) => {
     const tab = value as TabType
     setActiveTab(tab)
@@ -28,13 +34,22 @@ export default function RegisterPageClient({ initialTab }: { initialTab: string 
   }
 
   useEffect(() => {
-    const urlTab = searchParams.get("t") as TabType | null
-    if (urlTab && validTabs.includes(urlTab) && urlTab !== activeTab) {
-      setActiveTab(urlTab)
-    } else if (!urlTab && activeTab !== "enquiry") {
-      setActiveTab("enquiry")
+    // Only update active tab if we're not on a success page
+    if (!isSuccessPage) {
+      const urlTab = searchParams.get("t") as TabType | null
+      if (urlTab && validTabs.includes(urlTab) && urlTab !== activeTab) {
+        setActiveTab(urlTab)
+      } else if (!urlTab && activeTab !== "enquiry") {
+        setActiveTab("enquiry")
+      }
     }
-  }, [searchParams])
+  }, [searchParams, isSuccessPage, activeTab])
+
+  // If we're on a success page, show the success message
+  if (isSuccessPage && formType) {
+    const successProps = getSuccessProps(formType)
+    return <SuccessMessage {...successProps} />
+  }
 
   return (
     <div className="container mx-auto mt-6">
@@ -51,14 +66,14 @@ export default function RegisterPageClient({ initialTab }: { initialTab: string 
                   {tab === "enquiry"
                     ? "Enquiry"
                     : tab === "delegate"
-                    ? "Delegate"
-                    : tab === "exhibitor"
-                    ? "Exhibition"
-                    : tab === "sponsor"
-                    ? "Sponsorship"
-                    : tab === "brochure"
-                    ? "Brochure"
-                    : "Speaker"}
+                      ? "Delegate"
+                      : tab === "exhibitor"
+                        ? "Exhibition"
+                        : tab === "sponsor"
+                          ? "Sponsorship"
+                          : tab === "brochure"
+                            ? "Brochure"
+                            : "Speaker"}
                 </TabsTrigger>
               ))}
             </TabsList>
@@ -76,4 +91,52 @@ export default function RegisterPageClient({ initialTab }: { initialTab: string 
       </div>
     </div>
   )
+}
+
+// Helper function to get success message props based on form type
+function getSuccessProps(type: string) {
+  switch (type) {
+    case "enquiry":
+      return {
+        type: "enquiry" as const,
+        title: "Thank You For Your Enquiry!",
+        subtitle: "You are now part of the Revolution EV community",
+      }
+    case "delegate":
+      return {
+        type: "delegate" as const,
+        title: "Thank You For Your Registration!",
+        subtitle: "You are now registered as a delegate for the Revolution EV event",
+      }
+    case "exhibitor":
+      return {
+        type: "exhibitor" as const,
+        title: "Thank You For Your Exhibition Registration!",
+        subtitle: "You are now registered as an exhibitor for the Revolution EV event",
+      }
+    case "sponsor":
+      return {
+        type: "sponsor" as const,
+        title: "Thank You For Your Sponsorship Enquiry!",
+        subtitle: "You are now part of the Revolution EV sponsorship network",
+      }
+    case "brochure":
+      return {
+        type: "brochure" as const,
+        title: "Thank You For Your Brochure Request!",
+        subtitle: "Your brochure download will begin shortly",
+      }
+    case "speaker":
+      return {
+        type: "speaker" as const,
+        title: "Thank You For Your Speaker Proposal!",
+        subtitle: "You are now part of the Revolution EV speaker community",
+      }
+    default:
+      return {
+        type: "enquiry" as const,
+        title: "Thank You!",
+        subtitle: "Your submission has been received",
+      }
+  }
 }

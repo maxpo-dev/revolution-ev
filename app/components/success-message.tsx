@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 
 interface SuccessMessageProps {
-  type: "enquiry" | "delegate" | "exhibitor" | "sponsor" | "brochure"
+  type: "enquiry" | "delegate" | "exhibitor" | "sponsor" | "brochure" | "speaker"
   title: string
   subtitle: string
 }
