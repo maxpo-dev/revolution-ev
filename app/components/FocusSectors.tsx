@@ -1,107 +1,72 @@
-"use client"
+import Image from "next/image"
+import Link from "next/link"
 
-type Sector = {
-  title: string
-  lines: string[]
-}
+export default function EVCategoriesGrid() {
+  const categories = [
+    {
+      title: "Electric Vehicles",
+      image: "/image/ElectricVechicle.jpeg",
+      href: "/image/electric-vehicles",
+    },
+    {
+      title: "Charging Infrastructure & Incentives",
+      image: "/image/Charging.jpeg",
+      href: "",
+    },
+    {
+      title: "Policy, Regulation & Incentives",
+      image: "/image/Policy.jpeg",
+      href: "/policy-regulation",
+    },
+    {
+      title: "Smart Mobility",
+      image: "/image/close-up-electric-car-france.jpg",
+      href: "/smart-mobility",
+    },
+    {
+      title: "Fleet Management & Commercial EVs",
+      image: "/image/fellet.jpeg",
+      href: "/fleet-management",
+    },
+    {
+      title: "Investment, Startups & Innovation",
+      image: "/image/diverse-employees-group-discussing-ways-speed-up-order-delivery.jpg",
+      href: "/investment-startups",
+    },
+  ]
 
-const sectors: Sector[] = [
-  {
-    title: "Electric Vehicles",
-    lines: ["Electric", "Vehicles"],
-  },
-  {
-    title: "Charging Infrastructure",
-    lines: ["Charging", "Infrastructure"],
-  },
-  {
-    title: "Policy, Regulation & Incentives",
-    lines: ["Policy, Regulation", "& Incentives"],
-  },
-  {
-    title: "Smart Mobility",
-    lines: ["Smart", "Mobility"],
-  },
-  {
-    title: "Fleet Management & Commercial EVs",
-    lines: ["Fleet Management", "& Commercial EVs"],
-  },
-  {
-    title: "Investment, Startups & Innovation",
-    lines: ["Investment, Startups", "& Innovation"],
-  },
-]
-
-export default function FocusSectors() {
   return (
-    <section className="bg-black px-6 py-16">
-      <div className="mx-auto max-w-6xl">
-        <h2 className="mb-10 text-4xl font-menda text-white">
-          <span className="font-light">Focus</span> <span className="font-bold">Sectors</span>
-        </h2>
+    <div>
+<h2 className="text-5xl font-semibold ml-50 mb-6">
+  Focus <span className="text-sky-500 font-bold">Sectors</span>
+</h2>
 
-        <div className="grid gap-6 md:grid-cols-3">
-          <div className="relative cursor-pointer overflow-hidden rounded-md bg-[#001A2C] h-[180px]">
-            <div className="absolute bottom-0 left-0 w-full h-1 bg-[#00E1B0]" />
-            <div className="absolute inset-0 bg-[url('/image/fc1.jpg')] bg-center bg-no-repeat bg-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#00E1B0]/30 to-transparent" />
-            <div className="absolute bottom-4 left-4 z-20 text-white font-menda">
-              <div className="text-lg font-medium leading-tight">Electric</div>
-              <div className="text-lg font-medium leading-tight">Vehicles</div>
-            </div>
-          </div>
 
-          <div className="relative cursor-pointer overflow-hidden rounded-md bg-[#001A2C] h-[180px]">
-            <div className="absolute bottom-0 left-0 w-full h-1 bg-[#00E1B0]" />
-            <div className="absolute inset-0 bg-[url('/image/fc2.jpg')] bg-center bg-no-repeat bg-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#00E1B0]/30 to-transparent" />
-            <div className="absolute bottom-4 left-4 z-20 text-white font-menda">
-              <div className="text-lg font-medium leading-tight">Charging</div>
-              <div className="text-lg font-medium leading-tight">Infrastructure</div>
-            </div>
-          </div>
+    
+    <div className="bg-black p-4 md:p-8">
 
-          <div className="relative cursor-pointer overflow-hidden rounded-md bg-[#001A2C] h-[180px]">
-            <div className="absolute bottom-0 left-0 w-full h-1 bg-[#00E1B0]" />
-            <div className="absolute inset-0 bg-[url('/image/fc1.jpg')] bg-center bg-no-repeat bg-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#00E1B0]/30 to-transparent" />
-            <div className="absolute bottom-4 left-4 z-20 text-white font-menda">
-              <div className="text-lg font-medium leading-tight">Policy, Regulation</div>
-              <div className="text-lg font-medium leading-tight">& Incentives</div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-7xl mx-auto">
+        {categories.map((category, index) => (
+          <Link
+            key={index}
+            href={category.href}
+            className="group relative overflow-hidden aspect-[4/3] transition-transform hover:scale-[1.02]"
+          >
+            <Image
+              src={category.image || "/placeholder.svg"}
+              alt={category.title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-teal-500/90 via-transparent to-transparent h-full flex items-end">
+              <h3 className="text-white font-medium p-4 text-lg">{category.title}</h3>
             </div>
-          </div>
-
-          <div className="relative cursor-pointer overflow-hidden rounded-md bg-[#001A2C] h-[180px]">
-            <div className="absolute bottom-0 left-0 w-full h-1 bg-[#00E1B0]" />
-            <div className="absolute inset-0 bg-[url('/image/fc2.jpg')] bg-center bg-no-repeat bg-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#00E1B0]/30 to-transparent" />
-            <div className="absolute bottom-4 left-4 z-20 text-white font-menda">
-              <div className="text-lg font-medium leading-tight">Smart</div>
-              <div className="text-lg font-medium leading-tight">Mobility</div>
-            </div>
-          </div>
-
-          <div className="relative cursor-pointer overflow-hidden rounded-md bg-[#001A2C] h-[180px]">
-            <div className="absolute bottom-0 left-0 w-full h-1 bg-[#00E1B0]" />
-            <div className="absolute inset-0 bg-[url('/image/fc1.jpg')] bg-center bg-no-repeat bg-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#00E1B0]/30 to-transparent" />
-            <div className="absolute bottom-4 left-4 z-20 text-white font-menda">
-              <div className="text-lg font-medium leading-tight">Fleet Management</div>
-              <div className="text-lg font-medium leading-tight">& Commercial EVs</div>
-            </div>
-          </div>
-
-          <div className="relative cursor-pointer overflow-hidden rounded-md bg-[#001A2C] h-[180px]">
-            <div className="absolute bottom-0 left-0 w-full h-1 bg-[#00E1B0]" />
-            <div className="absolute inset-0 bg-[url('/image/fc2.jpg')] bg-center bg-no-repeat bg-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#00E1B0]/30 to-transparent" />
-            <div className="absolute bottom-4 left-4 z-20 text-white font-menda">
-              <div className="text-lg font-medium leading-tight">Investment, Startups</div>
-              <div className="text-lg font-medium leading-tight">& Innovation</div>
-            </div>
-          </div>
-        </div>
+          </Link>
+        ))}
       </div>
-    </section>
+    </div>
+    </div>
+    
   )
 }

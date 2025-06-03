@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://www.revolutionevmalaysia.com/</loc>
+    <lastmod>2025-05-26T09:48:22+00:00</lastmod>
+    <priority>1.00</priority>
+  </url>
+
+  <!-- About Page -->
+  <url>
+    <loc>https://www.revolutionevmalaysia.com/about</loc>
+    <lastmod>2025-05-26T09:48:22+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Register Main -->
+  <url>
+    <loc>https://www.revolutionevmalaysia.com/register</loc>
+    <lastmod>2025-05-26T09:48:22+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Registration Types -->
+  <url>
+    <loc>https://www.revolutionevmalaysia.com/register?t=sponsor</loc>
+    <lastmod>2025-05-26T09:48:22+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://www.revolutionevmalaysia.com/register?t=exhibitor</loc>
+    <lastmod>2025-05-26T09:48:22+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://www.revolutionevmalaysia.com/register?t=delegate</loc>
+    <lastmod>2025-05-26T09:48:22+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://www.revolutionevmalaysia.com/register?t=brochure</loc>
+    <lastmod>2025-05-26T09:48:22+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://www.revolutionevmalaysia.com/register?t=enquiry</loc>
+    <lastmod>2025-05-26T09:48:22+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+
+    <url>
+    <loc>https://www.revolutionevmalaysia.com/register?t=speaker</loc>
+    <lastmod>2025-05-26T09:48:22+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+
+</urlset>

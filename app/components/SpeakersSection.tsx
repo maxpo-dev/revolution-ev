@@ -88,7 +88,7 @@ export default function SpeakersSection() {
   if (!mounted) return null
 
   return (
-    <section className="bg-black px-6 py-16 text-white">
+    <section className="bg-[url(https://i.ibb.co/TqRGfPk2/Frame-3968646-2.png)] px-6 py-16 text-white"  >  
       <div className="mx-auto max-w-6xl">
         {/* Title */}
         <h2 className="mb-12 text-8xl font-light leading-tight tracking-tight">
@@ -96,11 +96,11 @@ export default function SpeakersSection() {
             className="relative inline-block text-transparent outline-text"
             style={{ WebkitTextStroke: "1px white" }}
           >
-            Speakers at{" "}
+            Speakers{" "}
           </span>
           &nbsp;
           <span className="font-bold text-[#00E1B0]">#rev25</span>
-        </h2>
+        </h2>   
 
         {/* Marquee container */}
         <div

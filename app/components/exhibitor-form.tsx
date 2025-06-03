@@ -2,6 +2,7 @@
 
 import type React from "react"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/app/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
@@ -10,6 +11,7 @@ import { Textarea } from "@/app/components/ui/textarea"
 import BannerSection from "@/app/components/banner-section"
 
 export default function ExhibitorForm() {
+  const router = useRouter()
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -22,9 +24,9 @@ export default function ExhibitorForm() {
     consent2: true,
   })
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
@@ -33,9 +35,31 @@ export default function ExhibitorForm() {
     setFormData((prev) => ({ ...prev, [name]: checked }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("Exhibitor Form submitted:", formData)
+    setIsSubmitting(true)
+
+    try {
+      const res = await fetch("/api/exhibitor", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await res.json()
+
+      if (res.ok) {
+        // Redirect to success page
+        router.push("/register?t=exhibitor/thankyou")
+      } else {
+        setIsSubmitting(false)
+        alert("Error: " + data.message)
+      }
+    } catch (err) {
+      setIsSubmitting(false)
+      console.error("Submission error:", err)
+      alert("An error occurred. Please try again.")
+    }
   }
 
   const industryOptions = [
@@ -77,12 +101,14 @@ export default function ExhibitorForm() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
       {/* Form Section */}
-      <div className="p-6 bg-white">
+      <div className="p-6 bg-white border border-[#56c847] ">
         <h2 className="text-xl font-medium mb-4">Fill the details below to register as an exhibitor</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Name */}
           <div>
-            <Label className="text-sm font-medium">Name <span className="text-red-500">*</span></Label>
+            <Label className="text-sm font-medium">
+              Name <span className="text-red-500">*</span>
+            </Label>
             <Input
               name="name"
               placeholder="Name"
@@ -90,12 +116,15 @@ export default function ExhibitorForm() {
               onChange={handleChange}
               className="border-gray-300"
               required
+              disabled={isSubmitting}
             />
           </div>
 
           {/* Work Email */}
           <div>
-            <Label className="text-sm font-medium">Work Email <span className="text-red-500">*</span></Label>
+            <Label className="text-sm font-medium">
+              Work Email <span className="text-red-500">*</span>
+            </Label>
             <Input
               name="email"
               placeholder="Work Email"
@@ -104,12 +133,15 @@ export default function ExhibitorForm() {
               onChange={handleChange}
               className="border-gray-300"
               required
+              disabled={isSubmitting}
             />
           </div>
 
           {/* Phone */}
           <div>
-            <Label className="text-sm font-medium">Phone <span className="text-red-500">*</span></Label>
+            <Label className="text-sm font-medium">
+              Phone <span className="text-red-500">*</span>
+            </Label>
             <Input
               name="phoneNumber"
               placeholder="Phone"
@@ -117,12 +149,15 @@ export default function ExhibitorForm() {
               onChange={handleChange}
               className="border-gray-300"
               required
+              disabled={isSubmitting}
             />
           </div>
 
           {/* Company Name */}
           <div>
-            <Label className="text-sm font-medium">Company Name <span className="text-red-500">*</span></Label>
+            <Label className="text-sm font-medium">
+              Company Name <span className="text-red-500">*</span>
+            </Label>
             <Input
               name="companyName"
               placeholder="Company Name"
@@ -130,20 +165,26 @@ export default function ExhibitorForm() {
               onChange={handleChange}
               className="border-gray-300"
               required
+              disabled={isSubmitting}
             />
           </div>
 
           {/* Industry */}
           <div>
-            <Label className="text-sm font-medium">Industry <span className="text-red-500">*</span></Label>
+            <Label className="text-sm font-medium">
+              Industry <span className="text-red-500">*</span>
+            </Label>
             <select
               name="industry"
               value={formData.industry}
               onChange={handleChange}
               className="w-full border border-gray-300 rounded-md p-2 text-sm"
               required
+              disabled={isSubmitting}
             >
-              <option value="" disabled>Select Industry</option>
+              <option value="" disabled>
+                Select Industry
+              </option>
               {industryOptions.map((option, index) => (
                 <option key={index} value={option}>
                   {option}
@@ -154,7 +195,9 @@ export default function ExhibitorForm() {
 
           {/* Job Title */}
           <div>
-            <Label className="text-sm font-medium">Job Title <span className="text-red-500">*</span></Label>
+            <Label className="text-sm font-medium">
+              Job Title <span className="text-red-500">*</span>
+            </Label>
             <Input
               name="jobTitle"
               placeholder="Job Title"
@@ -162,6 +205,7 @@ export default function ExhibitorForm() {
               onChange={handleChange}
               className="border-gray-300"
               required
+              disabled={isSubmitting}
             />
           </div>
 
@@ -174,6 +218,7 @@ export default function ExhibitorForm() {
               value={formData.message}
               onChange={handleChange}
               className="min-h-[100px] border-gray-300"
+              disabled={isSubmitting}
             />
           </div>
 
@@ -184,10 +229,14 @@ export default function ExhibitorForm() {
                 id="consent1"
                 checked={formData.consent1}
                 onCheckedChange={(checked: boolean) => handleCheckboxChange("consent1", checked)}
+                disabled={isSubmitting}
               />
               <Label htmlFor="consent1" className="text-xs leading-tight">
-              I confirm that I have read, understand and accept the event’s{" "}
-                <a href="#" className="text-blue-600 underline">Terms and Conditions</a>.
+                I confirm that I have read, understand and accept the event's{" "}
+                <a href="#" className="text-blue-600 underline">
+                  Terms and Conditions
+                </a>
+                .
               </Label>
             </div>
             <div className="flex items-start space-x-2">
@@ -195,19 +244,24 @@ export default function ExhibitorForm() {
                 id="consent2"
                 checked={formData.consent2}
                 onCheckedChange={(checked: boolean) => handleCheckboxChange("consent2", checked)}
+                disabled={isSubmitting}
               />
               <Label htmlFor="consent2" className="text-xs leading-tight">
-              Our company may contact you from time to time with updates and information about our events, products and services that may be of interest. We may also pass your details to carefully selected third parties and to sponsors and exhibitors at this event. Please see our{" "}
-                <a href="#" className="text-blue-600 underline">Privacy Policy</a>.
-                for full details.
+                Our company may contact you from time to time with updates and information about our events, products
+                and services that may be of interest. We may also pass your details to carefully selected third parties
+                and to sponsors and exhibitors at this event. Please see our{" "}
+                <a href="#" className="text-blue-600 underline">
+                  Privacy Policy
+                </a>
+                . for full details.
               </Label>
             </div>
           </div>
 
           {/* Submit */}
           <div className="flex justify-center mt-6">
-            <Button type="submit" className="bg-[#30A685] text-white hover:bg-[#268a6f] px-8">
-              Submit
+            <Button type="submit" className="bg-[#30A685] text-white hover:bg-[#268a6f] px-8" disabled={isSubmitting}>
+              {isSubmitting ? "Submitting..." : "Submit"}
             </Button>
           </div>
         </form>
