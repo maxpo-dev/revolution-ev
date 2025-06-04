@@ -23,7 +23,9 @@ export async function POST(req: NextRequest) {
     } = formData;
 
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      host:'smtpout.secureserver.net',
+      port: 465,
+      secure:true,
       auth: {
         user: EMAIL_USER,
         pass:EMAIL_PASS,
