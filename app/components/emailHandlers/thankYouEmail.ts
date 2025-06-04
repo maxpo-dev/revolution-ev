@@ -29,11 +29,15 @@ export const ThankYouEmailHandler = ({
 
           <!-- Header Banner Image -->
           <tr>
-            <td style="padding: 0;">
-              <img src="https://i.ibb.co/TqRGfPk2/Frame-3968646-2.png" alt="${EVENT_NAME} Banner"
-                   style="width: 100%; max-height: 200px; object-fit: cover; display: block;" />
-            </td>
-          </tr>
+  <td style="background: #00B5B8; background: linear-gradient(to right, #00B5B8, #4CD964); padding: 40px 30px; text-align: center;">
+    <h1 style="color: white; margin: 0; font-size: 28px; font-weight: 700;">
+      ${EVENT_NAME}
+    </h1>
+    <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0; font-size: 16px;">
+      ${EVENT_DATE}
+    </p>
+  </td>
+</tr>
 
           <!-- Main Content -->
           <tr>
