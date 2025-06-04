@@ -24,7 +24,9 @@ export async function sendExhibitorEmail(formData: {
   consent2: boolean;
 }) {
   const transporter = nodemailer.createTransport({
-    service: "gmail",
+    host: "smtpout.secureserver.net",
+    port: 465,
+    secure: true,
     auth: {
       user: EMAIL_USER,
       pass: EMAIL_PASS,
@@ -32,7 +34,7 @@ export async function sendExhibitorEmail(formData: {
   });
   const internalEmailHtml = InternalEmailHandler({ formData });
   const internalEmail = {
-    from:`"Revolution EV - Exhibitor" <${EMAIL_USER}>`,
+    from: `"Revolution EV - Exhibitor" <${EMAIL_USER}>`,
     to: TO_USER,
     subject: "New Exhibitor Registration",
     html: internalEmailHtml,
