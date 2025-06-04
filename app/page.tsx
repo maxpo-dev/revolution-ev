@@ -4,6 +4,7 @@ import EVEventHero from "./components/EVEventHero";
 import WhyAttend from "./components/whyAttend";
 import { EvMission } from "./components/EvMission";
 import EVCategoriesGrid from "./components/FocusSectors";
+// import SpeakersSection from "./components/SpeakersSection";
 export default function Home() {
   return (
     <main>

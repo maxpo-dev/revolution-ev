@@ -1,12 +1,18 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import Image from "next/image"
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Hero() {
   return (
     <section className="relative flex h-screen min-h-[600px] items-center justify-center overflow-hidden bg-black">
-      <Image src="/image/Hero.jpeg" alt="Background EV" fill priority className="object-cover opacity-60" />
+      <Image
+        src="/image/Hero.jpeg"
+        alt="Background EV"
+        fill
+        priority
+        className="object-cover opacity-60"
+      />
 
       {/* Black gradient overlay from bottom to buttons area only */}
       <div
@@ -17,22 +23,34 @@ export default function Hero() {
       {/* Content over image */}
       <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 text-center text-white">
         <h1
-          className="font-['Menda'] text-white tracking-[0.05em] font-semibold text-4xl sm:text-5xl md:text-6xl lg:text-[85.68px]"
-          style={{ lineHeight: "1", letterSpacing: "0.03em" }}
+          className=" text-white font-semibold tracking-[0.05em]  text-4xl sm:text-5xl md:text-6xl lg:text-[85.68px]"
+          style={{
+            lineHeight: "1",
+            letterSpacing: "0.03em",
+            fontFamily: "var(--font-menda)",
+          }}
         >
           REVOLUTION EV
         </h1>
 
         <h2
-          className="font-['Menda'] text-white tracking-[0.1em] font-semibold mt-2 text-4xl sm:text-5xl md:text-6xl lg:text-[85.68px]"
-          style={{ lineHeight: "1", letterSpacing: "0.1em" }}
+          className=" text-white tracking-[0.1em] font-semibold mt-2 text-4xl sm:text-5xl md:text-6xl lg:text-[85.68px]"
+          style={{
+            lineHeight: "1",
+            letterSpacing: "0.1em",
+            fontFamily: "var(--font-menda)",
+          }}
         >
           MALAYSIA
         </h2>
 
         <p
-          className="mb-8 md:mb-12 font-menda text-lg sm:text-xl md:text-2xl font-bold italic leading-tight tracking-wide"
-          style={{ letterSpacing: "0.1em", maxWidth: "100%" }}
+          className="mb-8 md:mb-12 text-xl  font-bold leading-tight tracking-[2%]"
+          style={{
+            letterSpacing: "0.1em",
+            maxWidth: "100%",
+            fontFamily: "var(--font-menda)",
+          }}
         >
           Malaysia's Sustainable Move Towards an Electric,
           <br className="hidden sm:block" />
@@ -52,7 +70,7 @@ export default function Hero() {
             href="/register?t=sponsor"
             className="min-w-[200px] bg-white px-6 py-3 text-sm font-bold font-menda tracking-wider text-black transition-all duration-300 hover:bg-[#0DB6C9] hover:text-white"
           >
-            Sponsor
+            Sponsorships <br /> Opportunities
           </Link>
         </div>
 
@@ -69,5 +87,5 @@ export default function Hero() {
         </div>
       </div>
     </section>
-  )
+  );
 }

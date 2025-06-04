@@ -2,15 +2,16 @@
 
 import type React from "react"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/app/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/app/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import BannerSection from "@/app/components/banner-section"
-import SuccessMessage from "@/app/components/success-message"
 
 export default function BrochureForm() {
+  const router = useRouter()
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -23,7 +24,7 @@ export default function BrochureForm() {
     consent2: true,
   })
 
-  const [success, setSuccess] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
@@ -36,6 +37,8 @@ export default function BrochureForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setIsSubmitting(true)
+
     try {
       const res = await fetch("/api/brochure", {
         method: "POST",
@@ -45,34 +48,16 @@ export default function BrochureForm() {
 
       const data = await res.json()
       if (res.ok) {
-        setSuccess(true)
-        setFormData({
-          name: "",
-          email: "",
-          phoneNumber: "",
-          companyName: "",
-          industry: "",
-          jobTitle: "",
-          message: "",
-          consent1: true,
-          consent2: true,
-        })
+        // Redirect to success page
+        router.push("/register?t=brochure/thankyou")
       } else {
+        setIsSubmitting(false)
         alert("Failed to send request: " + data.message)
       }
     } catch (error) {
+      setIsSubmitting(false)
       alert("Error sending request: " + error)
     }
-  }
-
-  if (success) {
-    return (
-      <SuccessMessage
-        type="brochure"
-        title="Thank You For Your Brochure Request!"
-        subtitle="Your brochure download will begin shortly"
-      />
-    )
   }
 
   const industryOptions = [
@@ -129,6 +114,7 @@ export default function BrochureForm() {
               onChange={handleChange}
               className="border-gray-300"
               required
+              disabled={isSubmitting}
             />
           </div>
 
@@ -145,6 +131,7 @@ export default function BrochureForm() {
               onChange={handleChange}
               className="border-gray-300"
               required
+              disabled={isSubmitting}
             />
           </div>
 
@@ -160,6 +147,7 @@ export default function BrochureForm() {
               onChange={handleChange}
               className="border-gray-300"
               required
+              disabled={isSubmitting}
             />
           </div>
 
@@ -175,6 +163,7 @@ export default function BrochureForm() {
               onChange={handleChange}
               className="border-gray-300"
               required
+              disabled={isSubmitting}
             />
           </div>
 
@@ -189,6 +178,7 @@ export default function BrochureForm() {
               onChange={handleChange}
               className="w-full border border-gray-300 rounded-md p-2 text-sm"
               required
+              disabled={isSubmitting}
             >
               <option value="" disabled>
                 Select Industry
@@ -213,6 +203,7 @@ export default function BrochureForm() {
               onChange={handleChange}
               className="border-gray-300"
               required
+              disabled={isSubmitting}
             />
           </div>
 
@@ -225,6 +216,7 @@ export default function BrochureForm() {
               value={formData.message}
               onChange={handleChange}
               className="min-h-[100px] border-gray-300"
+              disabled={isSubmitting}
             />
           </div>
 
@@ -235,6 +227,7 @@ export default function BrochureForm() {
                 id="consent1"
                 checked={formData.consent1}
                 onCheckedChange={(checked: boolean) => handleCheckboxChange("consent1", checked)}
+                disabled={isSubmitting}
               />
               <Label htmlFor="consent1" className="text-xs leading-tight">
                 I confirm that I have read, understand and accept the event's{" "}
@@ -249,6 +242,7 @@ export default function BrochureForm() {
                 id="consent2"
                 checked={formData.consent2}
                 onCheckedChange={(checked: boolean) => handleCheckboxChange("consent2", checked)}
+                disabled={isSubmitting}
               />
               <Label htmlFor="consent2" className="text-xs leading-tight">
                 Our company may contact you from time to time with updates and information about our events, products
@@ -264,8 +258,8 @@ export default function BrochureForm() {
 
           {/* Submit */}
           <div className="flex justify-center mt-6">
-            <Button type="submit" className="bg-[#30A685] text-white hover:bg-[#268a6f] px-8">
-              Enquire Now
+            <Button type="submit" className="bg-[#30A685] text-white hover:bg-[#268a6f] px-8" disabled={isSubmitting}>
+              {isSubmitting ? "Submitting..." : "Enquire Now"}
             </Button>
           </div>
         </form>

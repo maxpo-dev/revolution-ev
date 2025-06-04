@@ -1,16 +1,17 @@
 "use client"
 
 import type React from "react"
-import { useState, useEffect } from "react"
+import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/app/components/ui/checkbox"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/app/components/ui/label"
-import { Textarea } from "@/app/components/ui/textarea"
+import { Textarea } from "@/components/ui/textarea"
 import BannerSection from "@/app/components/banner-section"
-import Link from "next/link"
 
 export default function EnquiryForm() {
+  const router = useRouter()
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -22,17 +23,7 @@ export default function EnquiryForm() {
     consent2: true,
   })
 
-  const [success, setSuccess] = useState(false)
-  const [showCheckmark, setShowCheckmark] = useState(false)
-
-  useEffect(() => {
-    if (success) {
-      // Delay the checkmark animation slightly for better effect
-      setTimeout(() => {
-        setShowCheckmark(true)
-      }, 300)
-    }
-  }, [success])
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
@@ -45,6 +36,7 @@ export default function EnquiryForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setIsSubmitting(true)
 
     try {
       const res = await fetch("/api/enquiry", {
@@ -55,118 +47,17 @@ export default function EnquiryForm() {
 
       const result = await res.json()
       if (result.success) {
-        setSuccess(true)
-        setFormData({
-          name: "",
-          email: "",
-          companyName: "",
-          phoneNumber: "",
-          industry: "",
-          message: "",
-          consent1: true,
-          consent2: true,
-        })
+        // Redirect to success page
+        router.push("/register?t=enquiry/thankyou")
       } else {
+        setIsSubmitting(false)
         alert("Failed to submit enquiry. Please try again later.")
       }
     } catch (error) {
+      setIsSubmitting(false)
       console.error("Submission error:", error)
       alert("Something went wrong. Please try again.")
     }
-  }
-
-  if (success) {
-    return (
-      <div className="flex flex-col items-center w-full  ">
-        {/* Header */}
-        <div className="w-full bg-gradient-to-r from-[#00B5B8] to-[#4CD964] py-4">
-          <h2 className="text-center text-white text-xl font-medium">Enquiry</h2>
-        </div>
-
-        {/* Success Content */}
-        <div className="py-12 px-4 flex flex-col items-center max-w-md mx-auto">
-          {/* Animated Checkmark Icon */}
-          <div className="bg-gradient-to-r from-[#00B5B8] to-[#4CD964] rounded-full p-4 w-24 h-24 flex items-center justify-center mb-8 relative">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-16 w-16 text-white"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            >
-              {showCheckmark && (
-                <>
-                  <path
-                    d="M5 13l4 4L19 7"
-                    strokeDasharray="22"
-                    strokeDashoffset="22"
-                    style={{
-                      animation: "drawCheck 0.5s ease forwards",
-                    }}
-                  />
-                  <style jsx>{`
-                    @keyframes drawCheck {
-                      to {
-                        stroke-dashoffset: 0;
-                      }
-                    }
-                  `}</style>
-                </>
-              )}
-            </svg>
-          </div>
-
-          {/* Thank You Message */}
-          <h3 className="text-2xl font-bold mb-4 text-center">Thank You For Your Enquiry!</h3>
-
-          {/* Community Message */}
-          <p className="text-center mb-2 text-gray-800">You are now part of the Revolution EV community</p>
-
-          {/* Follow-up Messages */}
-          <p className="text-center text-gray-600 text-sm mb-1">Our team will be in touch with you soon.</p>
-          <p className="text-center text-gray-600 text-sm mb-8">
-            We look forward to welcoming you at the World Trade Centre Kuala Lumpur from 23 October - 24 October 2025
-          </p>
-
-          {/* Action Links */}
-          <div className="flex gap-8 items-center">
-            <Link href="/participants" className="flex items-center text-gray-800 hover:text-[#00B5B8]">
-              <div className="bg-[#00B5B8] rounded-full p-1 mr-2 w-8 h-8 flex items-center justify-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-white"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z" />
-                </svg>
-              </div>
-              See Who's Participating
-            </Link>
-            <Link href="/speakers" className="flex items-center text-gray-800 hover:text-[#00B5B8]">
-              <div className="bg-[#00B5B8] rounded-full p-1 mr-2 w-8 h-8 flex items-center justify-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 text-white"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-              </div>
-              View All Speakers
-            </Link>
-          </div>
-        </div>
-      </div>
-    )
   }
 
   return (
@@ -186,6 +77,7 @@ export default function EnquiryForm() {
               onChange={handleChange}
               className="border-gray-300 mt-1"
               required
+              disabled={isSubmitting}
             />
           </div>
 
@@ -201,6 +93,7 @@ export default function EnquiryForm() {
               onChange={handleChange}
               className="border-gray-300 mt-1"
               required
+              disabled={isSubmitting}
             />
           </div>
 
@@ -215,6 +108,7 @@ export default function EnquiryForm() {
               onChange={handleChange}
               className="border-gray-300 mt-1"
               required
+              disabled={isSubmitting}
             />
           </div>
 
@@ -229,6 +123,7 @@ export default function EnquiryForm() {
               onChange={handleChange}
               className="border-gray-300 mt-1"
               required
+              disabled={isSubmitting}
             />
           </div>
 
@@ -242,6 +137,7 @@ export default function EnquiryForm() {
               onChange={handleChange}
               className="w-full border border-gray-300 rounded-md p-2 text-sm mt-1"
               required
+              disabled={isSubmitting}
             >
               <option value="" disabled>
                 Select Industry
@@ -270,6 +166,7 @@ export default function EnquiryForm() {
               value={formData.message}
               onChange={handleChange}
               className="min-h-[100px] border-gray-300 mt-1"
+              disabled={isSubmitting}
             />
           </div>
 
@@ -279,6 +176,7 @@ export default function EnquiryForm() {
                 id="consent1"
                 checked={formData.consent1}
                 onCheckedChange={(checked: boolean) => handleCheckboxChange("consent1", checked)}
+                disabled={isSubmitting}
               />
               <Label htmlFor="consent1" className="text-xs leading-tight">
                 I confirm that I have read, understand and accept the event's{" "}
@@ -293,6 +191,7 @@ export default function EnquiryForm() {
                 id="consent2"
                 checked={formData.consent2}
                 onCheckedChange={(checked: boolean) => handleCheckboxChange("consent2", checked)}
+                disabled={isSubmitting}
               />
               <Label htmlFor="consent2" className="text-xs leading-tight">
                 Our company may contact you from time to time with updates and information about our events, products
@@ -307,8 +206,8 @@ export default function EnquiryForm() {
           </div>
 
           <div className="flex justify-center mt-6">
-            <Button type="submit" className="bg-[#30A685] text-white hover:bg-[#268a6f] px-8">
-              Submit
+            <Button type="submit" className="bg-[#30A685] text-white hover:bg-[#268a6f] px-8" disabled={isSubmitting}>
+              {isSubmitting ? "Submitting..." : "Submit"}
             </Button>
           </div>
         </form>
