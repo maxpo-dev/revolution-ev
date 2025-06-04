@@ -4,7 +4,9 @@ import nodemailer from 'nodemailer'
 async function sendThankYouEmail(email: string) {
   // Create transporter with proper credentials
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
+     host:'smtpout.secureserver.net',
+    port: 465,
+    secure:true,
     auth: {
       user: process.env.EMAIL_USER, // Changed to match your .env
       pass: process.env.EMAIL_PASS, // Changed to match your .env

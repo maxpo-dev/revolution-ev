@@ -19,7 +19,9 @@ if (!EMAIL_USER || !EMAIL_PASS || !TO_USER) {
 }
 
 const transporter = nodemailer.createTransport({
-  service: "gmail",
+  host:'smtpout.secureserver.net',
+  port: 465,
+  secure:true,
   auth: {
     user: EMAIL_USER,
     pass: EMAIL_PASS,
