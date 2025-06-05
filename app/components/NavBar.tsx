@@ -82,30 +82,31 @@ export default function Navbar() {
 
   const dropdownItems = {
     exhibition: [
-      { href: "/exhibition/WhyExhibit", label: "Why Exhibit" },
-      { href: "/exhibition/Exhibitors", label: "Exhibitors" },
+      { href: "/exhibition/why-exhibit", label: "Why Exhibit" },
+      { href: "/exhibition/exhibitors", label: "Exhibitors" },
       { href: "/register?t=exhibitor", label: "Exhibitors Enquiry", bold: true },
       { href: "/register?t=brochure", label: "Request Brochure", bold: true },
     ],
     conference: [
-      { href: "/conference/WhyAttend", label: "Why Attend" },
+      { href: "/conference/why-attend", label: "Why Attend" },
       { href: "/conference/agenda", label: "Agenda" },
       { href: "/register?t=speaker", label: "Speaker Enquiry", bold: true },
     ],
     sponsors: [
-      { href: "/sponsors/WhySponsor", label: "Why Sponsor" },
+      { href: "/sponsors/why-sponsor", label: "Why Sponsor" },
+      { href: "/sponsors/sponsor", label: "Sponsors" },
       { href: "/register?t=sponsor", label: "Sponsorship Enquiry", bold: true },
     ],
     partners: [
-      { href: "/partners/MediaPartner", label: "Media Partner" },
-      { href: "/partners/supportingpartners", label: "Supporting Partner" },
+      { href: "/partners/media-partner", label: "Media Partner" },
+      { href: "/partners/supporting-partners", label: "Supporting Partner" },
       { href: "/register?t=partner", label: "Partner Enquiry", bold: true },
     ],
     more: [
       { href: "/market-outlook", label: "Market Outlook" },
-      { href: "/News&Blogs", label: "News & Blogs" },
+      { href: "/news&blogs", label: "News & Blogs" },
       { href: "/testimonial", label: "Testimonials" },
-      { href: "/FAQs", label: "FAQs" },
+      { href: "/faqs", label: "FAQs" },
     ],
   }
 

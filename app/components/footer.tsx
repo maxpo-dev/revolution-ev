@@ -150,7 +150,7 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/conference/WhyAttend" className="hover:text-[#00E1B0]">
+                  <Link href="/conference/why-attend" className="hover:text-[#00E1B0]">
                     Conference
                   </Link>
                 </li>
@@ -160,7 +160,7 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/exhibition/WhyExhibit" className="hover:text-[#00E1B0]">
+                  <Link href="/exhibition/why-exhibit" className="hover:text-[#00E1B0]">
                     Exhibition
                   </Link>
                 </li>
@@ -177,17 +177,17 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/exhibition/Exhibitors" className="hover:text-[#00E1B0]">
+                  <Link href="/exhibition/exhibitors" className="hover:text-[#00E1B0]">
                     Exhibitor
                   </Link>
                 </li>
                 <li>
-                  <Link href="/partners/MediaPartner" className="hover:text-[#00E1B0]">
+                  <Link href="/partners/media-partner" className="hover:text-[#00E1B0]">
                     Partners
                   </Link>
                 </li>
                 <li>
-                  <Link href="/sponsors/WhySponsor" className="hover:text-[#00E1B0]">
+                  <Link href="/sponsors/why-sponsor" className="hover:text-[#00E1B0]">
                     Sponsors
                   </Link>
                 </li>
@@ -231,7 +231,7 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/FAQs" className="hover:text-[#00E1B0]">
+                  <Link href="/faqs" className="hover:text-[#00E1B0]">
                     FAQs
                   </Link>
                 </li>
