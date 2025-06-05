@@ -2,7 +2,7 @@
 
 import React from "react";
 // import RevolutionBanner from "../exhibition/WhyExhibit/revolution-ev-component";
-import RevolutionEVSection from "./WhyAttend/RevolutionEvSection";
+import RevolutionEVSection from "./why-attend/RevolutionEvSection";
 
 
 export default function Main(){
