@@ -177,7 +177,7 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="/exhibition/exhibitors" className="hover:text-[#00E1B0]">
+                  <Link href="/exhibition/exhibitor" className="hover:text-[#00E1B0]">
                     Exhibitor
                   </Link>
                 </li>
