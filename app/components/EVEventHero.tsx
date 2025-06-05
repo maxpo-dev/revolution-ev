@@ -77,10 +77,10 @@ export default function EVEventHero() {
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-center">
         {/* Text Section */}
         <div>
-          <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">
             Welcome to <span className="text-cyan-400">Malaysia's</span> Flagship EV Event | Revolution{" "}
             <span className="text-sky-400">EV 2025</span>
-          </h1>
+          </h2>
           <p className="text-gray-700 mb-6 text-sm sm:text-base">
             Revolution EV Malaysia 2025 is Malaysia's flagship EV event dedicated to advancing electric mobility,
             featuring unrivalled electric vehicles and next-generation zero-emission vehicle innovations.{" "}
