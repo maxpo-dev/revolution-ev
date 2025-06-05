@@ -71,7 +71,7 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error("Brochure form error:", error);
     return NextResponse.json(
-      { message: "Failed to send brochure request", error: error.message },
+      { message: "Failed to send brochure request", },
       { status: 500 }
     );
   }
