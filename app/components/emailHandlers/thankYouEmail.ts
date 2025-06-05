@@ -57,7 +57,7 @@ export const ThankYouEmailHandler = ({
                   </p>
 
                   <p style="margin-bottom: 25px;">
-                    Someone from our team will be in touch with you shortly to discuss sponsorship opportunities.
+                    Someone from our team will be in touch with you shortly.
                   </p>
 
                   <!-- CTA Box -->
