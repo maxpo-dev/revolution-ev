@@ -1,5 +1,5 @@
 import { InternalEmailHandler } from "@/app/components/emailHandlers/internalEmail";
-import { generateEmailHtml } from "@/app/components/emailHandlers/newRequest";
+// import { generateEmailHtml } from "@/app/components/emailHandlers/newRequest";
 import { ThankYouEmailHandler } from "@/app/components/emailHandlers/thankYouEmail";
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
