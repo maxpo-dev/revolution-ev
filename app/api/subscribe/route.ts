@@ -1,3 +1,4 @@
+import { SubscribeEmailTemplate } from "@/app/components/emailHandlers/subscribeEmail"
 import { type NextRequest, NextResponse } from "next/server"
 import nodemailer from 'nodemailer'
 
@@ -13,15 +14,12 @@ async function sendThankYouEmail(email: string) {
     },
   })
 
+  const thankYouEmailHtml=SubscribeEmailTemplate({email})
   const mailOptions = {
     from: `"Revolution EV Malaysia" <${process.env.EMAIL_USER}>`,
     to: email,
     subject: "Thank you for subscribing to Revolution EV Malaysia!",
-    html: `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <!-- Your existing HTML template -->
-      </div>
-    `,
+    html:thankYouEmailHtml
   }
 
   try {

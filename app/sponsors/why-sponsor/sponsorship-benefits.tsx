@@ -8,9 +8,9 @@ type SponsorCardProps = {
 };
 function SponsorCard({ title, subtitle, image, className = "" }:SponsorCardProps) {
   return (
-    <div className={`bg-white overflow-hidden relative h-[300px] w-full p-2 ${className}`}>
+    <div className={`bg-white overflow-hidden relative h-[848px] w-full p-3 pb-8 pl-8 ${className}`}>
       {/* Image wrapper with slight crop */}
-      <div className="relative w-full h-[calc(100%-24px)]  overflow-hidden">
+      <div className="relative w-[calc(100%-24px)] h-[calc(100%-24px)]  overflow-hidden">
         <Image
           src={image}
           alt={`${title} ${subtitle}`}
@@ -20,13 +20,13 @@ function SponsorCard({ title, subtitle, image, className = "" }:SponsorCardProps
       </div>
 
       {/* Text content over image */}
-      <div className="absolute top-2 left-2 right-2 bg-white p-4">
-        <h3 className="text-lg font-medium text-black">{title}</h3>
-        <p className="text-sm text-black">{subtitle}</p>
+      <div className="absolute top-2 left-2  right-2 bg-white pt-16 px-4 pb-14 text-4xl font-normal text-black">
+        <h3 >{title}</h3>
+        <h3 >{subtitle}</h3>
       </div>
 
       {/* Arrow on bottom right — inside white background */}
-      <div className="absolute bottom-2 right-2 w-0 h-0 border-r-[20px] border-r-transparent border-t-[20px] border-t-teal-400"></div>
+      <div className="absolute bottom-9 right-4 w- h-0 border-r-[70px] border-r-transparent border-t-[70px] border-t-teal-400"></div>
     </div>
   );
 }
@@ -34,7 +34,7 @@ function SponsorCard({ title, subtitle, image, className = "" }:SponsorCardProps
 export default function SponsorshipBenefits() {
   return (
     <div className="bg-black text-white p-6 md:p-10 min-h-screen">
-      <h2 className="text-2xl md:text-3xl font-bold mb-8">Why Sponsor?</h2>
+      <h2 className="text-2xl md:text-3xl font-normal mb-8">Why Sponsor?</h2>
 
       {/* Grid for first 6 cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
