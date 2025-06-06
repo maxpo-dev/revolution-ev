@@ -8,9 +8,9 @@ type SponsorCardProps = {
 };
 function SponsorCard({ title, subtitle, image, className = "" }:SponsorCardProps) {
   return (
-    <div className={`bg-white overflow-hidden relative h-[300px] w-full p-2 ${className}`}>
+    <div className={`bg-white overflow-hidden relative h-[848px] w-full p-3 pb-8 pl-8 ${className}`}>
       {/* Image wrapper with slight crop */}
-      <div className="relative w-full h-[calc(100%-24px)]  overflow-hidden">
+      <div className="relative w-[calc(100%-24px)] h-[calc(100%-24px)]  overflow-hidden">
         <Image
           src={image}
           alt={`${title} ${subtitle}`}
@@ -20,13 +20,13 @@ function SponsorCard({ title, subtitle, image, className = "" }:SponsorCardProps
       </div>
 
       {/* Text content over image */}
-      <div className="absolute top-2 left-2 right-2 bg-white p-4">
-        <h3 className="text-lg font-medium text-black">{title}</h3>
-        <p className="text-sm text-black">{subtitle}</p>
+      <div className="absolute top-2 left-2 right-2 bg-white pt-16 px-4 pb-14">
+        <h3 className="text-4xl font-normal text-black">{title}</h3>
+        <p className="text-4xl font-normal text-black">{subtitle}</p>
       </div>
 
       {/* Arrow on bottom right — inside white background */}
-      <div className="absolute bottom-2 right-2 w-0 h-0 border-r-[20px] border-r-transparent border-t-[20px] border-t-teal-400"></div>
+      <div className="absolute bottom-9 right-4 w- h-0 border-r-[70px] border-r-transparent border-t-[70px] border-t-teal-400"></div>
     </div>
   );
 }
