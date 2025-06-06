@@ -54,8 +54,7 @@ export default function WhyExhibit() {
     },
     {
       title: "Understand the Emerging Trends in Global E-Mobility",
-      content:
- "Get insights on future trends such as vehicle-to-grid (V2G) technology, battery swapping networks, hydrogen-powered vehicles, and autonomous electric fleets.",
+      content:"Get insights on future trends such as vehicle-to-grid (V2G) technology, battery swapping networks, hydrogen-powered vehicles, and autonomous electric fleets.",
       bgColor: "bg-cyan-400",
       textColor: "text-gray-900",
     },

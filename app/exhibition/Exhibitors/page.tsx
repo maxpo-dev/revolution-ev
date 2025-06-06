@@ -96,14 +96,3 @@ export default function ExhibitorsComponent() {
 </div>
   );
 }
-
-
-
-
-// ..................................
-
-// export default function ExhibitorsComponent() {
-// return(
-
-// )
-// }
