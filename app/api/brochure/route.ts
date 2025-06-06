@@ -1,5 +1,5 @@
 import { InternalEmailHandler } from "@/app/components/emailHandlers/internalEmail";
-import { generateEmailHtml } from "@/app/components/emailHandlers/newRequest";
+// import { generateEmailHtml } from "@/app/components/emailHandlers/newRequest";
 import { ThankYouEmailHandler } from "@/app/components/emailHandlers/thankYouEmail";
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
@@ -73,7 +73,7 @@ export async function POST(request: Request) {
   } catch (error) {
     console.error("Brochure form error:", error);
     return NextResponse.json(
-      { message: "Failed to send brochure request", error: error.message },
+      { message: "Failed to send brochure request", },
       { status: 500 }
     );
   }
