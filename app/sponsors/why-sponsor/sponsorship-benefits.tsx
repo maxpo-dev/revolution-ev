@@ -20,9 +20,9 @@ function SponsorCard({ title, subtitle, image, className = "" }:SponsorCardProps
       </div>
 
       {/* Text content over image */}
-      <div className="absolute top-2 left-2 right-2 bg-white pt-16 px-4 pb-14">
-        <h3 className="text-4xl font-normal text-black">{title}</h3>
-        <p className="text-4xl font-normal text-black">{subtitle}</p>
+      <div className="absolute top-2 left-2  right-2 bg-white pt-16 px-4 pb-14 text-4xl font-normal text-black">
+        <h3 >{title}</h3>
+        <h3 >{subtitle}</h3>
       </div>
 
       {/* Arrow on bottom right — inside white background */}
@@ -34,7 +34,7 @@ function SponsorCard({ title, subtitle, image, className = "" }:SponsorCardProps
 export default function SponsorshipBenefits() {
   return (
     <div className="bg-black text-white p-6 md:p-10 min-h-screen">
-      <h2 className="text-2xl md:text-3xl font-bold mb-8">Why Sponsor?</h2>
+      <h2 className="text-2xl md:text-3xl font-normal mb-8">Why Sponsor?</h2>
 
       {/* Grid for first 6 cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
