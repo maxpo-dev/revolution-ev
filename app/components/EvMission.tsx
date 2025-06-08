@@ -16,7 +16,7 @@ const missionData: MissionItem[] = [
     title: "Conference",
     description:
       "The conference at #rev25 brings together leading voices from across the government, industry verticals, academia, and more to help shape the e-mobility landscape within Malaysia and beyond. Participate in thought-provoking discussions on the infrastructure, innovation, investment, and policy that will propel the country's electric future.",
-    image: "/image/exhibition.jpg",
+    image: "/image/conference.jpg",
     buttonText: "Get Delegate Pass",
     buttonLink: "/register?t=delegate",
     imagePosition: "left",
@@ -25,7 +25,7 @@ const missionData: MissionItem[] = [
     title: "Exhibition",
     description:
       "Malaysia's most prestigious e-mobility event, #rev25, serves as your entry point to South-East Asia's rapidly expanding electric vehicle industry, offering invaluable opportunities whether you're introducing a product, expanding your business, or boosting brand awareness.",
-    image: "/image/conference.jpg",
+    image: "/image/exhibition.jpg",
     buttonText: "Book Your Stand",
     buttonLink: "/register?t=exhibitor",
     imagePosition: "right",
