@@ -44,14 +44,27 @@ const industryOptions = [
 ];
 
 const validationSchema = Yup.object({
-  name: Yup.string().required("This is a required field"),
+  name: Yup.string().trim().required("This is a required field"),
+
   email: Yup.string()
-    .email("Invalid email address")
+    .trim()
+    .email("Please enter a valid email address")
     .required("This is a required field"),
-  phoneNumber: Yup.string().required("This is a required field"),
-  companyName: Yup.string().required("This is a required field"),
-  jobTitle: Yup.string().required("This is a required field"),
-  industry: Yup.string().required("This is a required field"),
+
+  phoneNumber: Yup.string()
+    .trim()
+    .matches(
+      /^\d+$/,
+      "Phone number must not contain letters or special characters"
+    )
+    .required("This is a required field"),
+
+  companyName: Yup.string().trim().required("This is a required field"),
+
+  jobTitle: Yup.string().trim().required("This is a required field"),
+
+  industry: Yup.string().trim().required("This is a required field"),
+
   consent1: Yup.boolean().oneOf([true], "This is a required field"),
 });
 
@@ -125,6 +138,7 @@ const FormSection = ({ type }: { type: FormTypes }) => {
           label="Phone Number"
           placeholder="+91"
           autoComplete="tel"
+          maxLength={10}
         />
         <TextField
           name="companyName"
