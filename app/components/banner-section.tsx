@@ -9,7 +9,7 @@ interface BannerSectionProps {
 
 const bannerImageMap: { [key: string]: { image: string; alt: string } } = {
   enquiry: {
-    image: '/image/banner/revreg.png',
+    image: '/image/banner/revreg.jpg',
     alt: 'Enquiry Banner',
   },
   delegate: {

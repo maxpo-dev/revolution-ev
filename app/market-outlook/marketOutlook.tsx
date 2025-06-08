@@ -2,13 +2,18 @@ import Image from "next/image";
 
 export default function Component() {
   return (
-    <div className="bg-black text-white min-h-screen p-8">
+    <div
+      className="bg-black text-white min-h-screen p-8"
+    >
       <div className="max-w-4xl mx-auto space-y-8">
         {/* Header */}
         <div className="text-sm text-gray-400 mb-2">Market Outlook</div>
 
         {/* Local Market Outlook Section */}
-        <h1 className="text-3xl font-light text-teal-400 mb-6">
+        <h1
+          className="text-5xl font-light text-transparent bg-clip-text bg-[linear-gradient(75.19deg,_#0DB6C9_5.79%,_#56C847_97.32%)] mb-6"
+          style={{ fontFamily: "var(--font-dm-sans)" }}
+        >
           Local Market Outlook
         </h1>
 
@@ -63,7 +68,10 @@ export default function Component() {
 
         {/* Global Market Outlook Section */}
         <section className="space-y-6">
-          <h2 className="text-3xl font-light text-teal-400 mb-6">
+          <h2
+            className="text-5xl font-light text-transparent bg-clip-text bg-[linear-gradient(75.19deg,_#0DB6C9_5.79%,_#56C847_97.32%)] mb-6"
+            style={{ fontFamily: "var(--font-dm-sans)" }}
+          >
             Global Market Outlook
           </h2>
 
