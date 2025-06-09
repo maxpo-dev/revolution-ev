@@ -273,7 +273,7 @@ export default function Footer() {
               </h3>
               <ul className="space-y-1 sm:space-y-2 text-xs sm:text-sm text-gray-300">
                 <li>
-                  <Link href="#" className="hover:text-[#00E1B0]">
+                  <Link href="/news" className="hover:text-[#00E1B0]">
                     News & Blogs
                   </Link>
                 </li>

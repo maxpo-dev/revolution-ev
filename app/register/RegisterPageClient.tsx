@@ -49,8 +49,8 @@ export default function RegisterPageClient() {
   }
 
   return (
-    <div className="container mx-auto mt-6 px-6">
-      <div className="sticky top-[64px] bg-white z-10">
+    <div className="container  mx-auto mt-6 px-4 sm:px-6 md:px-10 lg:px-20">
+      <div className="sticky top-[64px] bg-white z-10 mt-2 py-2">
         <div className="overflow-x-auto whitespace-nowrap ">
           <Tabs
             value={activeTab}
