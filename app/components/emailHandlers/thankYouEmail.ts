@@ -14,7 +14,7 @@ export const ThankYouEmailHandler = ({
   const { EVENT_NAME, EVENT_WEBSITE, EVENT_DATE, EVENT_EMAIL, name } = formData;
 
   return `
-   <!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -26,18 +26,10 @@ export const ThankYouEmailHandler = ({
     <tr>
       <td align="center">
         <table width="600" cellpadding="0" cellspacing="0" style="background-color: white; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
-
-          <!-- Header Banner Image -->
-          <tr>
-  <td style="background: #00B5B8; background: linear-gradient(to right, #00B5B8, #4CD964); padding: 40px 30px; text-align: center;">
-    <h1 style="color: white; margin: 0; font-size: 28px; font-weight: 700;">
-      ${EVENT_NAME}
-    </h1>
-    <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0; font-size: 16px;">
-      ${EVENT_DATE}
-    </p>
-  </td>
-</tr>
+    <tr>
+     <td style="background-color:  #00B5B8; background-image: url('https://cloud1.email2go.io/4825f2b20fb569c346c060a2f8c31c18/43cbb9c7495321f8ceb3210d8346899b4e54151968edd617da3ebf6cd138e014.jpg'); background-size: cover; background-position: center center; height: 300px; text-align: center;">
+      </td>
+     </tr>
 
           <!-- Main Content -->
           <tr>
@@ -73,22 +65,28 @@ export const ThankYouEmailHandler = ({
                       <table cellpadding="0" cellspacing="0" style="margin: 0 auto;">
                         <tr>
                           <td style="padding: 0 8px;">
-                            <a href="https://facebook.com/revolutionevmalaysia" target="_blank" style="display: inline-block; width: 50px; height: 50px; background: #e8fdfd; border-radius: 50%; text-align: center; line-height: 50px; text-decoration: none;">
+                            <a href=https://www.facebook.com/profile.php?id=61576595758079" target="_blank" style="display: inline-block; width: 50px; height: 50px; background: #e8fdfd; border-radius: 50%; text-align: center; line-height: 50px; text-decoration: none;">
                               <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" width="24" height="24" style="vertical-align: middle;" />
                             </a>
                           </td>
-                          <td style="padding: 0 8px;">
-                            <a href="https://twitter.com/revolutionevmy" target="_blank" style="display: inline-block; width: 50px; height: 50px; background: #e8fdfd; border-radius: 50%; text-align: center; line-height: 50px; text-decoration: none;">
-                              <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter" width="24" height="24" style="vertical-align: middle;" />
+            
+                           <td style="padding: 0 8px;">
+                            <a href="https://x.com/revolutionev_" target="_blank" style="display: inline-block; width: 50px; height: 50px; background: #e8fdfd; border-radius: 50%; text-align: center; line-height: 50px; text-decoration: none;">
+                              <img src="https://img.icons8.com/?size=100&id=YfCbGWCWcuar&format=png&color=000000" alt="X" width="24" height="24" style="vertical-align: middle;" />
+                            </a>
+                          </td>
+                            <td style="padding: 0 8px;">
+                            <a href="https://www.youtube.com/channel/UCYhYC3ZVz64d9L1vVV9rQ5g" target="_blank" style="display: inline-block; width: 50px; height: 50px; background: #e8fdfd; border-radius: 50%; text-align: center; line-height: 50px; text-decoration: none;">
+                              <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="Youtube" width="24" height="24" style="vertical-align: middle;" />
                             </a>
                           </td>
                           <td style="padding: 0 8px;">
-                            <a href="https://linkedin.com/company/revolutionevmalaysia" target="_blank" style="display: inline-block; width: 50px; height: 50px; background: #e8fdfd; border-radius: 50%; text-align: center; line-height: 50px; text-decoration: none;">
+                            <a href="https://www.linkedin.com/company/revolutionev/" target="_blank" style="display: inline-block; width: 50px; height: 50px; background: #e8fdfd; border-radius: 50%; text-align: center; line-height: 50px; text-decoration: none;">
                               <img src="https://cdn-icons-png.flaticon.com/512/733/733561.png" alt="LinkedIn" width="24" height="24" style="vertical-align: middle;" />
                             </a>
                           </td>
                           <td style="padding: 0 8px;">
-                            <a href="https://instagram.com/revolutionevmalaysia" target="_blank" style="display: inline-block; width: 50px; height: 50px; background: #e8fdfd; border-radius: 50%; text-align: center; line-height: 50px; text-decoration: none;">
+                            <a href="https://www.instagram.com/_revolutionev" target="_blank" style="display: inline-block; width: 50px; height: 50px; background: #e8fdfd; border-radius: 50%; text-align: center; line-height: 50px; text-decoration: none;">
                               <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" width="24" height="24" style="vertical-align: middle;" />
                             </a>
                           </td>
