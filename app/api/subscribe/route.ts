@@ -32,6 +32,29 @@ async function sendThankYouEmail(email: string) {
   }
 }
 
+async function saveUserDetails(email: string){
+  try {
+    const response =  await fetch(process.env.GOOGLE_APPS_SCRIPT_URL!, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+      email
+      }),
+    })
+
+    if (!response.ok) {
+      console.error(`Request failed with status: ${response.status}`);
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    return true;
+  } catch (error) {
+    console.error('Error sending email:', error);
+    throw error;
+  }
+}
+
+
 export async function POST(request: NextRequest) {
   try {
     const { email } = await request.json()
@@ -46,7 +69,9 @@ export async function POST(request: NextRequest) {
     }
 
     console.log("Saving email to database:", email)
+
     await sendThankYouEmail(email)
+    await saveUserDetails(email)
 
     return NextResponse.json({ message: "Successfully subscribed!" }, { status: 200 })
   } catch (error) {
