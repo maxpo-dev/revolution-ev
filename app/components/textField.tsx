@@ -14,6 +14,7 @@ interface TextFieldProps
   name: string;
   as?: "input" | "textarea" | "select";
   rows?: number;
+  required?: boolean;
   options?: Option[]; // Only used when `as="select"`
 }
 
@@ -22,6 +23,7 @@ const TextField: React.FC<TextFieldProps> = ({
   as = "input",
   options = [],
   rows,
+  required = false,
   ...props
 }) => {
   const [field, meta] = useField(props.name);
@@ -46,7 +48,12 @@ const TextField: React.FC<TextFieldProps> = ({
     );
   } else if (as === "select") {
     InputComponent = (
-      <select {...field} {...props}  id={props.id || props.name} className={commonClasses}>
+      <select
+        {...field}
+        {...props}
+        id={props.id || props.name}
+        className={commonClasses}
+      >
         <option value="" disabled hidden>
           Select an Industry
         </option>
@@ -74,7 +81,7 @@ const TextField: React.FC<TextFieldProps> = ({
         htmlFor={props.id || props.name}
         className="block text-sm font-semibold text-black mb-1"
       >
-        {label}
+        {label} {required ? <span className="text-red-500">*</span> : null}
       </label>
       {InputComponent}
       {meta.touched && meta.error && (
