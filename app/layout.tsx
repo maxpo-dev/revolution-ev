@@ -2,6 +2,7 @@ import type React from "react";
 import "./globals.css";
 import { DM_Sans } from "next/font/google";
 import localFont from "next/font/local";
+import "react-phone-input-2/lib/style.css";
 import Navbar from "./components/NavBar";
 import Footer from "./components/footer";
 import Script from "next/script";

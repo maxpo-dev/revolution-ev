@@ -27,6 +27,7 @@
     "react-countup": "^6.5.3",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.56.4",
+    "react-phone-input-2": "^2.15.1",
     "styled-components": "^6.1.18",
     "tailwind-merge": "^3.3.0",
     "yup": "^1.6.1",
