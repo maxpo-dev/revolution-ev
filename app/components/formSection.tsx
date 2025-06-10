@@ -46,11 +46,14 @@ const industryOptions = [
 
 const validationSchema = Yup.object({
   name: Yup.string()
-  .trim()
-  .matches(/^[a-zA-Z\s.'-]+$/, "Name can only contain letters, spaces, apostrophes, hyphens, and periods")
-  .min(2, "Name must be at least 2 characters")
-  .max(50, "Name cannot exceed 50 characters")
-  .required("This is a required field"),
+    .trim()
+    .matches(
+      /^[a-zA-Z\s.'-]+$/,
+      "Name can only contain letters, spaces, apostrophes, hyphens, and periods"
+    )
+    .min(2, "Name must be at least 2 characters")
+    .max(50, "Name cannot exceed 50 characters")
+    .required("This is a required field"),
 
   email: Yup.string()
     .trim()
@@ -124,7 +127,7 @@ const FormSection = ({ type }: { type: FormTypes }) => {
       onSubmit={handleSubmit}
     >
       <Form>
-        <div className="flex flex-row  gap-4 w-full">
+        <div className="flex flex-col md:flex-row gap-0 md:gap-4 w-full">
           <TextField
             name="name"
             label="Name"
@@ -139,7 +142,7 @@ const FormSection = ({ type }: { type: FormTypes }) => {
             required={true}
           />
         </div>
-        <div className="flex flex-row gap-4 w-full">
+        <div className="flex flex-col md:flex-row gap-0 md:gap-4 w-full">
           <TextField
             name="email"
             label="Work Email"
@@ -150,7 +153,7 @@ const FormSection = ({ type }: { type: FormTypes }) => {
           />
           <PhoneInputField name="phoneNumber" />
         </div>
-        <div className="flex flex-row  gap-4 w-full">
+        <div className="flex flex-col md:flex-row  gap-0 md:gap-4 w-full">
           <TextField
             name="companyName"
             label="Company Name"
