@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import { Button } from "@/components/ui/button";
 import TextField from "./textField";
 import { toast } from "./ui/use-toast";
+import PhoneInputField from "./ui/phoneInputField";
 
 const industryOptions = [
   "Electric Vehicles (EVs)",
@@ -51,13 +52,9 @@ const validationSchema = Yup.object({
     .email("Please enter a valid email address")
     .required("This is a required field"),
 
-  phoneNumber: Yup.string()
-    .trim()
-    .matches(
-      /^\d+$/,
-      "Phone number must not contain letters or special characters"
-    )
-    .required("This is a required field"),
+phoneNumber: Yup.string()
+  .required("This is a required field")
+  .matches(/^\+?\d{7,15}$/, "Enter a valid phone number"),
 
   companyName: Yup.string().trim().required("This is a required field"),
 
@@ -137,14 +134,7 @@ const FormSection = ({ type }: { type: FormTypes }) => {
           required={true}
         />
 
-        <TextField
-          name="phoneNumber"
-          label="Phone Number"
-          placeholder="+91"
-          autoComplete="tel"
-          maxLength={10}
-          required={true}
-        />
+       <PhoneInputField name="phoneNumber" />
         <TextField
           name="companyName"
           label="Company Name"

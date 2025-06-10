@@ -26,10 +26,15 @@ export const ThankYouEmailHandler = ({
     <tr>
       <td align="center">
         <table width="600" cellpadding="0" cellspacing="0" style="background-color: white; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.1);">
-    <tr>
-     <td style="background-color:  #00B5B8; background-image: url('https://cloud1.email2go.io/4825f2b20fb569c346c060a2f8c31c18/43cbb9c7495321f8ceb3210d8346899b4e54151968edd617da3ebf6cd138e014.jpg'); background-size: cover; background-position: center center; height: 300px; text-align: center;">
-      </td>
-     </tr>
+     <tr>
+  <td style="padding: 0; margin: 0;" align="center">
+    <img
+      src="https://cloud1.email2go.io/4825f2b20fb569c346c060a2f8c31c18/43cbb9c7495321f8ceb3210d8346899b4e54151968edd617da3ebf6cd138e014.jpg"
+      alt="Banner"
+      style="display: block; width: 100%; height: auto; border: 0;"
+    />
+  </td>
+</tr>
 
           <!-- Main Content -->
           <tr>
