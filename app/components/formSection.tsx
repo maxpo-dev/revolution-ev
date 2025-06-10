@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import { Button } from "@/components/ui/button";
 import TextField from "./textField";
 import { toast } from "./ui/use-toast";
+import PhoneInputField from "./ui/phoneInputField";
 
 const industryOptions = [
   "Electric Vehicles (EVs)",
@@ -51,13 +52,9 @@ const validationSchema = Yup.object({
     .email("Please enter a valid email address")
     .required("This is a required field"),
 
-  phoneNumber: Yup.string()
-    .trim()
-    .matches(
-      /^\d+$/,
-      "Phone number must not contain letters or special characters"
-    )
-    .required("This is a required field"),
+phoneNumber: Yup.string()
+  .required("This is a required field")
+  .matches(/^\+?\d{7,15}$/, "Enter a valid phone number"),
 
   companyName: Yup.string().trim().required("This is a required field"),
 
@@ -78,9 +75,11 @@ type FormTypes =
 
 const FormSection = ({ type }: { type: FormTypes }) => {
   const router = useRouter();
+  const [submitting, setSubmitting] = React.useState(false);
 
-  const handleSubmit = async (values: any, { setSubmitting }: any) => {
+  const handleSubmit = async (values: any) => {
     try {
+      setSubmitting(true);
       const res = await fetch(`/api/${type}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -124,6 +123,7 @@ const FormSection = ({ type }: { type: FormTypes }) => {
           label="Name"
           placeholder="Full Name"
           autoComplete="name"
+          required={true}
         />
         <TextField
           name="email"
@@ -131,20 +131,16 @@ const FormSection = ({ type }: { type: FormTypes }) => {
           type="email"
           autoComplete="email"
           placeholder="Work Email Address"
+          required={true}
         />
 
-        <TextField
-          name="phoneNumber"
-          label="Phone Number"
-          placeholder="+91"
-          autoComplete="tel"
-          maxLength={10}
-        />
+       <PhoneInputField name="phoneNumber" />
         <TextField
           name="companyName"
           label="Company Name"
           placeholder="Company Name"
           autoComplete="organization"
+          required={true}
         />
         <TextField
           name="industry"
@@ -154,8 +150,14 @@ const FormSection = ({ type }: { type: FormTypes }) => {
             value,
             label: value,
           }))}
+          required={true}
         />
-        <TextField name="jobTitle" label="Job Title" placeholder="Aa" />
+        <TextField
+          name="jobTitle"
+          label="Job Title"
+          placeholder="Job Title"
+          required={true}
+        />
 
         <TextField
           name="message"
@@ -178,7 +180,7 @@ const FormSection = ({ type }: { type: FormTypes }) => {
               <a href="#" className=" underline">
                 Terms and Conditions
               </a>
-              .
+              . <span className="text-red-500">*</span>
             </p>
           </label>
           <ErrorMessage
@@ -210,6 +212,7 @@ const FormSection = ({ type }: { type: FormTypes }) => {
         <div className="flex justify-end mt-6">
           <Button
             type="submit"
+            disabled={submitting}
             className="bg-transparent text-black border border-black rounded-none hover:bg-gray-50  cursor-pointer  px-8"
           >
             Submit

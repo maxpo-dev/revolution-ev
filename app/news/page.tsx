@@ -1,11 +1,13 @@
-"use client"
+import BlogGridClient from "@/components/ui/blogGridComponent";
+import { getBlogPostsByProject, getCategoriesByProject } from "@/sanity/lib/blogs";
 
-import React from "react"
+export default async function NewsBlogGrid() {
+  const posts = await getBlogPostsByProject("rev");
+  const categories = (await getCategoriesByProject("rev")) || [];
 
-export default function NewAndBlogs(){
-    return(
-        <div className="bg-white h-screen flex items-center justify-center">
-  <h1 className="text-4xl font-bold text-black">This Page Is being Updated</h1>
-</div>
-    )
+  return (
+    <section className="bg-white">
+      <BlogGridClient posts={posts} categories={categories} />
+    </section>
+  );
 }

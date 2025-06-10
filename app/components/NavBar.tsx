@@ -239,7 +239,7 @@ export default function Navbar() {
         <div className="hidden sm:block">
           <Link href="/register">
             <button className="relative z-10 bg-[#333333] text-white px-4 sm:px-6 py-2 font-menda font-semibold rounded-none text-xs sm:text-sm transition-all duration-700 ease-out before:absolute before:inset-0  before:-z-10 before:transition-all before:duration-700 before:opacity-0 hover:before:opacity-100 hover:before:shadow-[0_0_40px_10px_rgba(32,198,216,0.6)]">
-              GET DELEGATE PASS
+              REGISTER NOW
             </button>
           </Link>
         </div>
@@ -317,7 +317,7 @@ export default function Navbar() {
             <div className="pt-2">
               <Link href="/register" onClick={() => setIsMenuOpen(false)}>
                 <button className="w-full relative z-10 bg-[#333333] text-white px-4 py-2 font-menda rounded text-sm transition-all duration-700 ease-out before:absolute before:inset-0 before:rounded before:-z-10 before:transition-all before:duration-700 before:opacity-0 hover:before:opacity-100 hover:before:shadow-[0_0_40px_10px_rgba(32,198,216,0.6)]">
-                  GET DELEGATE PASS
+                 REGISTER NOW
                 </button>
               </Link>
             </div>
