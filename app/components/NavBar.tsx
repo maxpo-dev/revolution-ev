@@ -110,7 +110,7 @@ export default function Navbar() {
     ],
     more: [
       { href: "/market-outlook", label: "Market Outlook" },
-      { href: "/news", label: "News & Blogs" },
+      { href: "/blogs", label: "News & Blogs" },
       { href: "/testimonial", label: "Testimonials" },
       { href: "/faq", label: "FAQs" },
     ],
@@ -153,7 +153,7 @@ export default function Navbar() {
         {isOpen && (
           <div
             className={`
-            absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-50 border border-gray-200
+            absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-50 border border-gray-200 hover:rounded-md focus:rounded-md
             ${isMobile ? "relative mt-1 w-full" : ""}
           `}
           >
@@ -162,14 +162,14 @@ export default function Navbar() {
                 key={index}
                 href={item.href}
                 className={`
-                  block px-4 py-2 text-sm hover:bg-gray-100 transition-colors
+                  block px-4 py-2 text-sm hover:bg-gray-100 transition-colors hover:rounded-md
                   ${
                     isMobile
                       ? "text-white bg-gray-900 hover:bg-gray-800"
                       : "text-black"
                   }
                   ${item.bold ? "font-bold" : ""}
-                  ${index === items.length - 1 ? "rounded-b-md" : ""}
+                  ${index === items.length - 1 ? "rounded-b-md hover:rounded-b-md" : ""}
                 `}
                 onClick={() => {
                   closeAllDropdowns();
@@ -201,7 +201,7 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Navigation */}
-        <div className="hidden space-x-4 lg:space-x-8 md:flex font-menda">
+        <div className="hidden space-x-4 lg:space-x-8 md:flex">
           <Link href="/" className="flex items-center">
             <Image src={HomeIcon} alt="Home Icon" />
           </Link>
@@ -238,7 +238,7 @@ export default function Navbar() {
         {/* Register Button */}
         <div className="hidden sm:block">
           <Link href="/register">
-            <button className="relative z-10 bg-[#333333] text-white px-4 sm:px-6 py-2 font-menda font-semibold rounded-none text-xs sm:text-sm transition-all duration-700 ease-out before:absolute before:inset-0  before:-z-10 before:transition-all before:duration-700 before:opacity-0 hover:before:opacity-100 hover:before:shadow-[0_0_40px_10px_rgba(32,198,216,0.6)]">
+            <button className="relative z-10 bg-[#333333] text-white px-4 sm:px-6 py-2 font-semibold rounded-none text-xs sm:text-sm transition-all duration-700 ease-out before:absolute before:inset-0  before:-z-10 before:transition-all before:duration-700 before:opacity-0 hover:before:opacity-100 hover:before:shadow-[0_0_40px_10px_rgba(32,198,216,0.6)]">
               REGISTER NOW
             </button>
           </Link>
@@ -316,7 +316,7 @@ export default function Navbar() {
 
             <div className="pt-2">
               <Link href="/register" onClick={() => setIsMenuOpen(false)}>
-                <button className="w-full relative z-10 bg-[#333333] text-white px-4 py-2 font-menda rounded text-sm transition-all duration-700 ease-out before:absolute before:inset-0 before:rounded before:-z-10 before:transition-all before:duration-700 before:opacity-0 hover:before:opacity-100 hover:before:shadow-[0_0_40px_10px_rgba(32,198,216,0.6)]">
+                <button className="w-full relative z-10 bg-[#333333] text-white px-4 py-2 rounded text-sm transition-all duration-700 ease-out before:absolute before:inset-0 before:rounded before:-z-10 before:transition-all before:duration-700 before:opacity-0 hover:before:opacity-100 hover:before:shadow-[0_0_40px_10px_rgba(32,198,216,0.6)]">
                  REGISTER NOW
                 </button>
               </Link>
