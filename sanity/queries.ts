@@ -7,7 +7,7 @@ export const blogPostsByProject = `*[
   title,
  "mainImage": mainImage.asset->url,
  "categories": categories[]->title,
-  slug,
+  "slug": slug.current,
   publishedAt
 }`;
 
@@ -16,3 +16,11 @@ export const categoriesByProject = `*[
   defined(slug.current) &&
   project->slug.current == $slug
 ].categories[]->title`;
+
+export const blogPostBySlug = `*[_type == "blogPost" && slug.current == $slug][0]{
+    title,
+    "mainImage": mainImage.asset->url,
+    publishedAt,
+    body,
+    author->{ name }
+  }`;
