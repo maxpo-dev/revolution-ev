@@ -110,7 +110,7 @@ export default function Navbar() {
     ],
     more: [
       { href: "/market-outlook", label: "Market Outlook" },
-      { href: "/news", label: "News & Blogs" },
+      { href: "/blogs", label: "News & Blogs" },
       { href: "/testimonial", label: "Testimonials" },
       { href: "/faq", label: "FAQs" },
     ],
