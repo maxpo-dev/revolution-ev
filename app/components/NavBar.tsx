@@ -153,7 +153,7 @@ export default function Navbar() {
         {isOpen && (
           <div
             className={`
-            absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-50 border border-gray-200
+            absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md z-50 border border-gray-200 hover:rounded-md focus:rounded-md
             ${isMobile ? "relative mt-1 w-full" : ""}
           `}
           >
@@ -162,14 +162,14 @@ export default function Navbar() {
                 key={index}
                 href={item.href}
                 className={`
-                  block px-4 py-2 text-sm hover:bg-gray-100 transition-colors
+                  block px-4 py-2 text-sm hover:bg-gray-100 transition-colors hover:rounded-md
                   ${
                     isMobile
                       ? "text-white bg-gray-900 hover:bg-gray-800"
                       : "text-black"
                   }
                   ${item.bold ? "font-bold" : ""}
-                  ${index === items.length - 1 ? "rounded-b-md" : ""}
+                  ${index === items.length - 1 ? "rounded-b-md hover:rounded-b-md" : ""}
                 `}
                 onClick={() => {
                   closeAllDropdowns();
