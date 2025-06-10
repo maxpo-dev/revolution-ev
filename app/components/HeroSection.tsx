@@ -62,7 +62,7 @@ export default function Hero() {
         </div>
 
         {/* Event Details */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-16 text-white text-sm sm:text-lg md:text-xl lg:text-2xl font-medium font-menda mt-6 sm:mt-10 px-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-16 text-white text-sm sm:text-lg md:text-xl  font-medium font-menda mt-6 sm:mt-10 px-4">
           <div className="flex items-center gap-2">
             <span className="font-semibold text-[#4DC656]">When:</span>
             <span>October 23–24, 2025</span>
