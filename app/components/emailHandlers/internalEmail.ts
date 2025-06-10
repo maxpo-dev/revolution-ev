@@ -21,8 +21,8 @@ export const InternalEmailHandler = ({
     phoneNumber,
     companyName,
     industry,
-    jobTitle,
-    message,
+    jobTitle = "N/A",
+    message = "N/A",
     consent1,
     consent2,
   } = formData;
