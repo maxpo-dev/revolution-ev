@@ -59,7 +59,7 @@ export default function BlogGridClient({
             className={`relative cursor-pointer overflow-hidden rounded-lg group border-2 ${
               idx === 0 ? "lg:col-span-3" : ""
             }`}
-            onClick={() => router.push(`/news/${article.slug}`)}
+            onClick={() => router.push(`/blogs/${article.slug}`)}
           >
             <Image
               src={article.mainImage || "/images/blogs/default.jpg"}

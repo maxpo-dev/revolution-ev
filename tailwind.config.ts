@@ -12,8 +12,8 @@ const config: Config = {
     extend: {
           
       fontFamily: {
-        dm: ["var(--font-dm-sans)"],
-        menda: ["var(--font-menda)"],
+        dm: ["var(--font-dm-sans)", "sans-serif"],
+        menda:  ["var(--font-menda)", "serif"],
       },
       colors: {
         background: "hsl(var(--background))",
