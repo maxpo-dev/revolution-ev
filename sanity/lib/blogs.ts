@@ -1,5 +1,9 @@
 import { client } from "../client";
-import { blogPostsByProject, categoriesByProject } from "../queries";
+import {
+  blogPostBySlug,
+  blogPostsByProject,
+  categoriesByProject,
+} from "../queries";
 import { SanityDocument } from "next-sanity";
 
 export async function getBlogPostsByProject(
@@ -14,4 +18,9 @@ export async function getCategoriesByProject(slug: string): Promise<string[]> {
   });
   const unique = Array.from(new Set(rawCategories));
   return unique;
+}
+
+export async function getBlogPostBySlug(slug: string) {
+  const post = await client.fetch(blogPostBySlug, { slug });
+  return post;
 }

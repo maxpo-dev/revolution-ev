@@ -2,13 +2,17 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface BlogGridClientProps {
   posts: any[];
   categories: string[];
 }
 
-export default function BlogGridClient({ posts, categories }: BlogGridClientProps) {
+export default function BlogGridClient({
+  posts,
+  categories,
+}: BlogGridClientProps) {
   const [selectedCategory, setSelectedCategory] = useState("View All");
 
   const allCategories = ["View All", ...Array.from(new Set(categories))];
@@ -17,7 +21,8 @@ export default function BlogGridClient({ posts, categories }: BlogGridClientProp
     selectedCategory === "View All"
       ? posts
       : posts.filter((post) => post.categories?.includes(selectedCategory));
-
+  console.log(filteredPosts);
+  const router = useRouter();
   return (
     <div>
       {/* Header + Filters */}
@@ -51,9 +56,10 @@ export default function BlogGridClient({ posts, categories }: BlogGridClientProp
         {filteredPosts.map((article, idx) => (
           <div
             key={article._id}
-            className={`relative overflow-hidden rounded-lg group border-2 ${
+            className={`relative cursor-pointer overflow-hidden rounded-lg group border-2 ${
               idx === 0 ? "lg:col-span-3" : ""
             }`}
+            onClick={() => router.push(`/news/${article.slug}`)}
           >
             <Image
               src={article.mainImage || "/images/blogs/default.jpg"}
