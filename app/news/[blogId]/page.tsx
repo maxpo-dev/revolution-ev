@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 
 export default async function BlogPostPage({ params }: { params: { blogId: string } }) {
   const blog = await getBlogPostBySlug(params.blogId); // or by ID
-    console.log("koo",blog)
+
   if (!blog) {
     return notFound();
   }

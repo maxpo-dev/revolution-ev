@@ -45,16 +45,24 @@ const industryOptions = [
 ];
 
 const validationSchema = Yup.object({
-  name: Yup.string().trim().required("This is a required field"),
+  name: Yup.string()
+    .trim()
+    .matches(
+      /^[a-zA-Z\s.'-]+$/,
+      "Name can only contain letters, spaces, apostrophes, hyphens, and periods"
+    )
+    .min(2, "Name must be at least 2 characters")
+    .max(50, "Name cannot exceed 50 characters")
+    .required("This is a required field"),
 
   email: Yup.string()
     .trim()
     .email("Please enter a valid email address")
     .required("This is a required field"),
 
-phoneNumber: Yup.string()
-  .required("This is a required field")
-  .matches(/^\+?\d{7,15}$/, "Enter a valid phone number"),
+  phoneNumber: Yup.string()
+    .required("This is a required field")
+    .matches(/^\+?\d{7,15}$/, "Enter a valid phone number"),
 
   companyName: Yup.string().trim().required("This is a required field"),
 
@@ -111,6 +119,7 @@ const FormSection = ({ type }: { type: FormTypes }) => {
         jobTitle: "",
         industry: "",
         message: "",
+        requestType: "",
         consent1: false,
         consent2: false,
       }}
@@ -118,47 +127,51 @@ const FormSection = ({ type }: { type: FormTypes }) => {
       onSubmit={handleSubmit}
     >
       <Form>
-        <TextField
-          name="name"
-          label="Name"
-          placeholder="Full Name"
-          autoComplete="name"
-          required={true}
-        />
-        <TextField
-          name="email"
-          label="Work Email"
-          type="email"
-          autoComplete="email"
-          placeholder="Work Email Address"
-          required={true}
-        />
-
-       <PhoneInputField name="phoneNumber" />
-        <TextField
-          name="companyName"
-          label="Company Name"
-          placeholder="Company Name"
-          autoComplete="organization"
-          required={true}
-        />
-        <TextField
-          name="industry"
-          label="Industry"
-          as="select"
-          options={industryOptions.map((value) => ({
-            value,
-            label: value,
-          }))}
-          required={true}
-        />
-        <TextField
-          name="jobTitle"
-          label="Job Title"
-          placeholder="Job Title"
-          required={true}
-        />
-
+        <div className="flex flex-col md:flex-row gap-0 md:gap-4 w-full">
+          <TextField
+            name="name"
+            label="Name"
+            placeholder="Full Name"
+            autoComplete="name"
+            required={true}
+          />
+          <TextField
+            name="jobTitle"
+            label="Job Title"
+            placeholder="Job Title"
+            required={true}
+          />
+        </div>
+        <div className="flex flex-col md:flex-row gap-0 md:gap-4 w-full">
+          <TextField
+            name="email"
+            label="Work Email"
+            type="email"
+            autoComplete="email"
+            placeholder="Work Email Address"
+            required={true}
+          />
+          <PhoneInputField name="phoneNumber" />
+        </div>
+        <div className="flex flex-col md:flex-row  gap-0 md:gap-4 w-full">
+          <TextField
+            name="companyName"
+            label="Company Name"
+            placeholder="Company Name"
+            autoComplete="organization"
+            required={true}
+          />
+          <TextField
+            name="industry"
+            label="Industry"
+            as="select"
+            options={industryOptions.map((value) => ({
+              value,
+              label: value,
+            }))}
+            required={true}
+          />
+        </div>
         <TextField
           name="message"
           label="Message (if any)"

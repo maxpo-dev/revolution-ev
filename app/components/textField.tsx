@@ -32,7 +32,7 @@ const TextField: React.FC<TextFieldProps> = ({
       ? "border-red-500 focus:ring-red-300"
       : "border-black focus:ring-blue-300";
 
-  const commonClasses = `w-full px-3 py-2 border rounded-r-sm text-sm focus:outline-none focus:ring-2 ${errorClass}`;
+  const commonClasses = `w-full px-3 py-2 border rounded-sm text-sm focus:outline-none focus:ring-2 ${errorClass}`;
 
   let InputComponent;
 
@@ -76,7 +76,7 @@ const TextField: React.FC<TextFieldProps> = ({
   }
 
   return (
-    <div className="mb-4">
+    <div className="mb-4 w-full">
       <label
         htmlFor={props.id || props.name}
         className="block text-sm font-semibold text-black mb-1"

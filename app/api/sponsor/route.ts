@@ -70,11 +70,9 @@ export async function POST(request: Request) {
 
     // Send internal mail
     await transporter.sendMail(internalMail);
-    console.log("Internal email sent to team:", TO_USER);
 
     // Send thank-you mail to client
     await transporter.sendMail(thankYouMail);
-    console.log("Thank-you email sent to client:", email);
 
     return NextResponse.json(
       { message: "Sponsor enquiry sent successfully" },
