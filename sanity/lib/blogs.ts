@@ -16,7 +16,8 @@ export async function getCategoriesByProject(slug: string): Promise<string[]> {
   const rawCategories: string[] = await client.fetch(categoriesByProject, {
     slug,
   });
-  const unique = Array.from(new Set(rawCategories));
+  const cleaned = rawCategories.filter((c): c is string => !!c);
+  const unique = Array.from(new Set(cleaned));
   return unique;
 }
 

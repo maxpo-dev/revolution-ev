@@ -21,7 +21,7 @@ export default function BlogGridClient({
     selectedCategory === "View All"
       ? posts
       : posts.filter((post) => post.categories?.includes(selectedCategory));
-  console.log(filteredPosts);
+
   const router = useRouter();
   return (
     <div>

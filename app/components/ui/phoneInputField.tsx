@@ -19,7 +19,7 @@ const PhoneInputField = ({ name }: { name: string }) => {
   const buttonErrorClass = isError ? "!border-red-500" : "!border-black";
 
   return (
-    <div className="mb-4">
+    <div className="mb-4 w-full">
       <label className="block text-sm font-semibold text-black mb-1">
         Phone Number <span className="text-red-500">*</span>
       </label>
@@ -30,8 +30,8 @@ const PhoneInputField = ({ name }: { name: string }) => {
           onChange={(value) => setFieldValue(name, value)}
           onBlur={() => setFieldTouched(name, true)}
           containerClass="w-full"
-          inputClass={`${baseInputClass} ${errorClass} !rounded-r-sm`}
-          buttonClass={`!bg-white !border-r !px-2 !py-2 !rounded-none ${buttonErrorClass}`}
+          inputClass={`${baseInputClass} ${errorClass} !rounded-sm`}
+          buttonClass={`!bg-white !border-r !px-2 !py-2 !rounded-l-sm ${buttonErrorClass}`}
           inputProps={{
             name,
             autoComplete: "tel",

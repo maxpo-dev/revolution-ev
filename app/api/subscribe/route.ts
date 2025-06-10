@@ -68,8 +68,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Invalid email format" }, { status: 400 })
     }
 
-    console.log("Saving email to database:", email)
-
     await sendThankYouEmail(email)
     await saveUserDetails(email)
 
