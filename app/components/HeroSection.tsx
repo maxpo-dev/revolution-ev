@@ -23,14 +23,14 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 mx-auto w-full max-w-6xl px-4 sm:px-6 text-center text-white">
         <h1
-          className="text-white font-semibold tracking-[0.05em] text-4xl sm:text-5xl md:text-6xl lg:text-[5.2vw] leading-[1]"
+          className="text-white font-semibold tracking-[0.05em] text-4xl sm:text-5xl md:text-6xl leading-[1]"
           style={{ fontFamily: "var(--font-menda)" }}
         >
           REVOLUTION EV
         </h1>
 
         <h2
-          className="text-white font-semibold mt-1 sm:mt-2 text-3xl sm:text-5xl md:text-6xl lg:text-[5.2vw] leading-[1] tracking-[0.1em]"
+          className="text-white font-semibold mt-1 sm:mt-2 text-3xl sm:text-5xl md:text-6xl leading-[1] tracking-[0.1em]"
           style={{ fontFamily: "var(--font-menda)" }}
         >
           MALAYSIA
