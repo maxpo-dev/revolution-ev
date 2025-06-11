@@ -15,13 +15,6 @@ export default function BlogGridClient({
 }: BlogGridClientProps) {
   const [selectedCategory, setSelectedCategory] = useState("View All");
 
-  const allCategories = ["View All", ...Array.from(new Set(categories))];
-
-  const filteredPosts =
-    selectedCategory === "View All"
-      ? posts
-      : posts.filter((post) => post.categories?.includes(selectedCategory));
-
   const router = useRouter();
   return (
     <div>
@@ -31,7 +24,7 @@ export default function BlogGridClient({
           News & Blogs
         </h2>
 
-        <div className="flex flex-wrap gap-3">
+        {/* <div className="flex flex-wrap gap-3">
           {allCategories.map((category, index) => {
             const isSelected = category === selectedCategory;
             return (
@@ -48,12 +41,12 @@ export default function BlogGridClient({
               </button>
             );
           })}
-        </div>
+        </div> */}
       </div>
 
       {/* Blog Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 sm:px-6 md:px-10 lg:px-28 py-10">
-        {filteredPosts.map((article, idx) => (
+        {posts.map((article, idx) => (
           <div
             key={article._id}
             className={`relative cursor-pointer overflow-hidden rounded-lg group border-2 ${

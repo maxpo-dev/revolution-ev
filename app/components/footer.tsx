@@ -224,7 +224,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link
-                    href="/sponsors/why-sponsor"
+                    href="/sponsors/sponsor"
                     className="hover:text-[#00E1B0]"
                   >
                     Sponsors
