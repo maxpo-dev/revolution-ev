@@ -95,7 +95,7 @@ const FormSection = ({ type }: { type: FormTypes }) => {
       });
       if (!res.ok) throw new Error("Failed to submit");
       const data = await res.json();
-      router.push(`/register/?t=${type}/thankyou`);
+      router.push(`/register/thankyou?t=${type}`);
       toast({
         title: "Form submitted successfully!",
         description: "Thank you for your submission.",
