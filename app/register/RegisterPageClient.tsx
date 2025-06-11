@@ -3,7 +3,6 @@
 import { useMemo } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import SuccessMessage from "@/app/components/success-message";
 import RegisterForm from "../components/registerForm";
 
 type TabType =
