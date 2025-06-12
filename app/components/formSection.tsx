@@ -99,8 +99,9 @@ const FormSection = ({
         body: JSON.stringify(values),
       });
       if (!res.ok) throw new Error("Failed to submit");
-      await res.json();
       setFormSubmitted(true);
+      const data = await res.json();
+      return data;
     } catch (error) {
       console.error("Error:", error);
       alert("There was a problem submitting the form.");
