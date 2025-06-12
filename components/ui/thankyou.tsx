@@ -23,15 +23,13 @@ const validTabs: TabType[] = [
   "speaker",
 ];
 
-const ThankYou = () => {
-  const searchParams = useSearchParams();
-  const tabParam = searchParams.get("t");
+const ThankYou = ({type}: {type: TabType}) => {
 
   const activeTab = useMemo(() => {
-    return tabParam && validTabs.includes(tabParam as TabType)
-      ? (tabParam as TabType)
+    return type && validTabs.includes(type as TabType)
+      ? (type as TabType)
       : null;
-  }, [tabParam]);
+  }, [type]);
 
   if (!activeTab) {
     return (
