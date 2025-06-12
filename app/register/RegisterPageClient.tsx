@@ -59,7 +59,7 @@ export default function RegisterPageClient() {
                 <TabsTrigger
                   key={tab}
                   value={tab}
-                  className="px-12 py-2 data-[state=active]:bg-black data-[state=active]:text-white rounded-none border border-black "
+                  className="px-12 py-2 data-[state=active]:bg-black data-[state=active]:text-white rounded-none border border-black cursor-pointer"
                 >
                   {formatTabLabel(tab)}
                 </TabsTrigger>
