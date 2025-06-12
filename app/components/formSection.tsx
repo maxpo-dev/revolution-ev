@@ -81,8 +81,13 @@ type FormTypes =
   | "brochure"
   | "speaker";
 
-const FormSection = ({ type }: { type: FormTypes }) => {
-  const router = useRouter();
+const FormSection = ({
+  type,
+  setFormSubmitted,
+}: {
+  type: FormTypes;
+  setFormSubmitted: (value: boolean) => void;
+}) => {
   const [submitting, setSubmitting] = React.useState(false);
 
   const handleSubmit = async (values: any) => {
@@ -94,13 +99,8 @@ const FormSection = ({ type }: { type: FormTypes }) => {
         body: JSON.stringify(values),
       });
       if (!res.ok) throw new Error("Failed to submit");
-      const data = await res.json();
-      router.push(`/register/thankyou?t=${type}`);
-      toast({
-        title: "Form submitted successfully!",
-        description: "Thank you for your submission.",
-        variant: "default",
-      });
+      await res.json();
+      setFormSubmitted(true);
     } catch (error) {
       console.error("Error:", error);
       alert("There was a problem submitting the form.");
