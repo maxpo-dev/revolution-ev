@@ -5,19 +5,14 @@ const EMAIL_USER = process.env.EMAIL_USER
 const EMAIL_PASS = process.env.EMAIL_PASS
 const TO_USER = process.env.TO_USER
 
-if (!EMAIL_USER || !EMAIL_PASS || !TO_USER) {
-  throw new Error("Missing EMAIL_USER, EMAIL_PASS or TO_USER env variables")
-}
-
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: EMAIL_USER,
-    pass: EMAIL_PASS,
-  },
-})
-
 export async function POST(request: Request) {
+  if (!EMAIL_USER || !EMAIL_PASS || !TO_USER) {
+    return NextResponse.json(
+      { message: "Missing EMAIL_USER, EMAIL_PASS or TO_USER env variables" },
+      { status: 500 }
+    )
+  }
+
   try {
     const formData = await request.json()
 
@@ -33,7 +28,13 @@ export async function POST(request: Request) {
       consent2,
     } = formData
 
-    // Optionally validate required fields here
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: EMAIL_USER,
+        pass: EMAIL_PASS,
+      },
+    })
 
     const mailOptions = {
       from: `"Brochure Form" <${EMAIL_USER}>`,
@@ -55,11 +56,15 @@ export async function POST(request: Request) {
 
     await transporter.sendMail(mailOptions)
 
-    // Optionally, you can return a brochure download link or trigger download here
-
-    return NextResponse.json({ message: "Brochure request sent successfully" }, { status: 200 })
+    return NextResponse.json(
+      { message: "Brochure request sent successfully" },
+      { status: 200 }
+    )
   } catch (error: any) {
     console.error("Brochure form error:", error)
-    return NextResponse.json({ message: "Failed to send brochure request", error: error.message }, { status: 500 })
+    return NextResponse.json(
+      { message: "Failed to send brochure request", error: error.message },
+      { status: 500 }
+    )
   }
 }
