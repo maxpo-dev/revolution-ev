@@ -8,6 +8,7 @@ export const blogPostsByProject = `*[
  "mainImage": mainImage.asset->url,
  "categories": categories[]->title,
   "slug": slug.current,
+  "author": author-> name ,
   publishedAt
 }`;
 
