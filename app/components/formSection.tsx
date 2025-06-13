@@ -100,6 +100,13 @@ const FormSection = ({
       });
       if (!res.ok) throw new Error("Failed to submit");
       setFormSubmitted(true);
+      await fetch("/api/gsheets", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ type, ...values }),
+      });
       const data = await res.json();
       return data;
     } catch (error) {
@@ -121,8 +128,8 @@ const FormSection = ({
         industry: "",
         message: "",
         requestType: "",
-        consent1: false,
-        consent2: false,
+        consent1: true,
+        consent2: true,
       }}
       validationSchema={validationSchema}
       onSubmit={handleSubmit}

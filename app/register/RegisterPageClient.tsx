@@ -32,7 +32,9 @@ export default function RegisterPageClient() {
   // Derive tab from URL param or default
   const activeTab = useMemo<TabType>(() => {
     const base = tabParam.split("/")[0];
+    setFormSubmitted(false);
     return validTabs.includes(base as TabType) ? (base as TabType) : "enquiry";
+    
   }, [tabParam]);
 
   // On tab change, update the URL param only
