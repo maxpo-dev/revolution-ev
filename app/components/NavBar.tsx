@@ -83,7 +83,7 @@ export default function Navbar() {
   const dropdownItems = {
     exhibition: [
       { href: "/exhibition/WhyExhibit", label: "Why Exhibit" },
-      { href: "/exhibition/Exhibitors", label: "Exhibitors" },
+      { href: "/exhibition/exhibitors", label: "Exhibitors" },
       { href: "/register?t=exhibitor", label: "Exhibitors Enquiry", bold: true },
       { href: "/register?t=brochure", label: "Request Brochure", bold: true },
     ],
@@ -91,13 +91,17 @@ export default function Navbar() {
       { href: "/conference/WhyAttend", label: "Why Attend" },
       { href: "/conference/agenda", label: "Agenda" },
       { href: "/register?t=speaker", label: "Speaker Enquiry", bold: true },
+       { href: "/conference/speakers", label: "Speakers" },
+      
     ],
     sponsors: [
       { href: "/sponsors/WhySponsor", label: "Why Sponsor" },
+            { href: "/sponsors/sponsors", label: "Sponsors" },
       { href: "/register?t=sponsor", label: "Sponsorship Enquiry", bold: true },
     ],
     partners: [
-      { href: "/partners/MediaPartner", label: "Media Partner" },
+      { href: "/partners/Partner", label: "Partner" },
+       { href: "/partners/media-partners", label: "MediaPartner" },
       { href: "/partners/supportingpartners", label: "Supporting Partner" },
       { href: "/register?t=partner", label: "Partner Enquiry", bold: true },
     ],
