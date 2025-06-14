@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import { ArrowLeft } from "lucide-react"
 
 interface SuccessMessageProps {
-  type: "enquiry" | "delegate" | "exhibitor" | "sponsor" | "brochure"
+  type: "enquiry" | "delegate" | "exhibitor" | "sponsor" | "brochure" | "speaker"
   title: string
   subtitle: string
 }
@@ -107,6 +108,13 @@ export default function SuccessMessage({ type, title, subtitle }: SuccessMessage
             View All Speakers
           </Link>
         </div>
+          <Link
+          href="/"
+          className="mt-6 inline-flex items-center gap-2 bg-gradient-to-r from-[#00B5B8] to-[#4CD964] text-black font-medium px-5 py-3 rounded-lg transition hover:opacity-90"
+        >
+          <ArrowLeft size={18} />
+          Back to Homepage
+        </Link>
       </div>
     </div>
   )

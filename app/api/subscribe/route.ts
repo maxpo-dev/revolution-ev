@@ -1,25 +1,25 @@
+import { SubscribeEmailTemplate } from "@/app/components/emailHandlers/subscribeEmail"
 import { type NextRequest, NextResponse } from "next/server"
 import nodemailer from 'nodemailer'
 
 async function sendThankYouEmail(email: string) {
   // Create transporter with proper credentials
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
+     host:'smtpout.secureserver.net',
+    port: 465,
+    secure:true,
     auth: {
       user: process.env.EMAIL_USER, // Changed to match your .env
       pass: process.env.EMAIL_PASS, // Changed to match your .env
     },
   })
 
+  const thankYouEmailHtml=SubscribeEmailTemplate({email})
   const mailOptions = {
     from: `"Revolution EV Malaysia" <${process.env.EMAIL_USER}>`,
     to: email,
     subject: "Thank you for subscribing to Revolution EV Malaysia!",
-    html: `
-      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-        <!-- Your existing HTML template -->
-      </div>
-    `,
+    html:thankYouEmailHtml
   }
 
   try {
@@ -31,6 +31,29 @@ async function sendThankYouEmail(email: string) {
     throw error
   }
 }
+
+async function saveUserDetails(email: string){
+  try {
+    const response =  await fetch(process.env.GOOGLE_APPS_SCRIPT_URL!, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+      email
+      }),
+    })
+
+    if (!response.ok) {
+      console.error(`Request failed with status: ${response.status}`);
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    return true;
+  } catch (error) {
+    console.error('Error sending email:', error);
+    throw error;
+  }
+}
+
 
 export async function POST(request: NextRequest) {
   try {
@@ -45,8 +68,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Invalid email format" }, { status: 400 })
     }
 
-    console.log("Saving email to database:", email)
     await sendThankYouEmail(email)
+    await saveUserDetails(email)
 
     return NextResponse.json({ message: "Successfully subscribed!" }, { status: 200 })
   } catch (error) {

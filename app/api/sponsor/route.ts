@@ -1,65 +1,95 @@
-// import { NextResponse } from "next/server"
-// import nodemailer from "nodemailer"
+import { InternalEmailHandler } from "@/app/components/emailHandlers/internalEmail";
+import { ThankYouEmailHandler } from "@/app/components/emailHandlers/thankYouEmail";
+import { NextResponse } from "next/server";
+import nodemailer from "nodemailer";
 
-// // Load env vars
-// const EMAIL_USER = process.env.EMAIL_USER
-// const EMAIL_PASS = process.env.EMAIL_PASS
-// const TO_USER = process.env.TO_USER
+const EMAIL_USER = process.env.EMAIL_USER;
+const EMAIL_PASS = process.env.EMAIL_PASS;
+const TO_USER = process.env.TO_USER;
+const EVENT_NAME = process.env.EVENT_NAME || "Revolution EV Malaysia";
+const EVENT_DATE = process.env.EVENT_DATE || "October 23–24, 2025";
+const EVENT_WEBSITE =
+  process.env.EVENT_WEBSITE || "https://www.revolutionevmalaysia.com/";
+const EVENT_EMAIL = process.env.EVENT_EMAIL || "info@revolutionevmalaysia.com";
 
-// if (!EMAIL_USER || !EMAIL_PASS || !TO_USER) {
-//   throw new Error("Missing EMAIL_USER, EMAIL_PASS or TO_USER env variables")
-// }
+if (!EMAIL_USER || !EMAIL_PASS || !TO_USER) {
+  throw new Error("Missing EMAIL_USER, EMAIL_PASS or TO_USER environment variables.");
+}
 
-// // Setup nodemailer transporter
-// const transporter = nodemailer.createTransport({
-//   service: "gmail",
-//   auth: {
-//     user: EMAIL_USER,
-//     pass: EMAIL_PASS,
-//   },
-// })
+const transporter = nodemailer.createTransport({
+  host: "smtpout.secureserver.net",
+  port: 465,
+  secure: true,
+  auth: {
+    user: EMAIL_USER,
+    pass: EMAIL_PASS,
+  },
+});
 
-// export async function POST(request: Request) {
-//   try {
-//     const formData = await request.json()
+export async function POST(request: Request) {
+  try {
+    const formData = await request.json();
 
-//     const {
-//       name,
-//       email,
-//       companyName,
-//       phoneNumber,
-//       industry,
-//       jobTitle,
-//       message,
-//       consent1,
-//       consent2,
-//     } = formData
+    const { name, email } = formData;
 
-//     // Validate required fields here if needed
+    if (!email || !/\S+@\S+\.\S+/.test(email)) {
+      console.error("Invalid or missing client email.");
+      return NextResponse.json(
+        { message: "Invalid client email address." },
+        { status: 400 }
+      );
+    }
 
-//     const mailOptions = {
-//       from: `"Sponsor Form" <${EMAIL_USER}>`,
-//       to: TO_USER,
-//       subject: `New Sponsor Enquiry from ${name}`,
-//       html: `
-//         <h2>New Sponsor Enquiry Details</h2>
-//         <p><strong>Name:</strong> ${name}</p>
-//         <p><strong>Email:</strong> ${email}</p>
-//         <p><strong>Company Name:</strong> ${companyName}</p>
-//         <p><strong>Phone Number:</strong> ${phoneNumber}</p>
-//         <p><strong>Industry:</strong> ${industry}</p>
-//         <p><strong>Job Title:</strong> ${jobTitle}</p>
-//         <p><strong>Message:</strong> ${message || "N/A"}</p>
-//         <p><strong>Consent 1:</strong> ${consent1 ? "Yes" : "No"}</p>
-//         <p><strong>Consent 2:</strong> ${consent2 ? "Yes" : "No"}</p>
-//       `,
-//     }
+    // Internal email to admin
+    const internalEmailHtml = InternalEmailHandler({ formData });
+    const internalMail = {
+      from: `"Revolution EV - Sponsor" <${EMAIL_USER}>`,
+      to: TO_USER,
+      subject: `New Sponsor Enquiry from ${name}`,
+      html: internalEmailHtml,
+    };
 
-//     await transporter.sendMail(mailOptions)
+    // Thank-you email to client
+    const thankYouMailHtml = ThankYouEmailHandler({
+      formData: {
+        EVENT_DATE,
+        EVENT_NAME,
+        EVENT_EMAIL,
+        EVENT_WEBSITE,
+        name,
+      },
+    });
 
-//     return NextResponse.json({ message: "Sponsor enquiry sent successfully" }, { status: 200 })
-//   } catch (error: any) {
-//     console.error("Sponsor form email error:", error)
-//     return NextResponse.json({ message: "Failed to send sponsor enquiry", error: error.message }, { status: 500 })
-//   }
-// }
+    const thankYouMail = {
+      from: `"${EVENT_NAME}" <${EMAIL_USER}>`,
+      to: email,
+      subject: `Thank You For Your Interest in ${EVENT_NAME}`,
+      html: thankYouMailHtml,
+    };
+
+    // Send internal mail
+    await transporter.sendMail(internalMail);
+
+    // Send thank-you mail
+    await transporter.sendMail(thankYouMail);
+
+    return NextResponse.json(
+      { message: "Sponsor enquiry sent successfully" },
+      { status: 200 }
+    );
+  } catch (error) {
+    console.error("Email sending error:");
+    if (error instanceof Error) {
+      console.error(error.message);
+      return NextResponse.json(
+        { message: "Email sending failed", error: error.message },
+        { status: 500 }
+      );
+    } else {
+      return NextResponse.json(
+        { message: "Email sending failed", error: "Unknown error" },
+        { status: 500 }
+      );
+    }
+  }
+}

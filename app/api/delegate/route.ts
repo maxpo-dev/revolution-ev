@@ -1,5 +1,17 @@
+import { InternalEmailHandler } from "@/app/components/emailHandlers/internalEmail";
+import { ThankYouEmailHandler } from "@/app/components/emailHandlers/thankYouEmail";
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+
+const EMAIL_USER = process.env.EMAIL_USER;
+const EMAIL_PASS = process.env.EMAIL_PASS;
+const TO_USER = process.env.TO_USER;
+
+const EVENT_NAME = process.env.EVENT_NAME || "Revolution EV Malaysia";
+const EVENT_DATE = process.env.EVENT_DATE || "October 23–24, 2025";
+const EVENT_WEBSITE =
+  process.env.EVENT_WEBSITE || "https://www.revolutionevmalaysia.com/";
+const EVENT_EMAIL = process.env.EVENT_EMAIL || "info@revolutionevmalaysia.com";
 
 export async function POST(req: Request) {
   try {
@@ -12,50 +24,72 @@ export async function POST(req: Request) {
       phoneNumber,
       jobTitle,
       industry,
-      message,
-      consent1,
-      consent2,
     } = formData;
 
     // Basic validation
-    if (!name || !email || !companyName || !phoneNumber || !jobTitle || !industry) {
-      return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+    if (
+      !name ||
+      !email ||
+      !companyName ||
+      !phoneNumber ||
+      !jobTitle ||
+      !industry
+    ) {
+      return NextResponse.json(
+        { error: "Missing required fields" },
+        { status: 400 }
+      );
     }
 
     // Create transporter
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: "smtpout.secureserver.net",
+      port: 465,
+      secure: true,
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+        user: EMAIL_USER,
+        pass: EMAIL_PASS,
       },
     });
 
     // Email content
-    const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: process.env.TO_USER, // Your destination email
-      subject: "New Exhibitor Registration",
-      html: `
-        <h3>New Exhibitor Submission</h3>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Company:</strong> ${companyName}</p>
-        <p><strong>Phone:</strong> ${phoneNumber}</p>
-        <p><strong>Job Title:</strong> ${jobTitle}</p>
-        <p><strong>Industry:</strong> ${industry}</p>
-        <p><strong>Message:</strong> ${message || "N/A"}</p>
-        <p><strong>Consent 1:</strong> ${consent1 ? "Yes" : "No"}</p>
-        <p><strong>Consent 2:</strong> ${consent2 ? "Yes" : "No"}</p>
-      `,
+    const internalEmailHtml = InternalEmailHandler({ formData });
+    const internalEmail = {
+      from: `"Revolution EV - Delegate" <${EMAIL_USER}>`,
+      to: TO_USER, // Your destination email
+      subject: "New Delegate Registration",
+      html: internalEmailHtml,
+    };
+
+    const thankYouMailData = {
+      EVENT_DATE,
+      EVENT_NAME,
+      EVENT_EMAIL,
+      EVENT_WEBSITE,
+      name,
+    };
+
+    const thankYouMailHtml = ThankYouEmailHandler({
+      formData: thankYouMailData,
+    });
+
+    const thankYouMail = {
+      from: `"${EVENT_NAME}" <${EMAIL_USER}>`,
+      to: email,
+      subject: `Thank You For Your Interest in ${EVENT_NAME}`,
+      html: thankYouMailHtml,
     };
 
     // Send the email
-    await transporter.sendMail(mailOptions);
+    await transporter.sendMail(internalEmail);
+    await transporter.sendMail(thankYouMail);
 
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Email error:", error);
-    return NextResponse.json({ error: "Failed to send email" }, { status: 500 });
+    return NextResponse.json(
+      { error: "Failed to send email" },
+      { status: 500 }
+    );
   }
 }
