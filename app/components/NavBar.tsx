@@ -83,7 +83,7 @@ export default function Navbar() {
   const dropdownItems = {
     exhibition: [
       { href: "/exhibition/WhyExhibit", label: "Why Exhibit" },
-      { href: "/exhibition/exhibitors", label: "Exhibitors" },
+      { href: "/exhibition/companies", label: "Exhibitors" },
       { href: "/register?t=exhibitor", label: "Exhibitors Enquiry", bold: true },
       { href: "/register?t=brochure", label: "Request Brochure", bold: true },
     ],
