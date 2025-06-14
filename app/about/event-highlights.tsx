@@ -15,7 +15,7 @@ const highlights = [
   {
     title: (
       <>
-        <span className="text-sky-500 font-semibold">20+ Exhibitors</span> Showcasing The Latest Electric Vehicle.
+        <span className="text-sky-500 font-semibold">20+ Exhibitors</span> Showcasing The Latest Electric Vehicle..
         Innovations.
       </>
     ),
