@@ -36,7 +36,7 @@ export default function ExhibitorsPage() {
     <main className="bg-[#111] min-h-screen py-10 px-6 md:px-20">
       <div className="text-center mb-12">
         <h2 className="text-gray-400 text-xl">2025</h2>
-        <h1 className="text-3xl md:text-4xl font-bold text-cyan-400">Exhibitors</h1>
+        <h1 className="text-3xl md:text-4xl font-bold text-cyan-400">Exhibitors.</h1>
       </div>
 
       {error && <p className="text-red-500">{error}</p>}
